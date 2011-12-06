@@ -1,21 +1,24 @@
-= DESCRIPTION:
+Description
+===========
 
 Installs keepalived and pushes the configuration file out.
 
-= REQUIREMENTS:
+Changes
+=======
 
-== Platform:
+## v0.7.1:
 
-Tested on Ubuntu 8.10.
+* Current public release.
 
-= ATTRIBUTES: 
+Usage
+=====
 
-= USAGE: 
+Modify the sample template to suit your environment and configuration
+requirements.
 
-Modify the sample template to suit your environment and configuration requirements.
+License and Author
+==================
 
-= LICENSE and AUTHOR:
-      
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc
