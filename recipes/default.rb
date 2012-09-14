@@ -21,9 +21,15 @@ package "keepalived" do
   action :install
 end
 
-service "keepalived" do
-  supports :restart => true
-  action [:enable, :start]
+if(node[:keepalived][:shared_address])
+  file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
+    mode 0644
+    content "net.ipv4.ip_nonlocal_bind=1\n"
+  end
+
+  service 'procps' do
+    action :start
+  end
 end
 
 template "/etc/keepalived/keepalived.conf" do
@@ -31,5 +37,10 @@ template "/etc/keepalived/keepalived.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, resources(:service => "keepalived")
+end
+
+service "keepalived" do
+  supports :restart => true
+  action [:enable, :start]
+  subscribes :restart, resources(:template => "/etc/keepalived/keepalived.conf"), :delayed
 end
