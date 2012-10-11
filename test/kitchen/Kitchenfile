@@ -1,6 +1,4 @@
 cookbook "keepalived" do
-  lint :ignore => %w(FC001)
-  runtimes []
   configuration "default"
   configuration "configured"
 end
