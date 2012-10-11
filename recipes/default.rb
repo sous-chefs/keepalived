@@ -17,11 +17,9 @@
 # limitations under the License.
 #
 
-package "keepalived" do
-  action :install
-end
+package "keepalived"
 
-if(node[:keepalived][:shared_address])
+if node['keepalived']['shared_address']
   file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
     mode 0644
     content "net.ipv4.ip_nonlocal_bind=1\n"
@@ -42,5 +40,5 @@ end
 service "keepalived" do
   supports :restart => true
   action [:enable, :start]
-  subscribes :restart, resources(:template => "/etc/keepalived/keepalived.conf"), :delayed
+  subscribes :restart, "template[/etc/keepalived/keepalived.conf"
 end
