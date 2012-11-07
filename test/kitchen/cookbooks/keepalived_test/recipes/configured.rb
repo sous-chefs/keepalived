@@ -1,15 +1,15 @@
-node[:keepalived][:shared_address] = true
-node[:keepalived][:global][:notification_emails] = 'admin@example.com'
-node[:keepalived][:global][:notification_email_from] = "keepalived@example.com"
-node[:keepalived][:global][:smtp_server] = '127.0.0.1'
-node[:keepalived][:global][:smtp_connect_timeout] = 30
-node[:keepalived][:global][:router_id] = 'DEFAULT_ROUT_ID'
-node[:keepalived][:check_scripts][:chk_init] = {
+node.set[:keepalived][:shared_address] = true
+node.set[:keepalived][:global][:notification_emails] = 'admin@example.com'
+node.set[:keepalived][:global][:notification_email_from] = "keepalived@example.com"
+node.set[:keepalived][:global][:smtp_server] = '127.0.0.1'
+node.set[:keepalived][:global][:smtp_connect_timeout] = 30
+node.set[:keepalived][:global][:router_id] = 'DEFAULT_ROUT_ID'
+node.set[:keepalived][:check_scripts][:chk_init] = {
   :script => 'killall -0 init',
   :interval => 2,
   :weight => 2
 }
-node[:keepalived][:instances][:vi_1] = {
+node.set[:keepalived][:instances][:vi_1] = {
   :ip_addresses => '10.0.2.254',
   :interface => 'eth0',
   :track_script => 'chk_init',
