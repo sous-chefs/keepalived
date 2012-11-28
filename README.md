@@ -13,7 +13,7 @@ Usage
 ### Global settings
 
 * `node[:keepalived][:global][:notification_emails] = 'admin@example.com'`            # notification emails
-* `node[:keepalived][:global][:notification_email_from] = "keepalived@#{node.domain}" # from address
+* `node[:keepalived][:global][:notification_email_from] = "keepalived@#{node.domain}"` # from address
 * `node[:keepalived][:global][:smtp_server] = '127.0.0.1'`                            # smtp server address
 * `node[:keepalived][:global][:smtp_connect_timeout] = 30`                            # smtp connection timeout
 * `node[:keepalived][:global][:router_id] = 'DEFAULT_ROUT_ID'`                        # router ID
@@ -68,16 +68,16 @@ Multiple instances can be defined. The key will be used to define the instance
 name. The value will be a hash used to describe the instance. Attributes used
 within the instance hash:
 
-* `:ip_addresses => '127.0.0.1'`    # IP address(es) used by this instance
-* `:interface => 'eth0'`            # Network interface used
-* `:states => {}`                   # Node name mapped states
-* `:virtual_router_ids => {}`       # Node name mapped virtual router IDs
-* `:priorities => {}`               # Node name mapped priorities
-* `:track_script => 'check_name'`   # Name of check script in use for instance
-* `:nopreempt => false`             # Do not preempt
-* `:advert_int => 1`                # Set advert_int
-* `:authentication_type => nil`     # Enable authentication (:pass or :ah)
-* `:authentication_pass => 'secret'`# Password used for authentication
+* `:ip_addresses => '127.0.0.1'`  # IP address(es) used by this instance
+* `:interface => 'eth0'`          # Network interface used
+* `:states => {}`                 # Node name mapped states
+* `:virtual_router_ids => {}`     # Node name mapped virtual router IDs
+* `:priorities => {}`             # Node name mapped priorities
+* `:track_script => 'check_name'` # Name of check script in use for instance
+* `:nopreempt => false`           # Do not preempt
+* `:advert_int => 1`              # Set advert_int
+* `:auth_type => nil`             # Enable authentication (:pass or :ah)
+* `:auth_pass => 'secret'`        # Password used for authentication
 
 ### Full role based example
 
@@ -112,8 +112,8 @@ override_attributes(
         :track_script => 'chk_haproxy',
         :nopreempt => false,
         :advert_int => 1,
-        :authentication_type => :pass,
-        :authentication_pass => 'secret'
+        :auth_type => :pass,
+        :auth_pass => 'secret'
       }
     }
   }
@@ -136,8 +136,8 @@ node[:keepalived][:instances][:vi_1] = {
   :track_script => 'chk_init',
   :nopreempt => false,
   :advert_int => 1,
-  :authentication_type => nil, # :pass or :ah
-  :authentication_pass => 'secret'
+  :auth_type => nil, # :pass or :ah
+  :auth_pass => 'secret'
 }
 ```
 
