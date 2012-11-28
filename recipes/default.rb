@@ -30,7 +30,8 @@ if node['keepalived']['shared_address']
   end
 end
 
-template "/etc/keepalived/keepalived.conf" do
+template "keepalived.conf" do
+  path "/etc/keepalived/keepalived.conf"
   source "keepalived.conf.erb"
   owner "root"
   group "root"
@@ -38,7 +39,7 @@ template "/etc/keepalived/keepalived.conf" do
 end
 
 service "keepalived" do
-  supports :restart => true
+  supports :restart => true, :status => true
   action [:enable, :start]
-  subscribes :restart, "template[/etc/keepalived/keepalived.conf"
+  subscribes :restart, "template[keepalived.conf]"
 end
