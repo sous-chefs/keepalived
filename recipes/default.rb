@@ -17,7 +17,16 @@
 # limitations under the License.
 #
 
-package "keepalived"
+package "keepalived" do
+  action :install
+end
+
+directory "/etc/keepalived/conf.d" do
+  action :create
+  owner "root"
+  group "root"
+  mode "0775"
+end
 
 if node['keepalived']['shared_address']
   file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
@@ -36,6 +45,30 @@ template "keepalived.conf" do
   owner "root"
   group "root"
   mode 0644
+end
+
+node['keepalived']['check_scripts'].each_pair do |name, script|
+  keepalived_chkscript name do
+    script script['script']
+    interval script['interval']
+    weight script['weight']
+    action :create
+  end
+end
+
+node['keepalived']['instances'].each_pair do |name, instance|
+  keepalived_vrrp name do
+    interface instance['interface']
+    virtual_router_id node['keepalived']['instance_defaults']['virtual_router_id']
+    # state node['keepalived']['instance_defaults']['state']
+    noprempt false
+    priority node['keepalived']['instance_defaults']['priority']
+    virtual_ipaddress Array(instance['ip_addresses'])
+    if instance['track_script']
+      track_script instance['track_script']
+    end
+    action :create
+  end
 end
 
 service "keepalived" do
