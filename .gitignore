@@ -4,3 +4,4 @@
 .cache
 .kitchen
 bin
+metadata.json
