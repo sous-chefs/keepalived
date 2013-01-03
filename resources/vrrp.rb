@@ -1,4 +1,13 @@
 
+actions :create
+
+default_action :create
+
+# Covers 0.10.8 and earlier
+def initialize(*args)
+  super
+  @action = :create
+end
 
 attribute :interface, :kind_of => String, :required => true
 attribute :virtual_router_id, :kind_of => Integer, :default => 10
