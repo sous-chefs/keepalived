@@ -67,6 +67,10 @@ node['keepalived']['instances'].each_pair do |name, instance|
     if instance['track_script']
       track_script instance['track_script']
     end
+    if instance['auth_type']
+      auth_type instance['auth_type']
+      auth_pass instance['auth_pass']
+    end
     action :create
   end
 end
