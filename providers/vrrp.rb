@@ -10,11 +10,11 @@ action :create do
   params['virtual_ipaddress'] = new_resource.virtual_ipaddress
   params['advert_int'] = new_resource.advert_int if new_resource.advert_int
   params['auth_type'] = new_resource.auth_type if new_resource.auth_type
-  params['auth_pass'] = new_resource.auth_pass if new_resource.auth_pass
+  params['auth_pass'] = new_resource.auth_pass
   params['track_script'] = new_resource.track_script if new_resource.track_script
 
-  template new_resource.name do
-    path "/etc/keepalived/conf.d/vrrp_#{new_resource.name}.conf"
+  template "vrrp_#{new_resource.name.upcase}" do
+    path "/etc/keepalived/conf.d/vrrp_#{new_resource.name.upcase}.conf"
     source "vrrp_generic.conf.erb"
     cookbook "keepalived"
     owner "root"
@@ -24,7 +24,7 @@ action :create do
       "name" => new_resource.name,
       "params" => params
     )
-    notifies :restart, resource(:service => "keepalived"), :delayed
+    notifies :restart, resources(:service => "keepalived"), :delayed
   end
   new_resource.updated_by_last_action(true)
 end

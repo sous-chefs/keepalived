@@ -13,7 +13,7 @@ action :create do
       "interval" => new_resource.interval,
       "weight" => new_resource.weight
     )
-    notifies :restart, resource(:service => "keepalived"), :delayed
+    notifies :restart, resources(:service => "keepalived"), :delayed
   end
   new_resource.updated_by_last_action(true)
 end
