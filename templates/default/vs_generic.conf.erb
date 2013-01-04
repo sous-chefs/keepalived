@@ -5,7 +5,7 @@
 virtual_server <%= @vs_listen_ip %> <%= @vs_listen_port %> {
     delay_loop <%= @delay_loop %>	#  number of seconds between checks
     lb_algo <%= @lb_algo %>
-    lb_kind <%= @lb_kind %>
+    lb_kind <%= @lb_kind.upcase %>
     protocol <%= @vs_protocol.upcase %>
 
     <% @real_servers.each do |server| %>
