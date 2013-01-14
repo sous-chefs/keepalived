@@ -29,4 +29,14 @@ vrrp_instance <%= @name.upcase %> {
     <%= @params["track_script"] %>
   }
   <% end -%>
+
+  <% if @params.has_key?("notify_master") %>
+  notify_master "<%= @params['notify_master'] %>"
+  <% end -%>
+  <% if @params.has_key?("notify_backup") %>
+  notify_backup "<%= @params["notify_backup"] %>"
+  <% end -%>
+  <% if @params.has_key?("notify_fault") %>
+  notify_fault "<%=@params["notify_fault"] %>"
+  <% end -%>
 }

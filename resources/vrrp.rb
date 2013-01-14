@@ -21,3 +21,6 @@ attribute :advert_int, :kind_of => Integer, :required => false
 attribute :auth_type, :kind_of => String, :equal_to => ["pass", "ah"], :required => false
 attribute :auth_pass, :kind_of => String, :required => false
 attribute :track_script, :kind_of => String, :required => false
+attribute :notify_master, :kind_of => String, :required => false
+attribute :notify_backup, :kind_of => String, :required => false
+attribute :notify_fault, :kind_of => String, :required => false
