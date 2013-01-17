@@ -9,7 +9,7 @@ action :create do
   end
 
 
-  template "vrrp_#{new_resource.name.upcase}" do
+  r = template "vrrp_#{new_resource.name.upcase}" do
     path "/etc/keepalived/conf.d/vrrp_#{new_resource.name.upcase}.conf"
     source "vrrp_generic.conf.erb"
     cookbook "keepalived"
@@ -22,5 +22,5 @@ action :create do
     )
     notifies :restart, resources(:service => "keepalived"), :delayed
   end
-  new_resource.updated_by_last_action(true)
+  new_resource.updated_by_last_action(r.updated_by_last_action?)
 end
