@@ -20,7 +20,7 @@ action :create do
       "name" => new_resource.name,
       "params" => params
     )
-    notifies :restart, resources(:service => "keepalived"), :delayed
+    notifies :restart, resources(:service => "keepalived"), :immediately
   end
   new_resource.updated_by_last_action(r.updated_by_last_action?)
 end
