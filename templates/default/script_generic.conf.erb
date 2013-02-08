@@ -5,5 +5,7 @@
 vrrp_script <%= @name %> {
     script "<%= @script %>"
     interval <%= @interval %>	# execute check every %<= @interval %> seconds
-    weight <%= @weight %>	# adjust priority by <%= @weight %> if OK
+    weight <%= @weight %>	    # adjust priority by <%= @weight %> if OK
+    rise <%= @rise %>           # required number of failures for KO switch
+    fall <%= @fall %>           # required number of successes for OK switch
 }

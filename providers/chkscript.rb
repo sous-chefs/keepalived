@@ -11,7 +11,9 @@ action :create do
       "name" => new_resource.name,
       "script" => new_resource.script,
       "interval" => new_resource.interval,
-      "weight" => new_resource.weight
+      "weight" => new_resource.weight,
+      "rise" => new_resource.rise,
+      "fall" => new_resource.fall
     )
     notifies :restart, resources(:service => "keepalived"), :delayed
   end
