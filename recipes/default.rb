@@ -16,6 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+#
+if node["roles"].include?("ha-controller1") || \
+    node["roles"].include?("ha-controller2")
+  node.set['keepalived']['shared_address'] = true
+end
 
 package "keepalived" do
   action :install
@@ -29,13 +34,8 @@ directory "/etc/keepalived/conf.d" do
 end
 
 if node['keepalived']['shared_address']
-  file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
-    mode 0644
-    content "net.ipv4.ip_nonlocal_bind=1\n"
-  end
-
-  service 'procps' do
-    action :start
+  sysctl "net.ipv4.ip_nonlocal_bind" do
+    value '1'
   end
 end
 
