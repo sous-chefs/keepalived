@@ -16,11 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
-if node["roles"].include?("ha-controller1") || \
-    node["roles"].include?("ha-controller2")
-  node.set['keepalived']['shared_address'] = true
-end
 
 package "keepalived" do
   action :install
