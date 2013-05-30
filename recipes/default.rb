@@ -22,7 +22,7 @@ package "keepalived" do
 end
 
 execute "reload-keepalived" do
-    command "#{node['keepalived']['service_bin]'} keepalived reload"
+    command "#{node['keepalived']['service_bin']} keepalived reload"
     action :nothing
 end
 
