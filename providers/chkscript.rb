@@ -15,7 +15,7 @@ action :create do
       "rise" => new_resource.rise,
       "fall" => new_resource.fall
     )
-    notifies :restart, resources(:service => "keepalived"), :delayed
+    notifies :run, "execute[reload-keepalived]", :immediately
   end
   new_resource.updated_by_last_action(r.updated_by_last_action?)
 end
