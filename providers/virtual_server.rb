@@ -16,7 +16,7 @@ action :create do
       "vs_protocol" => new_resource.vs_protocol,
       "real_servers" => new_resource.real_servers
     )
-    notifies :restart, resources(:service => "keepalived"), :delayed
+    notifies :run, "execute[reload-keepalived]", :immediately
   end
   new_resource.updated_by_last_action(r.updated_by_last_action?)
 end
