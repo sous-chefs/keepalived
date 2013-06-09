@@ -1,3 +1,9 @@
+## v1.0.4:
+
+### Improvement
+
+- [COOK-2919]: Status option not available
+
 ## v1.0.2:
 
 * [COOK-1965] - fixes template subscribes and readme typos
