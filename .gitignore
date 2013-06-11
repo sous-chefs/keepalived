@@ -1,7 +1,23 @@
-.*
-!.gitignore
-.bundle
-.cache
-.kitchen
-bin
-metadata.json
+-metadata.json
+-*.swp
+.kitchen/
+.kitchen.local.yml
+.rvmrc
+.ruby-version
+.vagrant
+Berksfile.lock
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
+
+# Bundler
+# Gemfile.lock
+bin/*
+.bundle/*
+
+.DS_Store
+coverage

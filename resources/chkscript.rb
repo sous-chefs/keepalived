@@ -1,3 +1,7 @@
+#
+# Cookbook Name:: keepalived
+# Resource:: chkscript
+#
 
 actions :create
 

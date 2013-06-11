@@ -1,3 +1,7 @@
+#
+# Cookbook Name:: keepalived
+# Resource:: virtual_server
+#
 
 actions :create
 

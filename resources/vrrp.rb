@@ -1,3 +1,7 @@
+#
+# Cookbook Name:: keepalived
+# Resource:: vrrp
+#
 
 actions :create
 
@@ -12,7 +16,7 @@ end
 attribute :interface, :kind_of => String, :required => true
 attribute :virtual_router_id, :kind_of => Integer, :default => 10
 attribute :state, :kind_of => String, :equal_to => ["MASTER", "BACKUP"], :default => "BACKUP"
-attribute :noprempt, :kind_of => [TrueClass, FalseClass], :default => false
+attribute :nopreempt, :kind_of => [TrueClass, FalseClass], :default => false
 attribute :priority, :kind_of => Integer, :default => 100
 attribute :virtual_ipaddress, :kind_of => Array, :required => true
 

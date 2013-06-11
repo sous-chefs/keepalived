@@ -1,3 +1,7 @@
+#
+# Cookbook Name:: keepalived
+# Provider:: virtual_server
+#
 
 action :create do
   r = template "vs_#{new_resource.name}" do

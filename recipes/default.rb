@@ -17,13 +17,16 @@
 # limitations under the License.
 #
 
+include_recipe "sysctl::default"
+include_recipe "osops-utils::packages"
+
 package "keepalived" do
   action :install
 end
 
 execute "reload-keepalived" do
-    command "#{node['keepalived']['service_bin']} keepalived reload"
-    action :nothing
+  command "#{node['keepalived']['service_bin']} keepalived reload"
+  action :nothing
 end
 
 directory "/etc/keepalived/conf.d" do
@@ -33,10 +36,9 @@ directory "/etc/keepalived/conf.d" do
   mode "0775"
 end
 
-if node['keepalived']['shared_address']
-  sysctl "net.ipv4.ip_nonlocal_bind" do
-    value '1'
-  end
+sysctl "net.ipv4.ip_nonlocal_bind" do
+  value "1"
+  only_if { node["keepalived"]["shared_address"] }
 end
 
 template "keepalived.conf" do
@@ -48,29 +50,28 @@ template "keepalived.conf" do
   notifies :run, "execute[reload-keepalived]", :immediately
 end
 
-node['keepalived']['check_scripts'].each_pair do |name, script|
+node["keepalived"]["check_scripts"].each_pair do |name, script|
   keepalived_chkscript name do
-    script script['script']
-    interval script['interval']
-    weight script['weight']
+    script script["script"]
+    interval script["interval"]
+    weight script["weight"]
     action :create
   end
 end
 
-node['keepalived']['instances'].each_pair do |name, instance|
+node["keepalived"]["instances"].each_pair do |name, instance|
   keepalived_vrrp name do
-    interface instance['interface']
-    virtual_router_id node['keepalived']['instance_defaults']['virtual_router_id']
-    # state node['keepalived']['instance_defaults']['state']
-    noprempt false
-    priority node['keepalived']['instance_defaults']['priority']
-    virtual_ipaddress Array(instance['ip_addresses'])
-    if instance['track_script']
-      track_script instance['track_script']
+    interface instance["interface"]
+    virtual_router_id node["keepalived"]["instance_defaults"]["virtual_router_id"]
+    nopreempt false
+    priority node["keepalived"]["instance_defaults"]["priority"]
+    virtual_ipaddress Array(instance["ip_addresses"])
+    if instance["track_script"]
+      track_script instance["track_script"]
     end
-    if instance['auth_type']
-      auth_type instance['auth_type']
-      auth_pass instance['auth_pass']
+    if instance["auth_type"]
+      auth_type instance["auth_type"]
+      auth_pass instance["auth_pass"]
     end
     action :create
   end

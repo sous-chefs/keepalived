@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# encoding: utf-8
+
+Tailor.config do |config|
+  config.formatters "text"
+  config.file_set "**/*.rb" do |style|
+    style.max_line_length 120
+  end
+end

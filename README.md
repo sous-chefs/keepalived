@@ -19,6 +19,32 @@ Description
 
 Installs keepalived and generates the configuration file.
 
+Requirements
+============
+
+Chef 11.0 or higher required (for Chef environment use).
+
+Platforms
+---------
+
+This cookbook is actively tested on the following platforms/versions:
+
+* Ubuntu-12.04
+* CentOS-6.3
+
+While not actively tested, this cookbook should also work the following platforms:
+
+* Debian/Mint derivitives
+* Amazon/Oracle/Scientific/RHEL
+
+Cookbooks
+---------
+
+The following cookbooks are dependencies:
+
+* osops-utils
+* sysctl
+
 Usage
 =====
 
@@ -161,6 +187,7 @@ License and Author
 ==================
 
 Author:: Joshua Timberman (<joshua@opscode.com>)
+Author:: Chris Laco (<chris.laco@rackspace.com>)
 
 Copyright:: 2009, Opscode, Inc
 
