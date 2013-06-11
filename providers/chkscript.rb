@@ -1,3 +1,7 @@
+#
+# Cookbook Name:: keepalived
+# Provider:: chkscript
+#
 
 action :create do
   r = template new_resource.name do

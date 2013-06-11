@@ -19,4 +19,5 @@ node.set[:keepalived][:instances][:vi_1] = {
   :authentication_pass => 'secret'
 }
 
-include_recipe 'keepalived'
+include_recipe "sysctl"
+include_recipe "keepalived"

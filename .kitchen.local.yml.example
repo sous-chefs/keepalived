@@ -1,0 +1,4 @@
+driver_config:
+  rackspace_username: yourusername
+  rackspace_api_key: 12c897d1b5eb4e34a22eef03f59bed07
+  public_key_path: ~/.ssh/id_rsa.pub

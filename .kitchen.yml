@@ -1,0 +1,41 @@
+---
+
+platforms:
+- name: vagrant-ubuntu-12.04
+  driver_plugin: vagrant
+  driver_config:
+    box: canonical-ubuntu-12.04
+    box_url: http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
+    require_chef_omnibus: 11.2.0-1
+  run_list:
+    - recipe[apt]
+- name: vagrant-centos-6.3
+  driver_plugin: vagrant
+  driver_config:
+    box: opscode-centos-6.3
+    box_url: http://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box
+  run_list:
+    - recipe[yum::epel]
+- name: rackspace-ubuntu-12.04
+  driver_plugin: rackspace
+  driver_config:
+    image_id: e4dbdba7-b2a4-4ee5-8e8f-4595b6d694ce
+    require_chef_omnibus: 11.2.0-1
+  run_list:
+    - recipe[apt]
+- name: rackspace-centos-6.3
+  driver_plugin: rackspace
+  driver_config:
+    image_id: da1f0392-8c64-468f-a839-a9e56caebf07
+    require_chef_omnibus: 11.2.0-1
+  run_list:
+    - recipe[yum::epel]
+
+
+suites:
+- name: default
+  run_list:
+  - recipe[minitest-handler]
+  - recipe[keepalived_test::default]
+  - recipe[keepalived_test::configured]
+  attributes: {developer_mode: true}
