@@ -79,6 +79,25 @@ within the instance hash:
 * `:auth_type => nil`             # Enable authentication (:pass or :ah)
 * `:auth_pass => 'secret'`        # Password used for authentication
 
+### Vrrp Sync Groups
+
+Sync groups can be created using a hash with the group name as the key.  
+Individual sync group hashes accept arrays of instances and options for each
+group as shown below:
+
+```ruby
+node[:keepalived][:sync_groups] = { 
+  :vg_1 => {
+    :instances => [
+      'vi_1'
+    ],  
+    :options => [
+      'global_tracking'
+    ]   
+  }
+}
+```
+
 ### Full role based example
 
 ```ruby
