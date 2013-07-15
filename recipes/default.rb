@@ -22,8 +22,8 @@ package "keepalived" do
   action :install
 end
 
-execute "reload-keepalived" do
-  command "#{node['keepalived']['service_bin']} keepalived reload"
+service "keepalived" do
+  supports :restart => true, :status => true
   action :nothing
 end
 
@@ -46,7 +46,8 @@ template "keepalived.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :run, "execute[reload-keepalived]", :immediately
+  notifies :start, "service[keepalived]", :immediately
+  notifies :reload, "service[keepalived]", :immediately
 end
 
 node["keepalived"]["check_scripts"].each_pair do |name, script|
@@ -74,9 +75,4 @@ node["keepalived"]["instances"].each_pair do |name, instance|
     end
     action :create
   end
-end
-
-service "keepalived" do
-  supports :restart => true, :status => true
-  action [:enable, :start]
 end
