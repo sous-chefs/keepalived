@@ -10,10 +10,6 @@ version           "1.0.5"
   supports os
 end
 
-%w{ sysctl osops-utils }.each do |dep|
-  depends dep
-end
-
 recipe "keepalived", "Installs and configures keepalived"
 
 attribute "haproxy/admin_port",

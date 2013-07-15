@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "sysctl::default"
-include_recipe "osops-utils::packages"
 
 package "keepalived" do
   action :install
@@ -36,10 +34,11 @@ directory "/etc/keepalived/conf.d" do
   mode "0775"
 end
 
-sysctl "net.ipv4.ip_nonlocal_bind" do
-  value "1"
-  only_if { node["keepalived"]["shared_address"] }
-end
+#TODO: move this out to the wrapper
+#sysctl "net.ipv4.ip_nonlocal_bind" do
+#  value "1"
+#  only_if { node["keepalived"]["shared_address"] }
+#end
 
 template "keepalived.conf" do
   path "/etc/keepalived/keepalived.conf"

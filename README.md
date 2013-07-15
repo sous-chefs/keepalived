@@ -42,7 +42,6 @@ Cookbooks
 
 The following cookbooks are dependencies:
 
-* osops-utils
 * sysctl
 
 Usage
