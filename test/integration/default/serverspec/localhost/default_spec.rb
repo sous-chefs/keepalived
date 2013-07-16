@@ -32,5 +32,3 @@ describe file("/etc/keepalived/conf.d/vrrp_MYSERVER.conf") do
   it { should contain 'notify_backup "backup"' }
   it { should contain 'notify_fault "fault"' }
 end
-
-
