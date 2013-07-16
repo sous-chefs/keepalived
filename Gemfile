@@ -23,7 +23,8 @@ group :test do
   gem "chefspec",     :git => "git://github.com/acrmp/chefspec.git", :ref => "13edb34"
 
   gem "kitchen-vagrant",   "~> 0.9.0"
+  gem "serverspec", :github => "serverspec/serverspec"
 
   # Move to 0.1.1 after release. Using git for region support.
-  gem "kitchen-rackspace", :git => "git://github.com/RoboticCheese/kitchen-rackspace.git", :ref => "b55bc0"
+#  gem "kitchen-rackspace", :git => "git://github.com/RoboticCheese/kitchen-rackspace.git", :ref => "b55bc0"
 end

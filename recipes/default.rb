@@ -23,8 +23,8 @@ package "keepalived" do
 end
 
 service "keepalived" do
-  supports :restart => true, :status => true
-  action :nothing
+  supports :restart => true, :status => false
+  action :enable
 end
 
 directory "/etc/keepalived/conf.d" do

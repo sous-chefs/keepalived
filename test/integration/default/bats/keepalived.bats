@@ -4,6 +4,7 @@
   test -f /etc/keepalived/keepalived.conf
 }
 
-@test "keepalived service must be running" {
-  service keepalived | grep -qi ok
+# since service status not supported on all platforms
+@test "it should be running" {
+  ps -ef | grep -qi "keepalived"
 }

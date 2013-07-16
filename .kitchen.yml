@@ -17,4 +17,7 @@ suites:
   run_list:
   - recipe[keepalived_test::default]
   - recipe[keepalived_test::configured]
+  - recipe[keepalived_test::virtual_server_provider_create]
+  - recipe[keepalived_test::chkscript_provider_create]
+  - recipe[keepalived_test::vrrp_provider_create]
   attributes: {developer_mode: true}
