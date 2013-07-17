@@ -18,19 +18,6 @@ describe_recipe "keepalived_test::configured" do
       service("keepalived").must_be_enabled
     end
 
-    it "should provide configuration to allow nonlocal ip binds" do
-      file("/etc/sysctl.d/40-net.ipv4.ip_nonlocal_bind.conf").must_match(
-        %r{net\.ipv4\.ip_nonlocal_bind = 1}
-      )
-    end
-
-    it "should allow nonlocal ip binds" do
-      assert_equal(
-        1, `sysctl net.ipv4.ip_nonlocal_bind`.strip.split("=").last.strip.to_i,
-        "System is not configured to allow non-local binds"
-      )
-    end
-
     it "should have virtual address bound" do
       sleep(5) # give keepalived some time to get setup
       refute_nil(
