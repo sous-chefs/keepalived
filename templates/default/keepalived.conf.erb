@@ -12,6 +12,21 @@ global_defs {
   router_id <%= node['keepalived']['global']['router_ids'][node.name] || node['keepalived']['global']['router_id'] %>
 }
 
+<% unless node['keepalived']['sync_groups'].nil? -%>
+  <% node['keepalived']['sync_groups'].each do |group, values| -%>
+vrrp_sync_group <%= group.upcase %> {
+  group {
+    <% values['instances'].each do |instance| -%>
+    <%= instance.upcase %>
+    <% end -%>
+  }
+    <% values['options'].each do |option| -%>
+  <%= option %>
+    <% end -%>
+}
+  <% end -%>
+<% end -%>
+
 <% node['keepalived']['check_scripts'].each_pair do |name, script| %>
 vrrp_script <%= name %> {
   script "<%= script['script'] %>"
