@@ -1,17 +1,21 @@
-## v1.0.4:
+keepalived Cookbook CHANGELOG
+=============================
+This file is used to list changes made in each version of the keepalived cookbook.
 
+
+v1.0.4
+------
 ### Improvement
-
 - [COOK-2919]: Status option not available
 
-## v1.0.2:
+v1.0.2
+------
+- [COOK-1965] - fixes template subscribes and readme typos
 
-* [COOK-1965] - fixes template subscribes and readme typos
+v1.0.0
+------
+- [COOK-1656] - Make keepalived configurable. Add some tests.
 
-## v1.0.0:
-
-* [COOK-1656] - Make keepalived configurable. Add some tests.
-
-## v0.7.1:
-
-* Current public release.
+v0.7.1
+------
+- Current public release.
