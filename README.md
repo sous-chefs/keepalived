@@ -1,26 +1,24 @@
-Description
-===========
-
+keepalived Cookbook
+===================
 Installs keepalived and generates the configuration file.
 
-Usage
-=====
 
+Usage
+-----
 ### Configuration settings
 
 * `node[:keepalived][:shared_address] = true`  # If keepalived is using a shared address
 
 ### Global settings
 
-* `node[:keepalived][:global][:notification_emails] = 'admin@example.com'`            # notification emails
-* `node[:keepalived][:global][:notification_email_from] = "keepalived@#{node.domain}"` # from address
-* `node[:keepalived][:global][:smtp_server] = '127.0.0.1'`                            # smtp server address
-* `node[:keepalived][:global][:smtp_connect_timeout] = 30`                            # smtp connection timeout
-* `node[:keepalived][:global][:router_id] = 'DEFAULT_ROUT_ID'`                        # router ID
-* `node[:keepalived][:global][:router_ids] = {}`                                      # mapped router ID (see example below)
+* `node['keepalived']['global']['notification_emails'] = 'admin@example.com'`             # notification emails
+* `node['keepalived']['global']['notification_email_from'] = "keepalived@#{node.domain}"` # from address
+* `node['keepalived']['global']['smtp_server'] = '127.0.0.1'`                             # smtp server address
+* `node['keepalived']['global']['smtp_connect_timeout'] = 30`                             # smtp connection timeout
+* `node['keepalived']['global']['router_id'] = 'DEFAULT_ROUT_ID'`                         # router ID
+* `node['keepalived']['global']['router_ids'] = {}`                                       # mapped router ID (see example below)
 
-The `router_ids` allow for defining different IDs based on node name within a
-single role. This allows for a role structured like so:
+The `router_ids` allow for defining different IDs based on node name within a single role. This allows for a role structured like so:
 
 ```ruby
 override_attributes(
@@ -38,10 +36,7 @@ override_attributes(
 
 * `node[:keepalived][:check_scripts] = {}`    # define available check scripts
 
-Multiple check scripts can be defined. The key will provide the name of the
-check script within the configuration file. The value should be a hash with
-the keys: `script`, `interval` and `weight` defined. For example, a simple
-HAProxy check script:
+Multiple check scripts can be defined. The key will provide the name of the check script within the configuration file. The value should be a hash with the keys: `script`, `interval` and `weight` defined. For example, a simple HAProxy check script:
 
 ```ruby
 node[:keepalived][:check_scripts][:chk_haproxy] = {
@@ -53,20 +48,18 @@ node[:keepalived][:check_scripts][:chk_haproxy] = {
 
 ### Instance defaults
 
-These are fallback values instance blocks can default to if non have been
-explicitly defined:
+These are fallback values instance blocks can default to if non have been explicitly defined:
 
 * `node[:keepalived][:instance_defaults][:state] = 'MASTER'`                            # default state
 * `node[:keepalived][:instance_defaults][:priority] = 100`                              # default priority
 * `node[:keepalived][:instance_defaults][:virtual_router_id] = 'DEFAULT_VIRT_ROUT_ID'`  # default virtual router ID
 
-## Instances
 
+Instances
+---------
 * `node[:keepalived][:instances] = {}`
 
-Multiple instances can be defined. The key will be used to define the instance
-name. The value will be a hash used to describe the instance. Attributes used
-within the instance hash:
+Multiple instances can be defined. The key will be used to define the instance name. The value will be a hash used to describe the instance. Attributes used within the instance hash:
 
 * `:ip_addresses => '127.0.0.1'`  # IP address(es) used by this instance
 * `:interface => 'eth0'`          # Network interface used
@@ -81,9 +74,7 @@ within the instance hash:
 
 ### Vrrp Sync Groups
 
-Sync groups can be created using a hash with the group name as the key.
-Individual sync group hashes accept arrays of instances and options for each
-group as shown below:
+Sync groups can be created using a hash with the group name as the key. Individual sync group hashes accept arrays of instances and options for each group as shown below:
 
 ```ruby
 node[:keepalived][:sync_groups] = {
@@ -160,11 +151,12 @@ node[:keepalived][:instances][:vi_1] = {
 }
 ```
 
-License and Author
-==================
 
-Author:: Joshua Timberman (<joshua@opscode.com>)
+License & Authors
+-----------------
+- Author:: Joshua Timberman (<joshua@opscode.com>)
 
+```text
 Copyright:: 2009, Opscode, Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -178,3 +170,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```
