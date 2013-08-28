@@ -3,6 +3,11 @@ keepalived Cookbook CHANGELOG
 This file is used to list changes made in each version of the keepalived cookbook.
 
 
+v1.1.0
+------
+### New Feature
+- **[COOK-3017](https://tickets.opscode.com/browse/COOK-3017)** - Add support for `vrrp_sync_groups`
+
 v1.0.4
 ------
 ### Improvement
