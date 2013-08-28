@@ -26,7 +26,7 @@ describe_recipe 'keepalived_test::configured' do
         'System is not configured to allow non-local binds'
       )
     end
-    
+
     it 'should have virtual address bound' do
       sleep(5) # give keepalived some time to get setup
       refute_nil(
