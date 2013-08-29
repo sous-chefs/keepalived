@@ -9,7 +9,10 @@ virtual_server <%= @vs_listen_ip %> <%= @vs_listen_port %> {
     protocol <%= @vs_protocol.upcase %>
 
     <% @real_servers.each do |server| %>
-    real_server <%= server['ip'] %> <%= server['port'] %> {
+      real_server <%= server['ip'] %> <%= server['port'] %> {
+        <% if server.has_key? 'weight'-%>
+        weight <%= server['weight'] %>
+        <% end -%>
         <%= @vs_protocol.upcase %>_CHECK {
             connect_timeout 5
             connect_port <%= server['port'] %>
