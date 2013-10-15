@@ -52,6 +52,13 @@ vrrp_instance <%= name.upcase %> {
   <% if instance['advert_int'] -%>
   advert_int <%= instance['advert_int'] %>
   <% end -%>
+  <% if instance['unicast_peer'] && !instance['unicast_peer'].empty? -%>
+  unicast_peer {
+    <% Array(instance['unicast_peer']).each do |address| %>
+    <%= address %>
+    <% end %>
+  }
+  <% end -%>
   <% if instance['auth_type'] -%>
   authentication {
     auth_type <%= instance['auth_type'].to_s.upcase %>
