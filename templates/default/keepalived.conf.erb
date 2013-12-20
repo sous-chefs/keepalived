@@ -6,6 +6,15 @@ global_defs {
     <%= email %>
     <% end %>
   }
+  <% unless node['keepalived']['global']['notify_master'].nil? %>
+  notify_master <%= node['keepalived']['global']['notify_master'] %>
+  <% end %>
+  <% unless node['keepalived']['global']['notify_backup'].nil? %>
+  notify_backup <%= node['keepalived']['global']['notify_backup'] %>
+  <% end %>
+  <% unless node['keepalived']['global']['notify_fault'].nil? %>
+  notify_fault <%= node['keepalived']['global']['notify_fault'] %>
+  <% end %>
   notification_email_from <%= node['keepalived']['global']['notification_email_from'] %>
   smtp_server <%= node['keepalived']['global']['smtp_server'] %>
   smtp_connect_timeout <%= node['keepalived']['global']['smtp_connect_timeout'] %>
