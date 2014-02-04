@@ -37,18 +37,18 @@ vrrp_script <%= name %> {
 
 <% node['keepalived']['instances'].each_pair do |name, instance| -%>
 <%
-  instance['states'] ||= {}
-  instance['priorities'] ||= {}
-  instance['virtual_router_ids'] ||= {}
+  states = instance['states'] || {}
+  priorities = instance['priorities'] || {}
+  virtual_router_ids = instance['virtual_router_ids'] || {}
 -%>
 vrrp_instance <%= name.upcase %> {
   interface <%= instance['interface'] %>
-  virtual_router_id <%= instance['virtual_router_ids'][node.name] || node['keepalived']['instance_defaults']['virtual_router_id'] %>
+  virtual_router_id <%= virtual_router_ids[node.name] || node['keepalived']['instance_defaults']['virtual_router_id'] %>
   <% if instance['nopreempt'] -%>
   nopreempt
   <% end -%>
-  state <%= instance['states'][node.name] || node['keepalived']['instance_defaults']['state'] %>
-  priority <%= instance['priorities'][node.name] || node['keepalived']['instance_defaults']['priority'] %>
+  state <%= states[node.name] || node['keepalived']['instance_defaults']['state'] %>
+  priority <%= priorities[node.name] || node['keepalived']['instance_defaults']['priority'] %>
   <% if instance['advert_int'] -%>
   advert_int <%= instance['advert_int'] %>
   <% end -%>
