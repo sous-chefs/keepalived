@@ -3,6 +3,11 @@ keepalived Cookbook CHANGELOG
 This file is used to list changes made in each version of the keepalived cookbook.
 
 
+v1.2.0 (2014-02-25)
+-------------------
+- [COOK-4299] Avoid setting attributes without precedence
+
+
 v1.1.0
 ------
 ### New Feature
