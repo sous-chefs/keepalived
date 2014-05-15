@@ -75,5 +75,13 @@ vrrp_instance <%= name.upcase %> {
     <%= instance['track_script'] %>
   }
   <% end %>
+
+  <% if instance['track_interface'].any? %>
+  track_interface {
+    <% instance['track_interface'].each do |i| %>
+      <%= i %>
+    <% end %>
+  }
+  <% end %>
 }
 <% end -%>
