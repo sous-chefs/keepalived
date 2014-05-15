@@ -71,6 +71,7 @@ Multiple instances can be defined. The key will be used to define the instance n
 * `:advert_int => 1`              # Set advert_int
 * `:auth_type => nil`             # Enable authentication (:pass or :ah)
 * `:auth_pass => 'secret'`        # Password used for authentication
+* `:garp_master_delay => 5        # Delay for gratuitous ARP after transition to MASTER, default 5
 * `:unicast_peer => {}`           # IP address(es) for unicast (only for 1.2.8 and greater)
 
 ### Vrrp Sync Groups
@@ -124,7 +125,8 @@ override_attributes(
         :nopreempt => false,
         :advert_int => 1,
         :auth_type => :pass,
-        :auth_pass => 'secret'
+        :auth_pass => 'secret',
+        :garp_master_delay => 5
       }
     }
   }

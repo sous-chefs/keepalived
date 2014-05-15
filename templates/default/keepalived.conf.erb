@@ -65,6 +65,7 @@ vrrp_instance <%= name.upcase %> {
     auth_pass <%= instance['auth_pass'] %>
   }
   <% end -%>
+  <%= "garp_master_delay #{instance['garp_master_delay']}" if instance['garp_master_delay'] %>
   virtual_ipaddress {
     <% Array(instance['ip_addresses']).each do |address| %>
     <%= address %>
