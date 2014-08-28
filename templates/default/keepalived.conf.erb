@@ -65,11 +65,21 @@ vrrp_instance <%= name.upcase %> {
     auth_pass <%= instance['auth_pass'] %>
   }
   <% end -%>
+  <% if instance['ip_addresses'] && !instance['ip_addresses'].empty? -%>
   virtual_ipaddress {
     <% Array(instance['ip_addresses']).each do |address| %>
     <%= address %>
     <% end %>
   }
+  <% end -%>
+  <% if instance['ip_addresses_excluded'] && !instance['ip_addresses_excluded'].empty? -%>
+  virtual_ipaddress_excluded {
+    <% Array(instance['ip_addresses_excluded']).each do |address| %>
+    <%= address %>
+    <% end %>
+  }
+  <% end -%>
+
   <% if instance['track_script'] %>
   track_script {
     <%= instance['track_script'] %>
