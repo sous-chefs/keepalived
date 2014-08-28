@@ -49,6 +49,16 @@ vrrp_instance <%= name.upcase %> {
   <% end -%>
   state <%= states[node.name] || node['keepalived']['instance_defaults']['state'] %>
   priority <%= priorities[node.name] || node['keepalived']['instance_defaults']['priority'] %>
+  <% if instance['notify_master'] -%>
+  notify_master "<%= instance['notify_master'] %>"
+  <% end -%>
+  <% if instance['notify_backup'] -%>
+  notify_backup "<%= instance['notify_backup'] %>"
+  <% end -%>
+  <% if instance['notify_fault'] -%>
+  notify_fault "<%= instance['notify_fault'] %>"
+  <% end -%>
+
   <% if instance['advert_int'] -%>
   advert_int <%= instance['advert_int'] %>
   <% end -%>
