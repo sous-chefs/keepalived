@@ -9,6 +9,10 @@ describe_recipe 'keepalived_test::configured' do
       file('/etc/keepalived/keepalived.conf').must_exist
     end
 
+    it 'should create a default arguments configuration file' do
+      file('/etc/default/keepalived').must_exist
+    end
+
     it 'should enable and start the daemon' do
       service('keepalived').must_be_running
       service('keepalived').must_be_enabled
