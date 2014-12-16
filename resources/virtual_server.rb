@@ -20,3 +20,4 @@ attribute :lb_algo, :kind_of => String, :equal_to => ["rr", "wrr", "lc", "wlc", 
 attribute :lb_kind, :kind_of => String, :equal_to => ["nat", "dr", "tun"], :default => "nat"
 attribute :vs_protocol, :kind_of => String, :equal_to => ["tcp", "udp"], :default => "tcp"
 attribute :real_servers, :kind_of => Array, :required => true
+attribute :checks, kind_of: Hash

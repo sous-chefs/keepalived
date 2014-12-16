@@ -16,7 +16,10 @@ virtual_server <%= @vs_listen_ip %> <%= @vs_listen_port %> {
         <%= @vs_protocol.upcase %>_CHECK {
             connect_timeout 5
             connect_port <%= server['port'] %>
-        }
+          }
+          <% if @checks -%>
+          <%= realserver_checks %>   
+          <% end -%>
     }
     <% end -%>
 }

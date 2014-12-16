@@ -13,6 +13,8 @@ describe file("/etc/keepalived/conf.d/vs_myserver.conf") do
   it { should contain  "protocol TCP" }
   it { should contain  "real_server 10.10.10.10 8000" }
   it { should contain  "real_server 10.10.10.11 8101" }
+  it { should contain  "HTTP_GET" }
+  it { should contain  "status_code 200" }
 end
 
 describe file("/etc/keepalived/conf.d/vrrp_MYSERVER.conf") do

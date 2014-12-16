@@ -16,6 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+test_check = { 
+  "HTTP_GET" => { 
+    check_timout: 30, 
+    url: { 
+      path: '/', 
+      status_code: 200 
+    } 
+  }
+}
 
 keepalived_virtual_server "myserver" do
   vs_listen_ip "127.0.0.1"
@@ -28,4 +37,5 @@ keepalived_virtual_server "myserver" do
     { "ip" =>  "10.10.10.10", "port" => 8000 },
     { "ip" =>  "10.10.10.11", "port" => 8101 }
   ]
+  checks test_check
 end
