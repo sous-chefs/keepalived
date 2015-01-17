@@ -72,6 +72,8 @@ Multiple instances can be defined. The key will be used to define the instance n
 * `:auth_type => nil`             # Enable authentication (:pass or :ah)
 * `:auth_pass => 'secret'`        # Password used for authentication
 * `:unicast_peer => {}`           # IP address(es) for unicast (only for 1.2.8 and greater)
+* `:vrrp_unicast_bind => '10.0.1.100'` # IP address(es) for unicast (only for 1.2.7 and lower)
+* `:vrrp_unicast_peer => '10.0.1.200'` # IP address(es) for unicast (only for 1.2.7 and lower)
 
 ### Vrrp Sync Groups
 

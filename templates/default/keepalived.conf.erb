@@ -59,11 +59,11 @@ vrrp_instance <%= name.upcase %> {
     <% end %>
   }
   <% end -%>
-  <% if instance['vrrp_unicast_peer'] %>
-  vrrp_unicast_peer <%= instance['vrrp_unicast_peer'] %>
-  <% end %>
   <% if instance['vrrp_unicast_bind'] %>
   vrrp_unicast_bind <%= instance['vrrp_unicast_bind'] %>
+  <% end %>
+  <% if instance['vrrp_unicast_peer'] %>
+  vrrp_unicast_peer <%= instance['vrrp_unicast_peer'] %>
   <% end %>
   <% if instance['auth_type'] -%>
   authentication {
