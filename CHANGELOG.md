@@ -11,7 +11,7 @@ v1.2.0 (2014-02-25)
 v1.1.0
 ------
 ### New Feature
-- **[COOK-3017](https://tickets.opscode.com/browse/COOK-3017)** - Add support for `vrrp_sync_groups`
+- **[COOK-3017](https://tickets.chef.io/browse/COOK-3017)** - Add support for `vrrp_sync_groups`
 
 v1.0.4
 ------
