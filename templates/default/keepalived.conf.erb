@@ -74,5 +74,11 @@ vrrp_instance <%= name.upcase %> {
     <%= instance['track_script'] %>
   }
   <% end %>
+  <% if instance['notify'] -%>
+  notify <%= instance['notify'] %>
+  <% end %>
+  <% if instance['smtp_alert'] -%>
+  smtp_alert
+  <% end -%>  
 }
 <% end -%>
