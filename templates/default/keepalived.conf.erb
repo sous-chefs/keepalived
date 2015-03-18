@@ -39,11 +39,10 @@ vrrp_script <%= name %> {
 <%
   states = instance['states'] || {}
   priorities = instance['priorities'] || {}
-  virtual_router_ids = instance['virtual_router_ids'] || {}
 -%>
 vrrp_instance <%= name.upcase %> {
   interface <%= instance['interface'] %>
-  virtual_router_id <%= virtual_router_ids[node.name] || node['keepalived']['instance_defaults']['virtual_router_id'] %>
+  virtual_router_id <%= instance['virtual_router_id'] || node['keepalived']['instance_defaults']['virtual_router_id'] %>
   <% if instance['nopreempt'] -%>
   nopreempt
   <% end -%>

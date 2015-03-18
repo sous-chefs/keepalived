@@ -64,7 +64,7 @@ Multiple instances can be defined. The key will be used to define the instance n
 * `:ip_addresses => '127.0.0.1'`  # IP address(es) used by this instance
 * `:interface => 'eth0'`          # Network interface used
 * `:states => {}`                 # Node name mapped states
-* `:virtual_router_ids => {}`     # Node name mapped virtual router IDs
+* `:virtual_router_id => 'ID'`    # Numeric Virtual Router ID
 * `:priorities => {}`             # Node name mapped priorities
 * `:track_script => 'check_name'` # Name of check script in use for instance
 * `:nopreempt => false`           # Do not preempt
@@ -112,10 +112,7 @@ override_attributes(
           'master.domain' => :master,
           'backup.domain' => :backup
         },
-        :virtual_router_ids => {
-          'master.domain' => 'SERVICE_MASTER',
-          'backup.domain' => 'SERVICE_BACKUP'
-        },
+        :virtual_router_id => '100',
         :priorities => {
           'master.domain' => 101,
           'backup.domain' => 100
