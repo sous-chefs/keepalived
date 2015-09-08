@@ -155,7 +155,8 @@ node[:keepalived][:instances][:vi_1] = {
 
 License & Authors
 -----------------
-- Author:: Joshua Timberman (<joshua@chef.io>)
+- Author:: Joshua Timberman (<joshua@opscode.com>)
+- Author:: Diego Almeida (<diegobill@gmail.com>)
 
 ```text
 Copyright:: 2009, Chef Software, Inc

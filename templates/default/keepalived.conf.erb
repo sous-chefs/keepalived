@@ -70,6 +70,15 @@ vrrp_instance <%= name.upcase %> {
     <%= address %>
     <% end %>
   }
+  <% if instance['notify_master'] -%>
+  notify_master "<%= instance['notify_master'] %>"
+  <% end -%>
+  <% if instance['notify_backup'] -%>
+  notify_backup "<%= instance['notify_backup'] %>"
+  <% end -%>
+  <% if instance['notify_fault'] -%>
+  notify_fault "<%= instance['notify_fault'] %>"
+  <% end -%>
   <% if instance['track_script'] %>
   track_script {
     <%= instance['track_script'] %>
