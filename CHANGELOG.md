@@ -2,6 +2,9 @@ keepalived Cookbook CHANGELOG
 =============================
 This file is used to list changes made in each version of the keepalived cookbook.
 
+v1.3.0 (2015-09-02)
+-------------------
+- Include some directives: notify_master, notify_backup e notify_fault 
 
 v1.2.0 (2014-02-25)
 -------------------
