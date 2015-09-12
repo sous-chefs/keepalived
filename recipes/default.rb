@@ -38,8 +38,16 @@ template "keepalived.conf" do
   mode 0644
 end
 
+template "keepalived.defaults" do
+  path "/etc/default/keepalived"
+  source "keepalived.defaults.erb"
+  owner "root"
+  group "root"
+  mode 0644
+end
+
 service "keepalived" do
   supports :restart => true
   action [:enable, :start]
-  subscribes :restart, "template[keepalived.conf]"
+  subscribes :restart, ["template[keepalived.conf]", "template[keepalived.defaults]"]
 end
