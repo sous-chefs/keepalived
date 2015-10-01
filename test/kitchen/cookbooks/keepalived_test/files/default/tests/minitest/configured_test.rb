@@ -1,7 +1,6 @@
 require_relative './helpers.rb'
 
 describe_recipe 'keepalived_test::configured' do
-
   include KeepalivedHelpers
 
   describe 'configured keepalived' do
@@ -16,7 +15,7 @@ describe_recipe 'keepalived_test::configured' do
 
     it 'should provide configuration to allow nonlocal ip binds' do
       file('/etc/sysctl.d/60-ip-nonlocal-bind.conf').must_match(
-        %r{net\.ipv4\.ip_nonlocal_bind=1}
+        /net\.ipv4\.ip_nonlocal_bind=1/
       )
     end
 
@@ -30,10 +29,9 @@ describe_recipe 'keepalived_test::configured' do
     it 'should have virtual address bound' do
       sleep(5) # give keepalived some time to get setup
       refute_nil(
-        `ip addr sh eth0`.split("\n").detect{|l| l.include?('10.0.2.254')},
+        `ip addr sh eth0`.split("\n").detect { |l| l.include?('10.0.2.254') },
         'Expected bound virtual IP address not found'
       )
     end
-
   end
 end

@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-package "keepalived"
+package 'keepalived'
 
 if node['keepalived']['shared_address']
   file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
@@ -30,16 +30,16 @@ if node['keepalived']['shared_address']
   end
 end
 
-template "keepalived.conf" do
-  path "/etc/keepalived/keepalived.conf"
-  source "keepalived.conf.erb"
-  owner "root"
-  group "root"
+template 'keepalived.conf' do
+  path '/etc/keepalived/keepalived.conf'
+  source 'keepalived.conf.erb'
+  owner 'root'
+  group 'root'
   mode 0644
 end
 
-service "keepalived" do
-  supports :restart => true
+service 'keepalived' do
+  supports restart: true
   action [:enable, :start]
-  subscribes :restart, "template[keepalived.conf]"
+  subscribes :restart, 'template[keepalived.conf]'
 end
