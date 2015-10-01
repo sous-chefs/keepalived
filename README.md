@@ -158,11 +158,11 @@ node[:keepalived][:instances][:vi_1] = {
 
 License & Authors
 -----------------
-- Author:: Joshua Timberman (<joshua@chef.io>)
 
-```text
-Copyright 2009-2015, Chef Software, Inc.
+**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
+**Copyright:** 2009-2015, Chef Software, Inc.
+```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
