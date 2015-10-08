@@ -64,17 +64,18 @@ Instances
 
 Multiple instances can be defined. The key will be used to define the instance name. The value will be a hash used to describe the instance. Attributes used within the instance hash:
 
-* `:ip_addresses => '127.0.0.1'`  # IP address(es) used by this instance
-* `:interface => 'eth0'`          # Network interface used
-* `:states => {}`                 # Node name mapped states
-* `:virtual_router_ids => {}`     # Node name mapped virtual router IDs
-* `:priorities => {}`             # Node name mapped priorities
-* `:track_script => 'check_name'` # Name of check script in use for instance
-* `:nopreempt => false`           # Do not preempt
-* `:advert_int => 1`              # Set advert_int
-* `:auth_type => nil`             # Enable authentication (:pass or :ah)
-* `:auth_pass => 'secret'`        # Password used for authentication
-* `:unicast_peer => {}`           # IP address(es) for unicast (only for 1.2.8 and greater)
+* `:ip_addresses => '127.0.0.1'`        # IP address(es) used by this instance
+* `:interface => 'eth0'`                # Network interface used
+* `:lvs_sync_daemon_inteface => 'eth0'` # Network interface used for the LVS sync_daemon to run on
+* `:states => {}`                       # Node name mapped states
+* `:virtual_router_ids => {}`           # Node name mapped virtual router IDs
+* `:priorities => {}`                   # Node name mapped priorities
+* `:track_script => 'check_name'`       # Name of check script in use for instance
+* `:nopreempt => false`                 # Do not preempt
+* `:advert_int => 1`                    # Set advert_int
+* `:auth_type => nil`                   # Enable authentication (:pass or :ah)
+* `:auth_pass => 'secret'`              # Password used for authentication
+* `:unicast_peer => {}`                 # IP address(es) for unicast (only for 1.2.8 and greater)
 
 ### Vrrp Sync Groups
 

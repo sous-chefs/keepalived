@@ -44,6 +44,9 @@ vrrp_script <%= name %> {
 vrrp_instance <%= name.upcase %> {
   interface <%= instance['interface'] %>
   virtual_router_id <%= virtual_router_ids[node.name] || node['keepalived']['instance_defaults']['virtual_router_id'] %>
+  <% if instance['lvs_sync_daemon_interface'] -%>
+  lvs_sync_daemon_interface  <%= instance['lvs_sync_daemon_interface'] %>
+  <% end -%>
   <% if instance['nopreempt'] -%>
   nopreempt
   <% end -%>
