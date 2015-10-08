@@ -47,6 +47,9 @@ vrrp_instance <%= name.upcase %> {
   <% if instance['nopreempt'] -%>
   nopreempt
   <% end -%>
+  <% if instance['smtp_alert'] -%>
+  smtp_alert
+  <% end -%>
   state <%= states[node.name] || node['keepalived']['instance_defaults']['state'] %>
   priority <%= priorities[node.name] || node['keepalived']['instance_defaults']['priority'] %>
   <% if instance['advert_int'] -%>
