@@ -75,5 +75,11 @@ vrrp_instance <%= name.upcase %> {
     <%= instance['track_script'] %>
   }
   <% end %>
+
+  <% %w[notify notify_master notify_backup notify_fault].each do |notify| %>
+    <% if instance[notify] %>
+  <%= "#{notify} \"#{instance[notify]}\"" %>
+    <% end %>
+  <% end %>
 }
 <% end -%>

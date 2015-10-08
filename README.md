@@ -75,7 +75,10 @@ Multiple instances can be defined. The key will be used to define the instance n
 * `:auth_type => nil`             # Enable authentication (:pass or :ah)
 * `:auth_pass => 'secret'`        # Password used for authentication
 * `:unicast_peer => {}`           # IP address(es) for unicast (only for 1.2.8 and greater)
-
+* `:notify => nil                 # Script to run on any state transition
+* `:notify_master => nil          # Script to run on transition to MASTER
+* `:notify_slave => nil           # Script to run on transition to SLAVE
+* `:notify_fault => nil           # Script to run on FAULT transition
 ### Vrrp Sync Groups
 
 Sync groups can be created using a hash with the group name as the key. Individual sync group hashes accept arrays of instances and options for each group as shown below:
@@ -127,7 +130,11 @@ override_attributes(
         :nopreempt => false,
         :advert_int => 1,
         :auth_type => :pass,
-        :auth_pass => 'secret'
+        :auth_pass => 'secret',
+        :notify => '/path/notify.sh',
+        :notify_master => '/path/to_master.sh'
+        :notify_backup => '/path/to_backup.sh',
+        :notify_fault => '/path/fault.sh vi_1'
       }
     }
   }
@@ -151,7 +158,11 @@ node[:keepalived][:instances][:vi_1] = {
   :nopreempt => false,
   :advert_int => 1,
   :auth_type => nil, # :pass or :ah
-  :auth_pass => 'secret'
+  :auth_pass => 'secret',
+  :notify => '/path/notify.sh',
+  :notify_master => '/path/to_master.sh'
+  :notify_backup => '/path/to_backup.sh',
+  :notify_fault => '/path/fault.sh vi_1'
 }
 ```
 
