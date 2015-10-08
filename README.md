@@ -70,6 +70,7 @@ Multiple instances can be defined. The key will be used to define the instance n
 * `:virtual_router_ids => {}`     # Node name mapped virtual router IDs
 * `:priorities => {}`             # Node name mapped priorities
 * `:track_script => 'check_name'` # Name of check script in use for instance
+* `:track_interface => []`        # Go to FAULT state if any of these interfaces go down
 * `:nopreempt => false`           # Do not preempt
 * `:advert_int => 1`              # Set advert_int
 * `:auth_type => nil`             # Enable authentication (:pass or :ah)
@@ -124,6 +125,7 @@ override_attributes(
           'backup.domain' => 100
         },
         :track_script => 'chk_haproxy',
+        :track_interface => ['eth1', 'eth2']
         :nopreempt => false,
         :advert_int => 1,
         :auth_type => :pass,
