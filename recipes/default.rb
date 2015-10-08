@@ -20,13 +20,21 @@
 package 'keepalived'
 
 if node['keepalived']['shared_address']
-  file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
-    mode 0644
-    content "net.ipv4.ip_nonlocal_bind=1\n"
-  end
+ case node["platform"]
+  when "debian", "ubuntu"
+    file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
+      mode 0644
+      content "net.ipv4.ip_nonlocal_bind=1\n"
+    end
 
-  service 'procps' do
-    action :start
+    service 'procps' do
+      action :start
+    end
+
+  when "redhat", "centos", "fedora"
+    execute "sysctl net.ipv4.ip_nonlocal_bind=1 ; echo 'net.ipv4.ip_nonlocal_bind=1' >> /etc/sysctl.conf" do
+      not_if "grep 'net.ipv4.ip_nonlocal_bind=1' /etc/sysctl.conf"
+    end
   end
 end
 
