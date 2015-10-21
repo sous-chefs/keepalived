@@ -5,6 +5,18 @@ keepalived Cookbook
 
 Installs keepalived and generates the configuration file.
 
+Requirements
+------------
+#### Platforms
+- Debian/Ubuntu
+- RHEL/CentOS/Scientific/Amazon/Oracle
+
+#### Chef
+- Chef 11+
+
+#### Cookbooks
+- none
+
 
 Usage
 -----
