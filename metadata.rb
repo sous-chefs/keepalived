@@ -12,6 +12,5 @@ recipe 'keepalived', 'Installs and configures keepalived'
   supports os
 end
 
-
 source_url 'https://github.com/chef-cookbooks/keepalived' if respond_to?(:source_url)
 issues_url 'https://github.com/chef-cookbooks/keepalived/issues' if respond_to?(:issues_url)
