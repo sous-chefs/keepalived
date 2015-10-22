@@ -32,6 +32,12 @@ vrrp_script <%= name %> {
   script "<%= script['script'] %>"
   interval <%= script['interval'] %>
   weight <%= script['weight'] %>
+  <% if script['fall'] %>
+  fall <%= script['fall'] %>
+  <% end %>
+  <% if script['rise'] %>
+  rise <%= script['rise'] %>
+  <% end -%>
 }
 <% end %>
 
@@ -44,6 +50,18 @@ vrrp_script <%= name %> {
 vrrp_instance <%= name.upcase %> {
   interface <%= instance['interface'] %>
   virtual_router_id <%= virtual_router_ids[node.name] || node['keepalived']['instance_defaults']['virtual_router_id'] %>
+  <% if instance['garp_master_delay'] %>
+  garp_master_delay <%= instance['garp_master_delay'] %>
+  <% end %>
+  <% if instance['garp_master_repeat'] %>
+  garp_master_repeat <%= instance['garp_master_repeat'] %>
+  <% end %>
+  <% if instance['garp_master_refresh'] %>
+  garp_master_refresh <%= instance['garp_master_refresh'] %>
+  <% end %>
+  <% if instance['garp_master_refresh_repeat'] %>
+  garp_master_refresh_repeat <%= instance['garp_master_refresh_repeat'] %>
+  <% end %>
   <% if instance['nopreempt'] -%>
   nopreempt
   <% end -%>
@@ -74,6 +92,19 @@ vrrp_instance <%= name.upcase %> {
   track_script {
     <%= instance['track_script'] %>
   }
+
+  <% if instance['smtp_alert'] %>
+  smtp_alert
+  <% end %>
+  <% if instance['notify_master'] %>
+  notify_master "<%= instance['notify_master'] %>"
+  <% end %>
+  <% if instance['notify_backup'] %>
+  notify_backup "<%= instance['notify_backup'] %>"
+  <% end %>
+  <% if instance['notify_fault'] %>
+  notify_fault "<%= instance['notify_fault'] %>"
+  <% end %>
   <% end %>
 }
 <% end -%>

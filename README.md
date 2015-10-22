@@ -51,13 +51,15 @@ override_attributes(
 
 * `node[:keepalived][:check_scripts] = {}`    # define available check scripts
 
-Multiple check scripts can be defined. The key will provide the name of the check script within the configuration file. The value should be a hash with the keys: `script`, `interval` and `weight` defined. For example, a simple HAProxy check script:
+Multiple check scripts can be defined. The key will provide the name of the check script within the configuration file. The value should be a hash with the keys: `script`, `interval`, `weight`, `fall` and `rise` defined. For example, a simple HAProxy check script:
 
 ```ruby
 node[:keepalived][:check_scripts][:chk_haproxy] = {
   :script => 'killall -0 haproxy',
   :interval => 2,
-  :weight => 2
+  :weight => 2,
+  :fall => 2,
+  :rise => 1
 }
 ```
 
@@ -76,17 +78,25 @@ Instances
 
 Multiple instances can be defined. The key will be used to define the instance name. The value will be a hash used to describe the instance. Attributes used within the instance hash:
 
-* `:ip_addresses => '127.0.0.1'`  # IP address(es) used by this instance
-* `:interface => 'eth0'`          # Network interface used
-* `:states => {}`                 # Node name mapped states
-* `:virtual_router_ids => {}`     # Node name mapped virtual router IDs
-* `:priorities => {}`             # Node name mapped priorities
-* `:track_script => 'check_name'` # Name of check script in use for instance
-* `:nopreempt => false`           # Do not preempt
-* `:advert_int => 1`              # Set advert_int
-* `:auth_type => nil`             # Enable authentication (:pass or :ah)
-* `:auth_pass => 'secret'`        # Password used for authentication
-* `:unicast_peer => {}`           # IP address(es) for unicast (only for 1.2.8 and greater)
+* `:ip_addresses => '127.0.0.1'`       # IP address(es) used by this instance
+* `:interface => 'eth0'`               # Network interface used
+* `:states => {}`                      # Node name mapped states
+* `:virtual_router_ids => {}`          # Node name mapped virtual router IDs
+* `:priorities => {}`                  # Node name mapped priorities
+* `:track_script => 'check_name'`      # Name of check script in use for instance
+* `:nopreempt => false`                # Do not preempt
+* `:advert_int => 1`                   # Set advert_int
+* `:auth_type => nil`                  # Enable authentication (:pass or :ah)
+* `:auth_pass => 'secret'`             # Password used for authentication
+* `:unicast_peer => {}`                # IP address(es) for unicast (only for 1.2.8 and greater)
+* `:garp_master_delay => nil`          # Delayed gratuitous ARP send after node transitions to MASTER state. Default is 5 seconds
+* `:garp_master_repeat => nil`         # Gratuitous ARP count sent on the wire after MASTER state transition
+* `:garp_master_refresh => nil`        # Optional support to periodic gratuitous ARP sending while in MASTER state
+* `:garp_master_refresh_repeat => nil` # Gratuitous ARP count sent on the wire
+* `:smtp_alert => true`                # Enables SMTP notifications
+* `:notify_master => nil`              # Script to be run on transition to MASTER state
+* `:notify_backup => nil`              # Script to be run on transition to BACKUP state
+* `:notify_fault => nil`               # Script to be run when check_script fails
 
 ### Vrrp Sync Groups
 
@@ -115,7 +125,9 @@ override_attributes(
       :chk_haproxy => {
         :script => 'killall -0 haproxy',
         :interval => 2,
-        :weight => 2
+        :weight => 2,
+        :fall => 2,
+        :rise => 1
       }
     },
     :instances => {
@@ -154,7 +166,9 @@ include_recipe 'keepalived'
 node[:keepalived][:check_scripts][:chk_init] = {
   :script => 'killall -0 init',
   :interval => 2,
-  :weight => 2
+  :weight => 2,
+  :fall => 2,
+  :rise => 1
 }
 node[:keepalived][:instances][:vi_1] = {
   :ip_addresses => '10.0.2.254',
