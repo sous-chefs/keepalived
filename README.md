@@ -5,6 +5,7 @@ keepalived Cookbook
 
 Installs keepalived and generates the configuration file.
 
+
 Requirements
 ------------
 #### Platforms
