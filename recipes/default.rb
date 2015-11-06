@@ -38,8 +38,11 @@ template "keepalived.conf" do
   mode 0644
 end
 
+# keepalived com prioridade alta para que seja o último a iniciar
+# keepalived usa track_script que pode depender de outros serviços
 service "keepalived" do
   supports :restart => true
   action [:enable, :start]
+  priority 99
   subscribes :restart, "template[keepalived.conf]"
 end
