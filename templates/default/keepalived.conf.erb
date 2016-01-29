@@ -21,6 +21,8 @@ vrrp_sync_group <%= group.upcase %> {
 vrrp_script <%= name %> {
   script "<%= script['script'] %>"
   interval <%= script['interval'] %>
+  fall <%= script['fall'] %>
+  rise <%= script['rise'] %>
 }
 <% end %>
 
