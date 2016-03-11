@@ -44,3 +44,4 @@ suites:
   - name: default
     run_list:
       - recipe[keepalived::default]
+      - recipe[test::default]

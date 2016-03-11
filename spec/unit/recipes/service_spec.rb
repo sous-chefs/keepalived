@@ -1,15 +1,14 @@
 require 'spec_helper'
 
-describe 'keepalived::default' do
+describe 'keepalived::service' do
   context 'default' do
     let(:chef_run) do
       ChefSpec::ServerRunner.new.converge(described_recipe)
     end
 
-    it 'installs package, configures, and manages service' do
-      %w( install configure service ).each do |r|
-        expect(chef_run).to include_recipe "keepalived::#{r}"
-      end
+    it 'enables & starts the service' do
+      expect(chef_run).to enable_service 'keepalived'
+      expect(chef_run).to start_service 'keepalived'
     end
 
     it 'converges successfully' do

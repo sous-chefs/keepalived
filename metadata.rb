@@ -4,9 +4,12 @@ maintainer_email  'cookbooks@chef.io'
 license           'Apache 2.0'
 description       'Installs and configures keepalived'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           '1.3.0'
+version           '2.0.0'
 
-recipe 'keepalived', 'Installs and configures keepalived'
+recipe 'keepalived::default', 'Install, configure, and run keepalived'
+recipe 'keepalived::install', 'Install keepalived package'
+recipe 'keepalived::configure', 'Configure keepalived via attributes'
+recipe 'keepalived::service', 'Enable, start the keepalived service'
 
 %w(ubuntu debian redhat centos scientific oracle amazon).each do |os|
   supports os
