@@ -64,5 +64,5 @@ file 'keepalived.conf' do
   content "include #{Keepalived::CONFIG_PATH}/*.conf\n"
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0640'
 end
