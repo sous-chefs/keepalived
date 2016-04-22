@@ -42,6 +42,22 @@ end
   end
 end
 
+args = node['keepalived']['daemon_args']
+
+file 'keepalived-options' do
+  case node['platform_family']
+  when 'rhel', 'fedora'
+    path '/etc/sysconfig/keepalived'
+  else
+    path '/etc/default/keepalived'
+  end
+  content "KEEPALIVED_OPTIONS='#{args.join(' ')}'"
+  owner 'root'
+  group 'root'
+  mode '0640'
+  not_if { args.empty? }
+end
+
 # Include resource-generated configs
 file 'keepalived.conf' do
   path "#{Keepalived::ROOT_PATH}/keepalived.conf"

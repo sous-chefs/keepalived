@@ -1,1 +1,1 @@
-default['keepalived']['shared_address'] = false
+default['keepalived']['daemon_args'] = %w()
