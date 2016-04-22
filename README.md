@@ -31,14 +31,8 @@ Installs keepalived and generates the configuration files, using resource-driven
 
 - `keepalived::default`: loads the install, configure, and service recipes
 - `keepalived::install`: installs the `keepalived` package
-- `keepalived::configure`: configures `/etc/keepalived/keepalived.conf` based on attributes, or sets up include for resource-driven configuration.
+- `keepalived::configure`: configures `/etc/keepalived/keepalived.conf` for inclusion of `keepalived_*` resources
 - `keepalived::service`: enables/starts the `keepalived` service, sets a restart subscription to `/etc/keepalived/keepalived.conf`.
-
-## Attribute Usage
-
-### Configuration settings
-
-- `node['keepalived']['shared_address'] = true` # If keepalived is using a shared address
 
 ## Resource Usage
 
