@@ -62,6 +62,9 @@ class ChefKeepalived
       def manage_config_file(action = :nothing)
         Chef::Resource::File.new(new_resource.path, run_context).tap do |f|
           f.content "#{new_resource.content}\n"
+          f.owner 'root'
+          f.group 'root'
+          f.mode '0640'
         end.run_action(action)
       end
     end
