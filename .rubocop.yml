@@ -1,14 +1,9 @@
 AllCops:
   Exclude:
+    - Rakefile
+    - Berksfile
+    - metadata.rb
     - vendor/**/*
-    - Guardfile
-
-AlignParameters:
-  Enabled: false
-ClassLength:
-  Enabled: false
-CyclomaticComplexity:
-  Enabled: false
 Documentation:
   Enabled: false
 Encoding:
@@ -27,5 +22,5 @@ Style/SpaceBeforeFirstArg:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
-Style/FileName:
+ClassAndModuleChildren:
   Enabled: false

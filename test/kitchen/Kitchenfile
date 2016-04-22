@@ -1,4 +1,0 @@
-cookbook "keepalived" do
-  configuration "default"
-  configuration "configured"
-end

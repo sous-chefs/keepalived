@@ -2,6 +2,11 @@ keepalived Cookbook CHANGELOG
 =============================
 This file is used to list changes made in each version of the keepalived cookbook.
 
+v2.0.0 (UNRELEASED)
+-------------------
+* separate recipe concerns from single recipe to install, configure, service
+* overhaul cookbook to use resources instead of attributes
+
 v1.3.0 (2015-10-21)
 -------------------
 * Added RHEL based distros as supported platforms

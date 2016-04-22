@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: keepalived
-# Recipe:: default
+# Recipe:: install
 #
 # Copyright 2009, Chef Software, Inc.
 #
@@ -17,6 +17,4 @@
 # limitations under the License.
 #
 
-%w( install configure service ).each do |r|
-  include_recipe "#{cookbook_name}::#{r}"
-end
+package 'keepalived'
