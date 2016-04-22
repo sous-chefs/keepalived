@@ -47,7 +47,7 @@ describe 'keepalived::configure' do
         content: "include /etc/keepalived/conf.d/*.conf\n",
         owner: 'root',
         group: 'root',
-        mode: '0644'
+        mode: '0640'
       )
     end
 
