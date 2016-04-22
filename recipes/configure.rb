@@ -42,16 +42,13 @@ end
   end
 end
 
+# Set up daemon argument overrides
 args = node['keepalived']['daemon_args']
+env_var = node['keepalived']['daemon_args_env_var']
 
 file 'keepalived-options' do
-  case node['platform_family']
-  when 'rhel', 'fedora'
-    path '/etc/sysconfig/keepalived'
-  else
-    path '/etc/default/keepalived'
-  end
-  content "KEEPALIVED_OPTIONS='#{args.join(' ')}'"
+  path node['keepalived']['defaults_path']
+  content "#{env_var}='#{args.join(' ')}'"
   owner 'root'
   group 'root'
   mode '0640'
