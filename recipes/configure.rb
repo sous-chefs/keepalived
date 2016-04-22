@@ -17,18 +17,6 @@
 # limitations under the License.
 #
 
-# Configure sysctl to permit binding to non-local addresses
-if node['keepalived']['shared_address']
-  file '/etc/sysctl.d/60-ip-nonlocal-bind.conf' do
-    mode '0644'
-    content "net.ipv4.ip_nonlocal_bind=1\n"
-  end
-
-  service 'procps' do
-    action :start
-  end
-end
-
 # Set up directories for resource-generated configs
 [
   Keepalived::CONFIG_PATH,
