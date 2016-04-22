@@ -309,7 +309,6 @@ end
 describe ChefKeepalived::Resource::SmtpCheck do
   let(:smtp_check) do
     ChefKeepalived::Resource::SmtpCheck.new('port-465').tap do |r|
-      r.retry 3
       r.delay_before_retry 10
       r.helo_name 'smtp.example.com'
       r.warmup 3
@@ -325,7 +324,7 @@ describe ChefKeepalived::Resource::SmtpCheck do
   end
 
   let(:smtp_check_string) do
-    "SMTP_CHECK {\n\twarmup 3\n\thost {\n\t\tconnect_ip 192.168.1.20\n\t\tconnect_port 3306\n\t\tbindto 192.168.1.5\n\t\tbind_port 3308\n\t\tconnect_timeout 5\n\t\tfwmark 3\n\t\t}\n\tretry 3\n\tdelay_before_retry 10\n\thelo_name smtp.example.com\n\t}"
+    "SMTP_CHECK {\n\twarmup 3\n\thost {\n\t\tconnect_ip 192.168.1.20\n\t\tconnect_port 3306\n\t\tbindto 192.168.1.5\n\t\tbind_port 3308\n\t\tconnect_timeout 5\n\t\tfwmark 3\n\t\t}\n\tdelay_before_retry 10\n\thelo_name smtp.example.com\n\t}"
   end
 
   it 'sets a proper smtp_check configuration' do

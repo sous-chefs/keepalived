@@ -474,7 +474,6 @@ Example:
 
 ```ruby
 keepalived_smtp_check 'postfix' do
-  retry 3
   helo_name node.name
   host connect_timeout: 30
 end
@@ -485,7 +484,6 @@ Supported properties:
 Property           | Type                                                                                     | Default
 ------------------ | ---------------------------------------------------------------------------------------- | -------
 connect_timeout    | Integer                                                                                  | nil
-retry              | Integer                                                                                  | nil
 delay_before_retry | nil
 helo_name          | String                                                                                   | nil
 warmup             | Integer                                                                                  | nil

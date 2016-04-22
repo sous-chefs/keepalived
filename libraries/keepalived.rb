@@ -238,7 +238,6 @@ module Keepalived
           end
         }
       },
-      retry: { kind_of: Integer },
       delay_before_retry: { kind_of: Integer },
       helo_name: { kind_of: String },
       connect_timeout: { kind_of: Integer }
