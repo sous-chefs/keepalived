@@ -30,11 +30,24 @@
   end
 end
 
+# Set up daemon argument overrides
+args = node['keepalived']['daemon_args']
+env_var = node['keepalived']['daemon_args_env_var']
+
+file 'keepalived-options' do
+  path node['keepalived']['defaults_path']
+  content "#{env_var}='#{args.join(' ')}'"
+  owner 'root'
+  group 'root'
+  mode '0640'
+  not_if { args.empty? }
+end
+
 # Include resource-generated configs
 file 'keepalived.conf' do
   path "#{Keepalived::ROOT_PATH}/keepalived.conf"
   content "include #{Keepalived::CONFIG_PATH}/*.conf\n"
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0640'
 end

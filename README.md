@@ -34,13 +34,20 @@ Installs keepalived and generates the configuration files, using resource-driven
 - `keepalived::configure`: configures `/etc/keepalived/keepalived.conf` for inclusion of `keepalived_*` resources
 - `keepalived::service`: enables/starts the `keepalived` service, sets a restart subscription to `/etc/keepalived/keepalived.conf`.
 
+### Attributes
+
+- `default['keepalived']['package']`: specify package name to install (e.g. 'keepalived/trusty-backports').
+- `default['keepalived']['daemon_args']`: array of args to override default daemon cli args with
+- `default['keepalived']['daemon_args_env_var']`: name of env var used by init script to pass in the daemon cli arguments
+- `default['keepalived']['defaults_path']`: path of file to write daemon cli arg env var to (e.g. "/etc/default/keepalived")
+
 ## Resource Usage
 
-This cookbook provides a set of resources for managing keepalived via LWRPs, for cases where resource-driven configuratino may be preferable. These resources rely on support for the `include` directive, supported since keepalived version `1.1.15`, released in Sept, 2007\. Please confirm your vendor package supports this before attempting to use these resources.
+This cookbook provides a set of resources for managing keepalived via LWRPs. These resources rely on support for the `include` directive, supported since keepalived version `1.1.15`, released in Sept, 2007. Please confirm your vendor package supports this before attempting to use these resources.
 
 ### Generic Config
 
-The `keepalived_config` resource is the base resource on which other resources are built. It's not generally intended for direct consumption, but can be used in a pinch to provide a custom configuration if needed via the config property.
+The `keepalived_config` resource is the base resource on which other resources are built. It's not generally intended for direct consumption, but can be used in a pinch to provide a custom configuration if needed via the content property.
 
 Example:
 
@@ -55,6 +62,7 @@ Supported properties:
 Property | Type   | Default
 -------- | ------ | --------
 content  | String | #to_conf
+path     | String | dynamically computed
 
 ### Global Defs
 

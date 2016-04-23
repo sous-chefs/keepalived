@@ -20,5 +20,6 @@
 service 'keepalived' do
   supports restart: true
   action [:enable, :start]
-  subscribes :restart, 'file[keepalived.conf]'
+  subscribes :restart, 'file[keepalived.conf]', :delayed
+  subscribes :restart, 'file[keepalived-options]', :delayed
 end

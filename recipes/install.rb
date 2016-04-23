@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-package 'keepalived'
+package node['keepalived']['package']
