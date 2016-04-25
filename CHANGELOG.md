@@ -4,9 +4,15 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## v2.0.0 (2016-04-25)
 
+### Breaking Changes
+
+- attribute-driven configuration is no longer supported
+- remove net.ipv4.ip_nonlocal_bind sysctl management
+
+### Enhancements
+
 - separate recipe concerns from single recipe to install, configure, service
 - overhaul cookbook to use resources instead of attributes
-- remove net.ipv4.ip_nonlocal_bind sysctl management
 - add daemon cli args management
 
 ## v1.3.0 (2015-10-21)
