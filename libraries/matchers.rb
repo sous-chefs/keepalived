@@ -26,7 +26,7 @@ if defined?(ChefSpec)
       combo = "#{a}_#{r}".to_sym
 
       define_method(combo) do |resource_name|
-        ChefSpec::Matchers::ResourceMatcher.new(combo, a.to_sym, resource_name)
+        ChefSpec::Matchers::ResourceMatcher.new(r, a.to_sym, resource_name)
       end
     end
   end
