@@ -40,10 +40,10 @@ end
 
 keepalived_vrrp_instance 'inside_network' do
   state 'MASTER'
-  use_vmac 'vrrp.1'
   dont_track_primary true
   virtual_router_id 1
   priority 50
+  interface node['network']['default_interface']
   unicast_peer %w( 10.120.13.1 )
   track_script %w( chk_haproxy )
   authentication(
@@ -55,9 +55,9 @@ end
 
 keepalived_vrrp_instance 'outside_network' do
   state 'MASTER'
-  use_vmac 'vrrp.2'
   dont_track_primary true
   virtual_router_id 2
+  interface node['network']['default_interface']
   priority 50
   authentication(
     auth_type: 'PASS',
