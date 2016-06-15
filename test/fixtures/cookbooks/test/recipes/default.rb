@@ -44,6 +44,7 @@ keepalived_vrrp_instance 'inside_network' do
   dont_track_primary true
   virtual_router_id 1
   priority 50
+  unicast_peer %w( 10.120.13.1 )
   track_script %w( chk_haproxy )
   authentication(
     auth_type: 'PASS',

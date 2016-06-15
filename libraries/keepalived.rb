@@ -100,6 +100,11 @@ module Keepalived
 
   module VrrpInstance
     OPTIONS ||= Notify::OPTIONS.merge(
+      virtual_router_id: {
+        kind_of: Integer,
+        required: true,
+        equal_to: 0.upto(255).to_a
+      },
       state: { kind_of: String, equal_to: %w( MASTER BACKUP ) },
       interface: { kind_of: String },
       use_vmac: { kind_of: String },
@@ -114,11 +119,6 @@ module Keepalived
       garp_master_repeat: { kind_of: Integer },
       garp_master_refresh: { kind_of: Integer },
       garp_master_refresh_repeat: { kind_of: Integer },
-      virtual_router_id: {
-        kind_of: Integer,
-        required: true,
-        equal_to: 0.upto(255).to_a
-      },
       priority: { kind_of: Integer, equal_to: 0.upto(255).to_a, default: 100 },
       advert_int: { kind_of: Integer },
       authentication: {
