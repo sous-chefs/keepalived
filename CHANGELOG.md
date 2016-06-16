@@ -2,6 +2,17 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## v2.1.0 (2016-06-15)
+
+### Bugfixes
+
+- fix chefspec matchers
+- bump order of virtual_router_id in vrrp_instance config
+
+### Enhancements
+
+- extended platform testing
+
 ## v2.0.0 (2016-04-25)
 
 ### Breaking Changes
