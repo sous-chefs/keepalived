@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## v2.1.1 (2016-07-13)
+
+- pass through sensitive attribute to underlying file resource
+
 ## v2.1.0 (2016-06-15)
 
 ### Bugfixes
