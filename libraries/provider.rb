@@ -65,6 +65,7 @@ class ChefKeepalived
           f.owner 'root'
           f.group 'root'
           f.mode '0640'
+          f.sensitive new_resource.sensitive if defined?(:sensitive)
         end.run_action(action)
       end
     end

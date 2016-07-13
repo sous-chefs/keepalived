@@ -51,6 +51,7 @@ keepalived_vrrp_instance 'inside_network' do
     auth_pass: 'buttz'
   )
   virtual_ipaddress %w( 192.168.4.92 )
+  sensitive true
 end
 
 keepalived_vrrp_instance 'outside_network' do
