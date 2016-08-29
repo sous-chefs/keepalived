@@ -34,7 +34,7 @@ describe 'keepalived::configure' do
   context 'daemon-args' do
     let(:chef_run) do
       ChefSpec::ServerRunner.new do |node|
-        node.set['keepalived']['daemon_args'] = %w( -D --snmp )
+        node.normal['keepalived']['daemon_args'] = %w( -D --snmp )
       end.converge(described_recipe)
     end
 
