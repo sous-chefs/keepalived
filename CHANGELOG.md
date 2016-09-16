@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## 3.0.0 (2016-09-16)
+- Testing updates
+- Require Chef 12.1
+
 ## v2.1.1 (2016-07-13)
 
 - pass through sensitive attribute to underlying file resource
