@@ -4,4 +4,8 @@ require 'chefspec/berkshelf'
 # Require all our libraries
 Dir.glob('libraries/*.rb').shuffle.each { |f| require File.expand_path(f) }
 
-at_exit { ChefSpec::Coverage.report! }
+RSpec.configure do |config|
+  config.color = true               # Use color in STDOUT
+  config.formatter = :documentation # Use the specified formatter
+  config.log_level = :error         # Avoid deprecation notice SPAM
+end

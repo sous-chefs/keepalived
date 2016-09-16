@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'keepalived::service' do
   context 'default' do
-    let(:chef_run) do
-      ChefSpec::ServerRunner.new.converge(described_recipe)
+    cached(:chef_run) do
+      ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
     end
 
     it 'enables & starts the service' do

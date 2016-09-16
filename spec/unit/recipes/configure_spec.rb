@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'keepalived::configure' do
   context 'resource-driven' do
-    let(:chef_run) do
-      ChefSpec::ServerRunner.new.converge(described_recipe)
+    cached(:chef_run) do
+      ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
     end
 
     it 'creates the resource-driven resource include dirs' do
@@ -32,7 +32,7 @@ describe 'keepalived::configure' do
   end
 
   context 'daemon-args' do
-    let(:chef_run) do
+    cached(:chef_run) do
       ChefSpec::ServerRunner.new do |node|
         node.normal['keepalived']['daemon_args'] = %w( -D --snmp )
       end.converge(described_recipe)
