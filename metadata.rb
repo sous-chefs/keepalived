@@ -15,5 +15,6 @@ recipe 'keepalived::service', 'Enable, start the keepalived service'
   supports os
 end
 
-source_url 'https://github.com/chef-cookbooks/keepalived' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/keepalived/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/keepalived'
+issues_url 'https://github.com/chef-cookbooks/keepalived/issues'
+chef_version '>= 12.1'

@@ -13,7 +13,7 @@ Installs keepalived and generates the configuration files, using resource-driven
 
 ### Chef
 
-- Chef 11+
+- Chef 12.1+
 
 ### Cookbooks
 
