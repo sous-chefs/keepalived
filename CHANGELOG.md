@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## 3.0.1 (2016-09-21)
+- fix chef_version in metadata
+
 ## 3.0.0 (2016-09-16)
 - Testing updates
 - Require Chef 12.1
