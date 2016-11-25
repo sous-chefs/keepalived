@@ -96,7 +96,7 @@ file '/usr/local/bin/keepalived-ping-check.sh' do
     #!/usr/bin/sh
     ping -c 2 8.8.8.8
   EOS
-  mode 0755
+  mode "755"
 end
 
 keepalived_misc_check 'ping-check' do
