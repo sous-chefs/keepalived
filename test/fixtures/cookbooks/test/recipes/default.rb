@@ -1,6 +1,9 @@
 #
 # This is intended to test the resources, not produce a sane configuration :D
 #
+apt_update 'update' if platform_family?('debian')
+
+include_recipe 'keepalived::default'
 
 execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
 
