@@ -21,7 +21,7 @@
 [
   Keepalived::CONFIG_PATH,
   Keepalived::SERVER_PATH,
-  Keepalived::HEALTH_PATH
+  Keepalived::HEALTH_PATH,
 ].each do |include_path|
   directory include_path do
     owner 'root'

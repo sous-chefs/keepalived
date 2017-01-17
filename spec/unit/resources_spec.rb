@@ -40,7 +40,7 @@ describe ChefKeepalived::Resource::StaticIpAddress do
     ChefKeepalived::Resource::StaticIpAddress.new('static_ipaddress').tap do |r|
       r.addresses [
         '192.168.1.98/24 dev eth0 scope global',
-        '192.168.1.99/24 dev eth0 scope global'
+        '192.168.1.99/24 dev eth0 scope global',
       ]
     end
   end
@@ -59,7 +59,7 @@ describe ChefKeepalived::Resource::StaticRoutes do
     ChefKeepalived::Resource::StaticRoutes.new('static_routes').tap do |r|
       r.routes [
         '192.168.2.0/24 via 192.168.1.100 dev eth0',
-        '192.168.3.0/24 via 192.168.1.200 dev eth0'
+        '192.168.3.0/24 via 192.168.1.200 dev eth0',
       ]
     end
   end
@@ -138,7 +138,7 @@ describe ChefKeepalived::Resource::VrrpInstance do
       r.virtual_ipaddress_excluded %w( 192.168.1.12 192.168.1.13 )
       r.virtual_routes [
         'src 192.168.100.1 to 192.168.109.0/24 via 192.168.200.254 dev eth1',
-        '192.168.110.0/24 via 192.168.200.254 dev eth1'
+        '192.168.110.0/24 via 192.168.200.254 dev eth1',
       ]
       r.nopreempt true
       r.preempt_delay 30
