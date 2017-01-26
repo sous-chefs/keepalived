@@ -1,6 +1,9 @@
 #
 # This is intended to test the resources, not produce a sane configuration :D
 #
+apt_update 'update' if platform_family?('debian')
+
+include_recipe 'keepalived::default'
 
 execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
 
@@ -17,13 +20,13 @@ end
 
 keepalived_static_ipaddress 'static_ipaddress' do
   addresses [
-    '192.168.1.1/24 dev eth0 scope global'
+    '192.168.1.1/24 dev eth0 scope global',
   ]
 end
 
 keepalived_static_routes 'static_routes' do
   routes [
-    '192.168.2.0/24 via 192.168.1.100 dev eth0'
+    '192.168.2.0/24 via 192.168.1.100 dev eth0',
   ]
 end
 
