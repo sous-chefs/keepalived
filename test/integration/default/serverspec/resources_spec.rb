@@ -39,6 +39,7 @@ describe 'Keepalived' do
 
     describe file('/etc/keepalived/conf.d/00_keepalived_vrrp_script__chk_haproxy__.conf') do
       its(:content) { should match(/killall/) }
+      its(:content) { should match(/user root/) }
     end
 
     describe file('/etc/keepalived/conf.d/keepalived_vrrp_instance__inside_network__.conf') do
