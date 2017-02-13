@@ -95,7 +95,7 @@ module Keepalived
       weight: { kind_of: Integer, equal_to: -254.upto(254).to_a },
       fall: { kind_of: Integer },
       rise: { kind_of: Integer },
-      user: { kind_of: String }
+      user: { kind_of: String },
     }.freeze
   end
 
