@@ -174,7 +174,7 @@ class ChefKeepalived
 
       property :vips, kind_of: Array, desired_state: false
       property :fwmarks, kind_of: Array, desired_state: false, callbacks: {
-        'are all integers' => ->(spec) { spec.all? { |i| i.is_a?(Integer) } }
+        'are all integers' => ->(spec) { spec.all? { |i| i.is_a?(Integer) } },
       }
 
       private

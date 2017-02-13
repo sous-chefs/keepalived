@@ -67,7 +67,7 @@ module Keepalived
       enable_snmp_rfc: { kind_of: [TrueClass, FalseClass] },
       enable_snmp_rfcv2: { kind_of: [TrueClass, FalseClass] },
       enable_snmp_rfcv3: { kind_of: [TrueClass, FalseClass] },
-      enable_traps: { kind_of: [TrueClass, FalseClass] }
+      enable_traps: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
 
@@ -77,7 +77,7 @@ module Keepalived
       notify_backup: { kind_of: String },
       notify_fault: { kind_of: String },
       notify: { kind_of: String },
-      smtp_alert: { kind_of: [TrueClass, FalseClass] }
+      smtp_alert: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
 
@@ -104,7 +104,7 @@ module Keepalived
       virtual_router_id: {
         kind_of: Integer,
         required: true,
-        equal_to: 0.upto(255).to_a
+        equal_to: 0.upto(255).to_a,
       },
       state: { kind_of: String, equal_to: %w( MASTER BACKUP ) },
       interface: { kind_of: String },
@@ -131,8 +131,8 @@ module Keepalived
           end,
           'has supported auth_type' => lambda do |spec|
             %w( PASS AH ).include?(spec[:auth_type])
-          end
-        }
+          end,
+        },
       },
       virtual_ipaddress: { kind_of: Array },
       virtual_ipaddress_excluded: { kind_of: Array },
@@ -143,7 +143,7 @@ module Keepalived
       preempt_delay: { kind_of: Integer, equal_to: 0.upto(1_000) },
       strict_mode: {
         kind_of: String,
-        equal_to: %w( on off true false yes no )
+        equal_to: %w( on off true false yes no ),
       },
       version: { kind_of: Integer, equal_to: [2, 3] },
       native_ipv6: { kind_of: [TrueClass, FalseClass] },
@@ -174,7 +174,7 @@ module Keepalived
       quorum_up: { kind_of: String },
       quorum_down: { kind_of: String },
       sorry_server: { kind_of: String },
-      sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] }
+      sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
 
@@ -183,7 +183,7 @@ module Keepalived
       weight: { kind_of: Integer },
       inhibit_on_failure: { kind_of: [TrueClass, FalseClass] },
       notify_up: { kind_of: String },
-      notify_down: { kind_of: String }
+      notify_down: { kind_of: String },
     }.freeze
   end
 
@@ -192,16 +192,16 @@ module Keepalived
       connect_ip: { kind_of: String },
       connect_port: {
         kind_of: Integer,
-        equal_to: 1.upto(65_535)
+        equal_to: 1.upto(65_535),
       },
       bindto: { kind_of: String },
       bind_port: {
         kind_of: Integer,
-        equal_to: 1.upto(65_535)
+        equal_to: 1.upto(65_535),
       },
       connect_timeout: { kind_of: Integer },
       fwmark: { kind_of: Integer },
-      warmup: { kind_of: Integer }
+      warmup: { kind_of: Integer },
     }.freeze
   end
 
@@ -217,8 +217,8 @@ module Keepalived
           end,
           'has required keys' => lambda do |spec|
             spec.keys.include?(:path) && spec.keys.include?(:status_code)
-          end
-        }
+          end,
+        },
       },
       nb_get_retry: { kind_of: Integer },
       delay_before_retry: { kind_of: Integer }
@@ -236,8 +236,8 @@ module Keepalived
         callbacks: {
           'has only valid keys' => lambda do |spec|
             spec.keys.all? { |s| TcpCheck::OPTIONS.keys.include?(s) }
-          end
-        }
+          end,
+        },
       },
       delay_before_retry: { kind_of: Integer },
       helo_name: { kind_of: String },
@@ -250,7 +250,7 @@ module Keepalived
       misc_path: { kind_of: String },
       misc_timeout: { kind_of: Integer },
       warmup: { kind_of: Integer },
-      misc_dynamic: { kind_of: [TrueClass, FalseClass] }
+      misc_dynamic: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
 end
