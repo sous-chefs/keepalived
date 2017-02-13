@@ -36,6 +36,7 @@ keepalived_vrrp_script 'chk_haproxy' do
   interval 2
   weight 50
   script '"/usr/bin/killall -0 haproxy"'
+  user 'root'
 end
 
 keepalived_vrrp_instance 'inside_network' do
