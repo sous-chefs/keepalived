@@ -42,19 +42,15 @@ class ChefKeepalived
       end
 
       def action_create
-        if !current_resource.exists || current_resource.content != new_resource.content
-          converge_by("Create keepalived config: #{new_resource}") do
-            manage_config_file(:create)
-          end
-        end
+        converge_by("Create keepalived config: #{new_resource}") do
+          manage_config_file(:create)
+        end if !current_resource.exists || current_resource.content != new_resource.content
       end
 
       def action_delete
-        if current_resource.exists
-          converge_by("Delete keepalived config: #{new_resource}") do
-            manage_config_file(:delete)
-          end
-        end
+        converge_by("Delete keepalived config: #{new_resource}") do
+          manage_config_file(:delete)
+        end if current_resource.exists
       end
 
       private
