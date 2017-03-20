@@ -3,16 +3,22 @@
 This file is used to list changes made in each version of the keepalived cookbook.
 
 ## 3.1.0 (2017-03-20)
-- replace keepalived_vrrp_instance 'state' property with boolean 'master' property to fix Chef 13 compat
+
+- Replace keepalived_vrrp_instance 'state' property with boolean 'master' property to fix Chef 13 compat
+- Use the standard Apache-2.0 license string in the metadata
+- Switch from Rake to delivery local mode for testing
 
 ## 3.0.2 (2017-02-13)
+
 - add user option for vrrp_script blocks
 - update test suite
 
 ## 3.0.1 (2016-09-21)
+
 - fix chef_version in metadata
 
 ## 3.0.0 (2016-09-16)
+
 - Testing updates
 - Require Chef 12.1
 
