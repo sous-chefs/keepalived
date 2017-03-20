@@ -163,7 +163,7 @@ class ChefKeepalived
         cfg = ["vrrp_instance #{name} {"]
         cfg << "state #{master ? 'MASTER' : 'BACKUP'}"
         cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::VrrpInstance::OPTIONS.reject { |k, v| k == :master }
+          self, Keepalived::VrrpInstance::OPTIONS.reject { |k, _| k == :master }
         )
         cfg << '}'
         cfg.join("\n\t")
