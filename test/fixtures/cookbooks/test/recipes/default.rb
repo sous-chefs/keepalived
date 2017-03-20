@@ -43,7 +43,7 @@ keepalived_vrrp_script 'chk_haproxy' do
 end
 
 keepalived_vrrp_instance 'inside_network' do
-  state 'MASTER'
+  master true
   dont_track_primary true
   virtual_router_id 1
   priority 50
@@ -59,7 +59,7 @@ keepalived_vrrp_instance 'inside_network' do
 end
 
 keepalived_vrrp_instance 'outside_network' do
-  state 'MASTER'
+  master true
   dont_track_primary true
   virtual_router_id 2
   interface node['network']['default_interface']

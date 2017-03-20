@@ -106,7 +106,7 @@ module Keepalived
         required: true,
         equal_to: 0.upto(255).to_a,
       },
-      state: { kind_of: String, equal_to: %w( MASTER BACKUP ) },
+      master: { kind_of: [TrueClass, FalseClass], default: false },
       interface: { kind_of: String },
       use_vmac: { kind_of: String },
       vmac_xmit_base: { kind_of: [TrueClass, FalseClass] },

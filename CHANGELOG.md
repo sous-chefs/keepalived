@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## 3.1.0 (2017-03-20)
+- replace keepalived_vrrp_instance 'state' property with boolean 'master' property to fix Chef 13 compat
+
 ## 3.0.2 (2017-02-13)
 - add user option for vrrp_script blocks
 - update test suite

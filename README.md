@@ -232,7 +232,7 @@ notify_fault               | String                                          | n
 notify                     | String                                          | nil
 notify_stop                | String                                          | nil
 smtp_alert                 | TrueClass,FalseClass                            | nil
-state                      | String (either MASTER or BACKUP)                | nil
+master                     | TrueClass,FalseClass                            | false
 interface                  | String                                          | nil
 use_vmac                   | String                                          | nil
 vmac_xmit_base             | TrueClass,FalseClass                            | nil
