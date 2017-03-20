@@ -44,10 +44,12 @@ describe 'Keepalived' do
 
     describe file('/etc/keepalived/conf.d/keepalived_vrrp_instance__inside_network__.conf') do
       its(:content) { should match(/virtual_router_id 1/) }
+      its(:content) { should match(/state MASTER/) }
     end
 
     describe file('/etc/keepalived/conf.d/keepalived_vrrp_instance__outside_network__.conf') do
       its(:content) { should match(/virtual_router_id 2/) }
+      its(:content) { should match(/state MASTER/) }
     end
 
     describe file('/etc/keepalived/conf.d/keepalived_vrrp_sync_group__VG_1__.conf') do
