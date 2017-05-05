@@ -211,7 +211,7 @@ Example:
 
 ```ruby
 keepalived_vrrp_instance 'inside_network' do
-  state 'MASTER'
+  master true
   interface node['network']['default_interface']
   virtual_router_id 51
   priority 101
