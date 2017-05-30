@@ -146,12 +146,21 @@ describe ChefKeepalived::Resource::VrrpInstance do
     end
   end
 
+  let(:vrrp_instance_auth_as_strings) do
+    vrrp_instance.authentication 'auth_type' => 'PASS', 'auth_pass' => 'buttz'
+    vrrp_instance
+  end
+
   let(:vrrp_instance_string) do
     "vrrp_instance inside_network {\n\tstate MASTER\n\tvirtual_router_id 51\n\tinterface eth0\n\tuse_vmac vrrp.51\n\tvmac_xmit_base\n\tdont_track_primary\n\ttrack_interface {\n\t\teth0\n\t\t}\n\tmcast_src_ip 192.168.1.1\n\tunicast_src_ip 192.168.1.1\n\tunicast_peer {\n\t\t192.168.1.2\n\t\t192.168.1.3\n\t\t}\n\tlvs_sync_daemon_interface eth1\n\tgarp_master_delay 10\n\tpriority 90\n\tadvert_int 5\n\tauthentication {\n\t\tauth_type PASS\n\t\tauth_pass buttz\n\t\t}\n\tvirtual_ipaddress {\n\t\t192.168.1.11\n\t\t192.168.1.12\n\t\t192.168.1.13\n\t\t}\n\tvirtual_ipaddress_excluded {\n\t\t192.168.1.12\n\t\t192.168.1.13\n\t\t}\n\tvirtual_routes {\n\t\tsrc 192.168.100.1 to 192.168.109.0/24 via 192.168.200.254 dev eth1\n\t\t192.168.110.0/24 via 192.168.200.254 dev eth1\n\t\t}\n\tnopreempt\n\tpreempt_delay 30\n\tdebug\n\t}"
   end
 
   it 'sets a proper vrrp_instance configuration' do
     expect(vrrp_instance.content).to eq vrrp_instance_string
+  end
+
+  it 'allows strings as keys in the authentication hash' do
+    expect(vrrp_instance_auth_as_strings.content).to eq vrrp_instance_string
   end
 end
 

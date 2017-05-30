@@ -127,10 +127,10 @@ module Keepalived
         required: true,
         callbacks: {
           'has required configuration' => lambda do |spec|
-            [:auth_type, :auth_pass].all? { |c| spec.keys.include?(c) }
+            [:auth_type, :auth_pass].all? { |c| spec.keys.map(&:to_sym).include?(c) }
           end,
           'has supported auth_type' => lambda do |spec|
-            %w( PASS AH ).include?(spec[:auth_type])
+            (%w(PASS AH) & [spec[:auth_type], spec['auth_type']]).any?
           end,
         },
       },
