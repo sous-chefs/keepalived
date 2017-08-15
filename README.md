@@ -240,7 +240,7 @@ dont_track_primary         | TrueClass,FalseClass                            | n
 track_interface            | Array                                           | nil
 mcast_src_ip               | String                                          | nil
 unicast_src_ip             | String                                          | nil
-unicast_peer               | String                                          | nil
+unicast_peer               | Array                                           | nil
 lvs_sync_daemon_interface  | String                                          | nil
 garp_master_delay          | Integer                                         | nil
 garp_master_repeat         | Integer                                         | nil
