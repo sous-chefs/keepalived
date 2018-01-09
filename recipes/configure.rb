@@ -3,6 +3,7 @@
 # Recipe:: configure
 #
 # Copyright:: 2009-2016, Chef Software, Inc.
+# Copyright:: 2018, Workday, Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -47,6 +48,14 @@ end
 file 'keepalived.conf' do
   path "#{Keepalived::ROOT_PATH}/keepalived.conf"
   content "include #{Keepalived::CONFIG_PATH}/*.conf\n"
+  owner 'root'
+  group 'root'
+  mode '0640'
+end
+
+# Create a dummy config file in the resource-generated configs directory
+file File.join(Keepalived::CONFIG_PATH, 'empty.conf') do
+  content '# Some versions of Keepalived won\'t start when include dir is empty'
   owner 'root'
   group 'root'
   mode '0640'
