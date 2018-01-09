@@ -26,7 +26,7 @@ describe 'keepalived::configure' do
       )
 
       expect(chef_run).to create_file('/etc/keepalived/conf.d/empty.conf').with(
-        content: '# Keepalived 1.5.x will not start if include dir is empty',
+        content: '# Some versions of Keepalived won\'t start when include dir is empty',
         owner: 'root',
         group: 'root',
         mode: '0640'
