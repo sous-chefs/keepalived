@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## 3.1.1 (2018-01-10)
+
+- Update README for vrrp_instance property name change
+- Allow authentication hash to use strings for keys
+- Update Test Kitchen platforms
+- fix unicast_peer var type in readme
+- Changes needed to converge on CentOS7 and Debian9
+
 ## 3.1.0 (2017-03-20)
 
 - Replace keepalived_vrrp_instance 'state' property with boolean 'master' property to fix Chef 13 compat
