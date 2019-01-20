@@ -216,7 +216,7 @@ module Keepalived
             spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
           end,
           'has required keys' => lambda do |spec|
-            spec.keys.include?(:path) && spec.keys.include?(:status_code)
+            spec.key?(:path) && spec.key?(:status_code)
           end,
         },
       },
@@ -235,7 +235,7 @@ module Keepalived
         kind_of: Hash,
         callbacks: {
           'has only valid keys' => lambda do |spec|
-            spec.keys.all? { |s| TcpCheck::OPTIONS.keys.include?(s) }
+            spec.keys.all? { |s| TcpCheck::OPTIONS.key?(s) }
           end,
         },
       },
