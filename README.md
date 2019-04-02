@@ -1,7 +1,8 @@
 # keepalived Cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/keepalived.svg?branch=master)](http://travis-ci.org/chef-cookbooks/keepalived)
-[![Cookbook Version](https://img.shields.io/cookbook/v/keepalived.svg)](https://supermarket.chef.io/cookbooks/keepalived)
+[![Cookbook Version](https://img.shields.io/cookbook/v/keepalived.svg?style=flat)](https://supermarket.chef.io/cookbooks/keepalived)
+[![CircleCI](https://img.shields.io/circleci/project/github/sous-chefs/keepalived/master.svg)](https://circleci.com/gh/sous-chefs/keepalived)
+
 
 Installs keepalived and generates the configuration files, using resource-driven configuration.
 
