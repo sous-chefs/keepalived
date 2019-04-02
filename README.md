@@ -3,7 +3,6 @@
 [![Cookbook Version](https://img.shields.io/cookbook/v/keepalived.svg?style=flat)](https://supermarket.chef.io/cookbooks/keepalived)
 [![CircleCI](https://img.shields.io/circleci/project/github/sous-chefs/keepalived/master.svg)](https://circleci.com/gh/sous-chefs/keepalived)
 
-
 Installs keepalived and generates the configuration files, using resource-driven configuration.
 
 ## Requirements
@@ -16,7 +15,6 @@ Installs keepalived and generates the configuration files, using resource-driven
 ### Chef
 
 - Chef 13+
-
 
 ## Recommended Background Reading
 
