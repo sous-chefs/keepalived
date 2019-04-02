@@ -8,7 +8,7 @@ lint_and_unit: &lint_and_unit
 version: 2.1
 
 orbs:
-  kitchen: sous-chefs/kitchen@1.0.0
+  kitchen: sous-chefs/kitchen@dev:first
 
 workflows:
   kitchen:
@@ -23,28 +23,3 @@ workflows:
           context: Danger
       - kitchen/delivery:
           name: delivery
-      - kitchen/dokken-single:
-          name: default-centos-6
-          platform: centos-6
-          suite: default
-          requires: [ delivery, danger ]
-      - kitchen/dokken-single:
-          name: default-centos-7
-          platform: centos-7
-          suite: default
-          requires: [ delivery, danger ]
-      - kitchen/dokken-single:
-          name: default-debian-8
-          platform: debian-8
-          suite: default
-          requires: [ delivery, danger ]
-      - kitchen/dokken-single:
-          name: default-debian-9
-          platform: debian-9
-          suite: default
-          requires: [ delivery, danger ]
-      - kitchen/dokken-single:
-          name: default-ubuntu-1604
-          platform: ubuntu-1604
-          suite: default
-          requires: [ delivery, danger ]
