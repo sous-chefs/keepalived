@@ -1,65 +1,50 @@
---- 
-lint_and_unit: 
+---
+lint_and_unit: &lint_and_unit
   - delivery
   - danger
   - lint-yaml
   - lint-markdown
-orbs: 
-  kitchen: sous-chefs/kitchen@1
+
 version: 2.1
-workflows: 
-  kitchen: 
-    jobs: 
-      - 
-        kitchen/yamllint: 
+
+orbs:
+  kitchen: sous-chefs/kitchen@1.1.2
+
+workflows:
+  kitchen:
+    jobs:
+      # Lint and Unit Test
+      - kitchen/yamllint:
           name: lint-yaml
-      - 
-        kitchen/mdlint: 
+      - kitchen/mdlint:
           name: lint-markdown
-      - 
-        kitchen/danger: 
-          context: Danger
+      - kitchen/danger:
           name: danger
-      - 
-        kitchen/delivery: 
+          context: Danger
+      - kitchen/delivery:
           name: delivery
-      - 
-        kitchen/dokken-single: 
+      - kitchen/dokken-single:
           name: default-centos-6
           platform: centos-6
-          requires: 
-            - delivery
-            - danger
           suite: default
-      - 
-        kitchen/dokken-single: 
+          requires: [ delivery, danger ]
+      - kitchen/dokken-single:
           name: default-centos-7
           platform: centos-7
-          requires: 
-            - delivery
-            - danger
           suite: default
-      - 
-        kitchen/dokken-single: 
+          requires: [ delivery, danger ]
+      - kitchen/dokken-single:
           name: default-debian-8
           platform: debian-8
-          requires: 
-            - delivery
-            - danger
           suite: default
-      - 
-        kitchen/dokken-single: 
+          requires: [ delivery, danger ]
+      - kitchen/dokken-single:
           name: default-debian-9
           platform: debian-9
-          requires: 
-            - delivery
-            - danger
           suite: default
-      - 
-        kitchen/dokken-single: 
+          requires: [ delivery, danger ]
+      - kitchen/dokken-single:
           name: default-ubuntu-1604
           platform: ubuntu-1604
-          requires: 
-            - delivery
-            - danger
           suite: default
+          requires: [ delivery, danger ]
