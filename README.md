@@ -1,6 +1,7 @@
 # keepalived Cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/keepalived.svg?branch=master)](http://travis-ci.org/chef-cookbooks/keepalived) [![Cookbook Version](https://img.shields.io/cookbook/v/keepalived.svg)](https://supermarket.chef.io/cookbooks/keepalived)
+[![Cookbook Version](https://img.shields.io/cookbook/v/keepalived.svg?style=flat)](https://supermarket.chef.io/cookbooks/keepalived)
+[![CircleCI](https://img.shields.io/circleci/project/github/sous-chefs/keepalived/master.svg)](https://circleci.com/gh/sous-chefs/keepalived)
 
 Installs keepalived and generates the configuration files, using resource-driven configuration.
 
@@ -13,11 +14,7 @@ Installs keepalived and generates the configuration files, using resource-driven
 
 ### Chef
 
-- Chef 12.1+
-
-### Cookbooks
-
-- none
+- Chef 13+
 
 ## Recommended Background Reading
 
@@ -513,10 +510,6 @@ misc_path    | String                | nil
 misc_timeout | Integer               | nil
 warmup       | Integer               | nil
 misc_dynamic | TrueClass, FalseClass | nil
-
-## Maintainers
-
-This cookbook is maintained by Chef's Community Cookbook Engineering team. Our goal is to improve cookbook quality and to aid the community in contributing to cookbooks. To learn more about our team, process, and design goals see our [team documentation](https://github.com/chef-cookbooks/community_cookbook_documentation/blob/master/COOKBOOK_TEAM.MD). To learn more about contributing to cookbooks like this see our [contributing documentation](https://github.com/chef-cookbooks/community_cookbook_documentation/blob/master/CONTRIBUTING.MD), or if you have general questions about this cookbook come chat with us in #cookbok-engineering on the [Chef Community Slack](http://community-slack.chef.io/)
 
 ## License
 
