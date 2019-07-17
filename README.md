@@ -114,6 +114,7 @@ enable_snmp_rfc                 | TrueClass, FalseClass | nil
 enable_snmp_rfcv2               | TrueClass, FalseClass | nil
 enable_snmp_rfcv3               | TrueClass, FalseClass | nil
 enable_traps                    | TrueClass, FalseClass | nil
+enable_script_security          | TrueClass, FalseClass | nil
 
 ### Static IP Addresses
 

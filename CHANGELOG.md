@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## 3.1.2 (2019-07-17)
+
+- add enable_script_security option for global_defs block
+
 ## 3.1.1 (2018-01-10)
 
 - Update README for vrrp_instance property name change
