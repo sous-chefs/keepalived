@@ -16,6 +16,7 @@ keepalived_global_defs 'global_defs' do
   vrrp_mcast_group4 '224.0.0.18'
   vrrp_mcast_group6 'ff02::12'
   enable_traps true
+  enable_script_security true
 end
 
 keepalived_static_ipaddress 'static_ipaddress' do

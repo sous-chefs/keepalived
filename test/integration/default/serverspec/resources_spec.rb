@@ -17,6 +17,10 @@ describe 'Keepalived' do
       its(:content) { should match(/router_id my_router/) }
     end
 
+    describe file('/etc/keepalived/conf.d/global_defs.conf') do
+      its(:content) { should match(/enable_script_security/) }
+    end
+
     describe file('/etc/keepalived/conf.d/static_ipaddress.conf') do
       its(:content) { should match(/192.168.1.1/) }
     end
