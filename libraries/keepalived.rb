@@ -68,6 +68,7 @@ module Keepalived
       enable_snmp_rfcv2: { kind_of: [TrueClass, FalseClass] },
       enable_snmp_rfcv3: { kind_of: [TrueClass, FalseClass] },
       enable_traps: { kind_of: [TrueClass, FalseClass] },
+      enable_script_security: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
 
