@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## UNNRELEASED
+
+- Removed unnecessary allowed_actions from the resource
+
 ## 3.1.1 (2018-01-10)
 
 - Update README for vrrp_instance property name change

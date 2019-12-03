@@ -25,8 +25,6 @@ class ChefKeepalived
   class Resource
     class Config < Chef::Resource
       resource_name :keepalived_config
-
-      allowed_actions :create, :delete
       default_action :create
 
       def self.option_properties(options)
