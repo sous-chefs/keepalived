@@ -1,0 +1,91 @@
+global_defs {
+<% if @notification_email %>
+	notification_email {
+			{ 
+				<%= @notification_email.join('\n\t\t') %>
+			}
+	}
+<% end %>
+<% if @notification_email_from %>
+	notification_email_from <%= @notification_email_from.to_s %>
+<% end %>
+<% if @smtp_server %>
+	smtp_server <%= @smtp_server.to_s %>
+<% end %>
+<% if @smtp_helo_name %>
+	smtp_helo_name <%= @smtp_helo_name.to_s %>
+<% end %>
+<% if @smtp_connect_timeout %>
+	smtp_connect_timeout <%= @smtp_connect_timeout.to_s %>
+<% end %>
+<% if @router_id %>
+	router_id <%= @router_id.to_s %>
+<% end %>
+<% if @vrrp_mcast_group4 %>
+	vrrp_mcast_group4 <%= @vrrp_mcast_group4.to_s %>
+<% end %>
+<% if @vrrp_mcast_group6 %>
+	vrrp_mcast_group6 <%= @vrrp_mcast_group6.to_s %>
+<% end %>
+<% if @vrrp_garp_master_delay %>
+	vrrp_garp_master_delay <%= @vrrp_garp_master_delay.to_s %>
+<% end %>
+<% if @vrrp_garp_master_repeat %>
+	vrrp_garp_master_repeat <%= @vrrp_garp_master_repeat.to_s %>
+<% end %>
+<% if @vrrp_garp_master_refresh %>
+	vrrp_garp_master_refresh <%= @vrrp_garp_master_refresh.to_s %>
+<% end %>
+<% if @vrrp_version %>
+	vrrp_version <%= @vrrp_version.to_s %>
+<% end %>
+<% if @vrrp_iptables %>
+	vrrp_iptables <%= @vrrp_iptables.to_s %>
+<% end %>
+<% if @vrrp_check_unicast_src %>
+	vrrp_check_unicast_src <%= @vrrp_check_unicast_src.to_s %>
+<% end %>
+<% if @vrrp_strict %>
+	vrrp_strict <%= @vrrp_strict.to_s %>
+<% end %>
+<% if @vrrp_priority %>
+	vrrp_priority <%= @vrrp_priority.to_s %>
+<% end %>
+<% if @checker_priority %>
+	checker_priority <%= @checker_priority.to_s %>
+<% end %>
+<% if @vrrp_no_swap %>
+	vrrp_no_swap <%= @vrrp_no_swap.to_s %>
+<% end %>
+<% if @checker_no_swap %>
+	checker_no_swap <%= @checker_no_swap.to_s %>
+<% end %>
+<% if @checker_no_swap %>
+	checker_no_swap <%= @checker_no_swap.to_s %>
+<% end %>
+<% if @snmp_socket %>
+	snmp_socket <%= @snmp_socket.to_s %>
+<% end %>
+<% if @enable_snmp_keepalived %>
+	enable_snmp_keepalived <%= @enable_snmp_keepalived.to_s %>
+<% end %>
+<% if @enable_snmp_checker %>
+	enable_snmp_checker <%= @enable_snmp_checker.to_s %>
+<% end %>
+<% if @enable_snmp_rfcv2 %>
+	enable_snmp_rfcv2 <%= @enable_snmp_rfcv2.to_s %>
+<% end %>
+<% if @enable_snmp_rfcv3 %>
+	enable_snmp_rfcv3 <%= @enable_snmp_rfcv3.to_s %>
+<% end %>
+<% if @enable_traps %>
+	enable_traps <%= @enable_traps.to_s %>
+<% end %>
+<% if @enable_script_security %>
+	enable_script_security <%= @enable_script_security.to_s %>
+<% end %>
+}
+
+
+
+
