@@ -47,27 +47,27 @@ class ChefKeepalived
       end
     end
 
-    class GlobalDefs < Config
-      resource_name :keepalived_global_defs
-      identity_attr :config_name
+    # class GlobalDefs < Config
+    #   resource_name :keepalived_global_defs
+    #   identity_attr :config_name
 
-      option_properties Keepalived::GlobalDefs::OPTIONS
+    #   option_properties Keepalived::GlobalDefs::OPTIONS
 
-      private
+    #   private
 
-      def config_name
-        :global_defs
-      end
+    #   def config_name
+    #     :global_defs
+    #   end
 
-      def to_conf
-        cfg = ["#{config_name} {"]
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::GlobalDefs::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ["#{config_name} {"]
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::GlobalDefs::OPTIONS
+    #     )
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
 
     class StaticIpAddress < Config
       resource_name :keepalived_static_ipaddress

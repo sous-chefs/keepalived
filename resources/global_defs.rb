@@ -31,28 +31,18 @@ property :exists,                           [TrueClass, FalseClass]
 property :content,                          String, default: lazy { to_conf }
 property :path,                             String, default: lazy { "/etc/keepalived/conf.d/#{new_resource.config_name}.conf" }
 
-
-# Join all the above options together into a single file resource (could we use template here for more legibility?)
-# put them on disk in the path area
-
-  cfg = ["#{config_name} {"]
-  cfg << Keepalived::Helpers.conf_string(
-    self, Keepalived::GlobalDefs::OPTIONS
-  )
-  cfg << '}'
-  cfg.join("\n\t")
-end
-
-template new_resource.path do
-  source 'global_defs.erb'
-  cookbook 'keepalived'
-  variables(
-    grafana: node.run_state['sous-chefs'][new_resource.instance_name]['config']
-  )
-  owner 'root'
-  group 'root'
-  mode '640'
-  action :create
+action :create do
+  template new_resource.path do
+    source 'global_defs.erb'
+    cookbook 'keepalived'
+    variables(
+      grafana: node.run_state['sous-chefs'][new_resource.instance_name]['config']
+    )
+    owner 'root'
+    group 'root'
+    mode '640'
+    action :create
+  end
 end
 
 ############## We need to have an additional options array, there are just too many options:
