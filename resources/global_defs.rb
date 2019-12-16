@@ -27,7 +27,7 @@ property :enable_snmp_rfcv2,                [TrueClass, FalseClass]
 property :enable_snmp_rfcv3,                [TrueClass, FalseClass]
 property :enable_traps,                     [TrueClass, FalseClass]
 property :enable_script_security,           [TrueClass, FalseClass]
-property :exists,                           [TrueClass, FalseClass]
+property :extra_options,                    Hash
 property :conf_directory,                   String, default: '/etc/keepalived/conf.d'
 property :config_file,                      String, default: lazy { ::File.join(conf_directory, 'global_defs.conf') }
 property :cookbook,                         String, default: 'keepalived'
@@ -40,11 +40,12 @@ property :source,                           String, default: 'global_defs.conf.e
 # This will allow us to support everything going forward
 
 action :create do
+  puts(new_resource.extra_options.keys)
   template new_resource.config_file do
     source new_resource.source
     cookbook new_resource.cookbook
     variables(
-      notification_email: new_resource.notification_email,
+#      notification_email: new_resource.notification_email,
       notification_email_from: new_resource.notification_email_from,
       smtp_server: new_resource.smtp_server,
       smtp_helo_name: new_resource.smtp_helo_name,
@@ -72,7 +73,7 @@ action :create do
       enable_snmp_rfcv3: new_resource.enable_snmp_rfcv3,
       enable_traps: new_resource.enable_traps,
       enable_script_security: new_resource.enable_script_security,
-      exists: new_resource.exists
+      extra_options: new_resource.extra_options
     )
     owner 'root'
     group 'root'

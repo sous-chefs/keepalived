@@ -7,6 +7,8 @@ include_recipe 'keepalived::default'
 
 execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
 
+global_defs_extra_options = {'foo' => 'bar', 'other' => [1,2,3] }
+
 keepalived_global_defs 'global_defs' do
   notification_email %w( root@localhost me@example.com )
   notification_email_from 'keepalived@localhost'
@@ -17,6 +19,7 @@ keepalived_global_defs 'global_defs' do
   vrrp_mcast_group6 'ff02::12'
   enable_traps true
   enable_script_security true
+  extra_options global_defs_extra_options
 end
 
 keepalived_static_ipaddress 'static_ipaddress' do

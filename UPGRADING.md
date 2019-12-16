@@ -10,6 +10,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 - Removed property `config_name`, path now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
 - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
 - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'global_defs.conf')`
 - Added property `cookbook`, defaulted to: `keepalived`

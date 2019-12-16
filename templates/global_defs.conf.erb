@@ -84,4 +84,17 @@ global_defs {
 <% if @enable_script_security %>
 	enable_script_security <%= @enable_script_security.to_s %>
 <% end %>
+<% unless @extra_options.nil? -%>
+<% @extra_options.each do | option, value | -%>
+<% if value.is_a?(Array) %>
+	<%= option %> {
+<% value.each do | array_element | %>
+		<%= array_element %>
+<% end -%>
+	}
+<% else %>
+	<%= option %> <%= value %>
+<% end -%>
+<% end -%>
+<% end -%>
 }
