@@ -45,7 +45,7 @@ action :create do
     source new_resource.source
     cookbook new_resource.cookbook
     variables(
-#      notification_email: new_resource.notification_email,
+      #      notification_email: new_resource.notification_email,
       notification_email_from: new_resource.notification_email_from,
       smtp_server: new_resource.smtp_server,
       smtp_helo_name: new_resource.smtp_helo_name,

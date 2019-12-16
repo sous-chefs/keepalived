@@ -7,7 +7,7 @@ include_recipe 'keepalived::default'
 
 execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
 
-global_defs_extra_options = {'foo' => 'bar', 'other' => [1,2,3] }
+global_defs_extra_options = { 'foo' => 'bar', 'other' => [1, 2, 3] }
 
 keepalived_global_defs 'global_defs' do
   notification_email %w( root@localhost me@example.com )
