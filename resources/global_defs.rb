@@ -1,4 +1,4 @@
-property :config_name,                      String, name_property: true
+
 property :notification_email,               Array
 property :notification_email_from,          String
 property :smtp_server,                      String
@@ -28,15 +28,51 @@ property :enable_snmp_rfcv3,                [TrueClass, FalseClass]
 property :enable_traps,                     [TrueClass, FalseClass]
 property :enable_script_security,           [TrueClass, FalseClass]
 property :exists,                           [TrueClass, FalseClass]
-property :content,                          String, default: lazy { to_conf }
-property :path,                             String, default: lazy { "/etc/keepalived/conf.d/#{new_resource.config_name}.conf" }
+property :conf_directory,                   String, default: '/etc/keepalived/conf.d'
+property :config_file,                      String, default: lazy { ::File.join(conf_directory, 'global_defs.conf') }
+property :cookbook,                         String, default: 'keepalived'
+property :source,                           String, default: 'global_defs.conf.erb'
+
+# Neeed to add cookbook and source to allow template override
+
+############## We need to have an additional options array, there are just too many options:
+### https://www.keepalived.org/manpage.html
+# This will allow us to support everything going forward
 
 action :create do
-  template new_resource.path do
-    source 'global_defs.erb'
-    cookbook 'keepalived'
+  template new_resource.config_file do
+    source new_resource.source
+    cookbook new_resource.cookbook
     variables(
-      grafana: node.run_state['sous-chefs'][new_resource.instance_name]['config']
+      notification_email: new_resource.notification_email,
+      notification_email_from: new_resource.notification_email_from,
+      smtp_server: new_resource.smtp_server,
+      smtp_helo_name: new_resource.smtp_helo_name,
+      smtp_connect_timeout: new_resource.smtp_connect_timeout,
+      router_id: new_resource.router_id,
+      vrrp_mcast_group4: new_resource.vrrp_mcast_group4,
+      vrrp_mcast_group6: new_resource.vrrp_mcast_group6,
+      vrrp_garp_master_delay: new_resource.vrrp_garp_master_delay,
+      vrrp_garp_master_repeat: new_resource.vrrp_garp_master_repeat,
+      vrrp_garp_master_refresh: new_resource.vrrp_garp_master_refresh,
+      vrrp_garp_master_refresh_repeat: new_resource.vrrp_garp_master_refresh_repeat,
+      vrrp_version: new_resource.vrrp_version,
+      vrrp_iptables: new_resource.vrrp_iptables,
+      vrrp_check_unicast_src: new_resource.vrrp_check_unicast_src,
+      vrrp_strict: new_resource.vrrp_strict,
+      vrrp_priority: new_resource.vrrp_priority,
+      checker_priority: new_resource.checker_priority,
+      vrrp_no_swap: new_resource.vrrp_no_swap,
+      checker_no_swap: new_resource.checker_no_swap,
+      snmp_socket: new_resource.snmp_socket,
+      enable_snmp_keepalived: new_resource.enable_snmp_keepalived,
+      enable_snmp_checker: new_resource.enable_snmp_checker,
+      enable_snmp_rfc: new_resource.enable_snmp_rfc,
+      enable_snmp_rfcv2: new_resource.enable_snmp_rfcv2,
+      enable_snmp_rfcv3: new_resource.enable_snmp_rfcv3,
+      enable_traps: new_resource.enable_traps,
+      enable_script_security: new_resource.enable_script_security,
+      exists: new_resource.exists
     )
     owner 'root'
     group 'root'
@@ -45,6 +81,8 @@ action :create do
   end
 end
 
-############## We need to have an additional options array, there are just too many options:
-### https://www.keepalived.org/manpage.html
-# This will allow us to support everything going forward
+action :delete do
+  file new_resource.config_file do
+    action :delete
+  end
+end
