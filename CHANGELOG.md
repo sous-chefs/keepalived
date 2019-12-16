@@ -4,6 +4,14 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## UNNRELEASED
 
+- Added testing for newer operating systems
+  - centos 8
+  - debian 10
+  - ubuntu 18.04
+- Removed testing for older operating systems
+  - centos 6
+  - debian 8
+  - ubuntu 14.04
 - Removed unnecessary allowed_actions from the resource
 - Migrated global_defs from HWRP to a Custom Resource
   - Removed property `config_name`

@@ -32,16 +32,16 @@ workflows:
           suite: default-amazonlinux
           requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: default-debian-8
-          suite: default-debian-8
+          name: default-debian-10
+          suite: default-debian-10
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: default-debian-9
           suite: default-debian-9
           requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: default-centos-6
-          suite: default-centos-6
+          name: default-centos-8
+          suite: default-centos-8
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: default-centos-7
@@ -52,8 +52,8 @@ workflows:
           suite: default-fedora-latest
           requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: default-ubuntu-1404
-          suite: default-ubuntu-1404
+          name: default-ubuntu-1804
+          suite: default-ubuntu-1804
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: default-ubuntu-1604
@@ -66,11 +66,11 @@ workflows:
       - final:
           requires:
             - default-amazonlinux
-            - default-debian-8
+            - default-debian-10
             - default-debian-9
-            - default-centos-6
+            - default-centos-8
             - default-centos-7
             - default-fedora-latest
-            - default-ubuntu-1404
+            - default-ubuntu-1804
             - default-ubuntu-1604
             - default-opensuse-leap
