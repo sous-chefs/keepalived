@@ -68,8 +68,6 @@ Property | Type   | Default
 content  | String | #to_conf
 path     | String | dynamically computed
 
-
-
 ### Static IP Addresses
 
 The `keepalived_static_ipaddress` resource is a singleton resource, which can be used to manage configuration within the `static_ipaddress` section of keepalived.conf
