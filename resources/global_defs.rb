@@ -20,7 +20,6 @@ property :checker_priority,                 Integer, equal_to: -20.upto(19).to_a
 property :vrrp_no_swap,                     [TrueClass, FalseClass]
 property :checker_no_swap,                  [TrueClass, FalseClass]
 property :snmp_socket,                      String
-property :enable_snmp_keepalived,           [TrueClass, FalseClass]
 property :enable_snmp_checker,              [TrueClass, FalseClass]
 property :enable_snmp_rfc,                  [TrueClass, FalseClass]
 property :enable_snmp_rfcv2,                [TrueClass, FalseClass]
@@ -33,19 +32,12 @@ property :config_file,                      String, default: lazy { ::File.join(
 property :cookbook,                         String, default: 'keepalived'
 property :source,                           String, default: 'global_defs.conf.erb'
 
-# Neeed to add cookbook and source to allow template override
-
-############## We need to have an additional options array, there are just too many options:
-### https://www.keepalived.org/manpage.html
-# This will allow us to support everything going forward
-
 action :create do
-  puts(new_resource.extra_options.keys)
   template new_resource.config_file do
     source new_resource.source
     cookbook new_resource.cookbook
     variables(
-      #      notification_email: new_resource.notification_email,
+      notification_email: new_resource.notification_email,
       notification_email_from: new_resource.notification_email_from,
       smtp_server: new_resource.smtp_server,
       smtp_helo_name: new_resource.smtp_helo_name,
@@ -66,7 +58,6 @@ action :create do
       vrrp_no_swap: new_resource.vrrp_no_swap,
       checker_no_swap: new_resource.checker_no_swap,
       snmp_socket: new_resource.snmp_socket,
-      enable_snmp_keepalived: new_resource.enable_snmp_keepalived,
       enable_snmp_checker: new_resource.enable_snmp_checker,
       enable_snmp_rfc: new_resource.enable_snmp_rfc,
       enable_snmp_rfcv2: new_resource.enable_snmp_rfcv2,

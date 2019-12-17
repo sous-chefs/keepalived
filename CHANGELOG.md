@@ -18,6 +18,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `path`
   - Removed property `exists`
+  - Removed property `enable_snmp_keepalived`, no longer in keepalived man page
   - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'global_defs.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`

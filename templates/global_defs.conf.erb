@@ -66,9 +66,6 @@ global_defs {
 <% if @snmp_socket %>
 	snmp_socket <%= @snmp_socket.to_s %>
 <% end %>
-<% if @enable_snmp_keepalived %>
-	enable_snmp_keepalived <%= @enable_snmp_keepalived.to_s %>
-<% end %>
 <% if @enable_snmp_checker %>
 	enable_snmp_checker <%= @enable_snmp_checker.to_s %>
 <% end %>
