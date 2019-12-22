@@ -13,7 +13,7 @@ property :vrrp_garp_master_refresh,         Integer
 property :vrrp_garp_master_refresh_repeat,  Integer
 property :vrrp_version,                     Integer, equal_to: [2, 3]
 property :vrrp_iptables,                    String
-property :vrrp_check_unicast_src,           String
+property :vrrp_check_unicast_src,           [TrueClass, FalseClass]
 property :vrrp_strict,                      [TrueClass, FalseClass]
 property :vrrp_priority,                    Integer, equal_to: -20.upto(19).to_a
 property :checker_priority,                 Integer, equal_to: -20.upto(19).to_a
@@ -68,7 +68,7 @@ action :create do
     )
     owner 'root'
     group 'root'
-    mode '640'
+    mode '0640'
     action :create
   end
 end

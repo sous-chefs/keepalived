@@ -1,9 +1,9 @@
 global_defs {
 <% if @notification_email %>
 	notification_email {
-			{ 
-				<%= @notification_email.join('\n\t\t') %>
-			}
+	<% @notification_email.each do | email | -%>
+		<%= email %>
+	<% end %>
 	}
 <% end %>
 <% if @notification_email_from %>
@@ -36,6 +36,9 @@ global_defs {
 <% if @vrrp_garp_master_refresh %>
 	vrrp_garp_master_refresh <%= @vrrp_garp_master_refresh.to_s %>
 <% end %>
+<% if @vrrp_garp_master_refresh_repeat %>
+	vrrp_garp_master_refresh_repeat <%= @vrrp_garp_master_refresh_repeat.to_s %>
+<% end %>
 <% if @vrrp_version %>
 	vrrp_version <%= @vrrp_version.to_s %>
 <% end %>
@@ -43,10 +46,10 @@ global_defs {
 	vrrp_iptables <%= @vrrp_iptables.to_s %>
 <% end %>
 <% if @vrrp_check_unicast_src %>
-	vrrp_check_unicast_src <%= @vrrp_check_unicast_src.to_s %>
+	vrrp_check_unicast_src
 <% end %>
 <% if @vrrp_strict %>
-	vrrp_strict <%= @vrrp_strict.to_s %>
+	vrrp_strict
 <% end %>
 <% if @vrrp_priority %>
 	vrrp_priority <%= @vrrp_priority.to_s %>
@@ -55,31 +58,28 @@ global_defs {
 	checker_priority <%= @checker_priority.to_s %>
 <% end %>
 <% if @vrrp_no_swap %>
-	vrrp_no_swap <%= @vrrp_no_swap.to_s %>
+	vrrp_no_swap
 <% end %>
 <% if @checker_no_swap %>
-	checker_no_swap <%= @checker_no_swap.to_s %>
-<% end %>
-<% if @checker_no_swap %>
-	checker_no_swap <%= @checker_no_swap.to_s %>
+	checker_no_swap
 <% end %>
 <% if @snmp_socket %>
 	snmp_socket <%= @snmp_socket.to_s %>
 <% end %>
 <% if @enable_snmp_checker %>
-	enable_snmp_checker <%= @enable_snmp_checker.to_s %>
+	enable_snmp_checker
 <% end %>
 <% if @enable_snmp_rfcv2 %>
-	enable_snmp_rfcv2 <%= @enable_snmp_rfcv2.to_s %>
+	enable_snmp_rfcv2
 <% end %>
 <% if @enable_snmp_rfcv3 %>
-	enable_snmp_rfcv3 <%= @enable_snmp_rfcv3.to_s %>
+	enable_snmp_rfcv3
 <% end %>
 <% if @enable_traps %>
-	enable_traps <%= @enable_traps.to_s %>
+	enable_traps
 <% end %>
 <% if @enable_script_security %>
-	enable_script_security <%= @enable_script_security.to_s %>
+	enable_script_security
 <% end %>
 <% unless @extra_options.nil? -%>
 <% @extra_options.each do | option, value | -%>
