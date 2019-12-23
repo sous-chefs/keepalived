@@ -21,9 +21,9 @@ platforms:
       image: dokken/amazonlinux
       pid_one_command: /sbin/init
 
-  - name: debian-8
+  - name: debian-10
     driver:
-      image: dokken/debian-8
+      image: dokken/debian-10
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
@@ -35,10 +35,10 @@ platforms:
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
 
-  - name: centos-6
+  - name: centos-8
     driver:
-      image: dokken/centos-6
-      pid_one_command: /sbin/init
+      image: dokken/centos-8
+      pid_one_command: /usr/lib/systemd/systemd
 
   - name: centos-7
     driver:
@@ -50,10 +50,10 @@ platforms:
       image: dokken/fedora-latest
       pid_one_command: /usr/lib/systemd/systemd
 
-  - name: ubuntu-14.04
+  - name: ubuntu-18.04
     driver:
-      image: dokken/ubuntu-14.04
-      pid_one_command: /sbin/init
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
 

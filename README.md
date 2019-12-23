@@ -68,54 +68,6 @@ Property | Type   | Default
 content  | String | #to_conf
 path     | String | dynamically computed
 
-### Global Defs
-
-The `keepalived_global_defs` resource is a singleton resource, which can be used to manage configuration within the `global_defs` section of keepalived.conf.
-
-Example:
-
-```ruby
-keepalived_global_defs 'global_defs' do
-  notification_email %w( sys-admin@example.com net-admin@example.com )
-  notification_email_from "keepalived@#{node.name}"
-  router_id node.name
-  enable_traps true
-end
-```
-
-Supported properties:
-
-Property                        | Type                  | Default
-------------------------------- | --------------------- | -------
-notification_email              | Array                 | nil
-notification_email_from         | String                | nil
-smtp_server                     | String                | nil
-smtp_helo_name                  | String                | nil
-smtp_connect_timeout            | Integer               | nil
-router_id                       | String                | nil
-vrrp_mcast_group4               | String                | nil
-vrrp_mcast_group6               | String                | nil
-vrrp_garp_master_delay          | Integer               | nil
-vrrp_garp_master_repeat         | Integer               | nil
-vrrp_garp_master_refresh        | Integer               | nil
-vrrp_garp_master_refresh_repeat | Integer               | nil
-vrrp_version                    | Integer (2 or 3)      | nil
-vrrp_iptables                   | String                | nil
-vrrp_check_unicast_src          | String                | nil
-vrrp_strict                     | TrueClass, FalseClass | nil
-vrrp_priority                   | Integer -20->20       | nil
-checker_priority                | Integer -20->20       | nil
-vrrp_no_swap                    | TrueClass, FalseClass | nil
-checker_no_swap                 | TrueClass, FalseClass | nil
-snmp_socket                     | String                | nil
-enable_snmp_keepalived          | TrueClass, FalseClass | nil
-enable_snmp_checker             | TrueClass, FalseClass | nil
-enable_snmp_rfc                 | TrueClass, FalseClass | nil
-enable_snmp_rfcv2               | TrueClass, FalseClass | nil
-enable_snmp_rfcv3               | TrueClass, FalseClass | nil
-enable_traps                    | TrueClass, FalseClass | nil
-enable_script_security          | TrueClass, FalseClass | nil
-
 ### Static IP Addresses
 
 The `keepalived_static_ipaddress` resource is a singleton resource, which can be used to manage configuration within the `static_ipaddress` section of keepalived.conf

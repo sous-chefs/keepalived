@@ -12,29 +12,6 @@ describe ChefKeepalived::Resource::Config do
   end
 end
 
-describe ChefKeepalived::Resource::GlobalDefs do
-  let(:global_defs) do
-    ChefKeepalived::Resource::GlobalDefs.new('global_defs').tap do |r|
-      r.notification_email %w( me@example.com root@localhost )
-      r.notification_email_from 'keepalived@localhost'
-      r.smtp_server '127.0.0.1'
-      r.smtp_connect_timeout 30
-      r.router_id 'my_router_id'
-      r.vrrp_mcast_group4 '224.0.0.18'
-      r.vrrp_mcast_group6 'ff02::12'
-      r.enable_traps true
-    end
-  end
-
-  let(:global_defs_string) do
-    "global_defs {\n\tnotification_email {\n\t\tme@example.com\n\t\troot@localhost\n\t\t}\n\tnotification_email_from keepalived@localhost\n\tsmtp_server 127.0.0.1\n\tsmtp_connect_timeout 30\n\trouter_id my_router_id\n\tvrrp_mcast_group4 224.0.0.18\n\tvrrp_mcast_group6 ff02::12\n\tenable_traps\n\t}"
-  end
-
-  it 'sets a proper global_defs configuration' do
-    expect(global_defs.content).to eq global_defs_string
-  end
-end
-
 describe ChefKeepalived::Resource::StaticIpAddress do
   let(:static_ipaddress) do
     ChefKeepalived::Resource::StaticIpAddress.new('static_ipaddress').tap do |r|

@@ -4,7 +4,26 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## UNNRELEASED
 
+- Added testing for newer operating systems
+  - centos 8
+  - debian 10
+  - ubuntu 18.04
+- Removed testing for older operating systems
+  - centos 6
+  - debian 8
+  - ubuntu 14.04
 - Removed unnecessary allowed_actions from the resource
+- Migrated global_defs from HWRP to a Custom Resource
+  - Removed property `config_name`
+  - Removed property `content`, this is now build up from the supplied properties
+  - Removed property `path`
+  - Removed property `exists`
+  - Removed property `enable_snmp_keepalived`, no longer in keepalived man page
+  - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
+  - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'global_defs.conf')`
+  - Added property `cookbook`, defaulted to: `keepalived`
+  - Added property `source`, defaulted to `global_defs.conf.erb`
+  - Added property `extra_options`
 
 ## 3.1.1 (2018-01-10)
 
