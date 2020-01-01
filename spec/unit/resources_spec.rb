@@ -31,25 +31,6 @@ describe ChefKeepalived::Resource::StaticIpAddress do
   end
 end
 
-describe ChefKeepalived::Resource::StaticRoutes do
-  let(:static_routes) do
-    ChefKeepalived::Resource::StaticRoutes.new('static_routes').tap do |r|
-      r.routes [
-        '192.168.2.0/24 via 192.168.1.100 dev eth0',
-        '192.168.3.0/24 via 192.168.1.200 dev eth0',
-      ]
-    end
-  end
-
-  let(:static_routes_string) do
-    "static_routes {\n\t192.168.2.0/24 via 192.168.1.100 dev eth0\n\t192.168.3.0/24 via 192.168.1.200 dev eth0\n\t}"
-  end
-
-  it 'sets a proper static_routes configuration' do
-    expect(static_routes.content).to eq static_routes_string
-  end
-end
-
 describe ChefKeepalived::Resource::VrrpSyncGroup do
   let(:vrrp_sync_group) do
     ChefKeepalived::Resource::VrrpSyncGroup.new('VG_1').tap do |r|
