@@ -12,25 +12,6 @@ describe ChefKeepalived::Resource::Config do
   end
 end
 
-describe ChefKeepalived::Resource::StaticIpAddress do
-  let(:static_ipaddress) do
-    ChefKeepalived::Resource::StaticIpAddress.new('static_ipaddress').tap do |r|
-      r.addresses [
-        '192.168.1.98/24 dev eth0 scope global',
-        '192.168.1.99/24 dev eth0 scope global',
-      ]
-    end
-  end
-
-  let(:static_ipaddress_string) do
-    "static_ipaddress {\n\t192.168.1.98/24 dev eth0 scope global\n\t192.168.1.99/24 dev eth0 scope global\n\t}"
-  end
-
-  it 'sets a proper static_ipaddress configuration' do
-    expect(static_ipaddress.content).to eq static_ipaddress_string
-  end
-end
-
 describe ChefKeepalived::Resource::StaticRoutes do
   let(:static_routes) do
     ChefKeepalived::Resource::StaticRoutes.new('static_routes').tap do |r|

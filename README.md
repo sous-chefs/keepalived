@@ -68,27 +68,6 @@ Property | Type   | Default
 content  | String | #to_conf
 path     | String | dynamically computed
 
-### Static IP Addresses
-
-The `keepalived_static_ipaddress` resource is a singleton resource, which can be used to manage configuration within the `static_ipaddress` section of keepalived.conf
-
-Example:
-
-```ruby
-keepalived_static_ipaddress 'static_ipaddress' do
-  addresses [
-    '192.168.1.2/24 dev eth0 scope global',
-    '192.168.1.3/24 dev eth0 scope global'
-  ]
-end
-```
-
-Supported properties:
-
-Property  | Type  | Default
---------- | ----- | -------
-addresses | Array | nil
-
 ### Static Routes
 
 The `keepalived_static_routes` resource is a singleton resource, which can be used to manage configuration within the `static_routes` section of keepalived.conf.

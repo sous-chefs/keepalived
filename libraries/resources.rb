@@ -47,25 +47,25 @@ class ChefKeepalived
       end
     end
 
-    class StaticIpAddress < Config
-      resource_name :keepalived_static_ipaddress
-      identity_attr :config_name
+    # class StaticIpAddress < Config
+    #   resource_name :keepalived_static_ipaddress
+    #   identity_attr :config_name
 
-      property :addresses, kind_of: Array, required: true, desired_state: false
+    #   property :addresses, kind_of: Array, required: true, desired_state: false
 
-      private
+    #   private
 
-      def config_name
-        :static_ipaddress
-      end
+    #   def config_name
+    #     :static_ipaddress
+    #   end
 
-      def to_conf
-        cfg = ["#{config_name} {"]
-        cfg << addresses.join("\n\t")
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ["#{config_name} {"]
+    #     cfg << addresses.join("\n\t")
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
 
     class StaticRoutes < Config
       resource_name :keepalived_static_routes

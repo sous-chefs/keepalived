@@ -16,3 +16,10 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'global_defs.conf')`
 - Added property `cookbook`, defaulted to: `keepalived`
 - Added property `source`, defaulted to `global_defs.conf.erb`
+
+### keepalived_static_ipaddress
+
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, 'static_ipaddress.conf')`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `static_ipaddress.conf.erb`

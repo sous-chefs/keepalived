@@ -23,8 +23,6 @@ module Keepalived
   HEALTH_PATH ||= "#{ROOT_PATH}/checks.d".freeze
   RESOURCES ||= %w(
     config
-    global_defs
-    static_ipaddress
     static_routes
     vrrp_sync_group
     vrrp_script
@@ -38,39 +36,6 @@ module Keepalived
     smtp_check
     misc_check
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
-
-  module GlobalDefs
-    OPTIONS ||= {
-      notification_email: { kind_of: Array },
-      notification_email_from: { kind_of: String },
-      smtp_server: { kind_of: String },
-      smtp_helo_name: { kind_of: String },
-      smtp_connect_timeout: { kind_of: Integer },
-      router_id: { kind_of: String },
-      vrrp_mcast_group4: { kind_of: String },
-      vrrp_mcast_group6: { kind_of: String },
-      vrrp_garp_master_delay: { kind_of: Integer },
-      vrrp_garp_master_repeat: { kind_of: Integer },
-      vrrp_garp_master_refresh: { kind_of: Integer },
-      vrrp_garp_master_refresh_repeat: { kind_of: Integer },
-      vrrp_version: { kind_of: Integer, equal_to: [2, 3] },
-      vrrp_iptables: { kind_of: String },
-      vrrp_check_unicast_src: { kind_of: String },
-      vrrp_strict: { kind_of: [TrueClass, FalseClass] },
-      vrrp_priority: { kind_of: Integer, equal_to: -20.upto(19).to_a },
-      checker_priority: { kind_of: Integer, equal_to: -20.upto(19).to_a },
-      vrrp_no_swap: { kind_of: [TrueClass, FalseClass] },
-      checker_no_swap: { kind_of: [TrueClass, FalseClass] },
-      snmp_socket: { kind_of: String },
-      enable_snmp_keepalived: { kind_of: [TrueClass, FalseClass] },
-      enable_snmp_checker: { kind_of: [TrueClass, FalseClass] },
-      enable_snmp_rfc: { kind_of: [TrueClass, FalseClass] },
-      enable_snmp_rfcv2: { kind_of: [TrueClass, FalseClass] },
-      enable_snmp_rfcv3: { kind_of: [TrueClass, FalseClass] },
-      enable_traps: { kind_of: [TrueClass, FalseClass] },
-      enable_script_security: { kind_of: [TrueClass, FalseClass] },
-    }.freeze
-  end
 
   module Notify
     OPTIONS ||= {
