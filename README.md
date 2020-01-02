@@ -68,27 +68,6 @@ Property | Type   | Default
 content  | String | #to_conf
 path     | String | dynamically computed
 
-### Static Routes
-
-The `keepalived_static_routes` resource is a singleton resource, which can be used to manage configuration within the `static_routes` section of keepalived.conf.
-
-Example:
-
-```ruby
-keepalived_static_routes 'static_routes' do
-  routes [
-    '192.168.2.0/24 via 192.168.1.100 dev eth0',
-    '192.168.3.0/24 via 192.168.1.100 dev eth0'
-  ]
-end
-```
-
-Supported properties:
-
-Property | Type  | Default
--------- | ----- | -------
-routes   | Array | nil
-
 ### VRRP Sync Groups
 
 The `keepalived_vrrp_sync_group` resource can be used to configure VRRP Sync Groups (groups of resources that fail over together).

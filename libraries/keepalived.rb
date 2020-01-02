@@ -23,7 +23,6 @@ module Keepalived
   HEALTH_PATH ||= "#{ROOT_PATH}/checks.d".freeze
   RESOURCES ||= %w(
     config
-    static_routes
     vrrp_sync_group
     vrrp_script
     vrrp_instance

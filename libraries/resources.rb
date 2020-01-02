@@ -47,26 +47,6 @@ class ChefKeepalived
       end
     end
 
-    class StaticRoutes < Config
-      resource_name :keepalived_static_routes
-      identity_attr :config_name
-
-      property :routes, kind_of: Array, required: true, desired_state: false
-
-      private
-
-      def config_name
-        :static_routes
-      end
-
-      def to_conf
-        cfg = ["#{config_name} {"]
-        cfg << routes.join("\n\t")
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
-
     class VrrpSyncGroup < Config
       resource_name :keepalived_vrrp_sync_group
 
