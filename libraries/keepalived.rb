@@ -25,7 +25,6 @@ module Keepalived
     config
     global_defs
     static_ipaddress
-    static_routes
     vrrp_sync_group
     vrrp_script
     vrrp_instance
