@@ -23,3 +23,5 @@ service 'keepalived' do
   subscribes :restart, 'file[keepalived.conf]', :delayed
   subscribes :restart, 'file[keepalived-options]', :delayed
 end
+
+Chef::Log.warn('Recipes will be deprecated in the next release')

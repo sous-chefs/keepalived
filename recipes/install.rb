@@ -18,3 +18,5 @@
 #
 
 package node['keepalived']['package']
+
+Chef::Log.warn('Recipes will be deprecated in the next release')
