@@ -5,6 +5,7 @@ This file is used to list changes made in each version of the keepalived cookboo
 ## UNNRELEASED
 
 - Removed unnecessary allowed_actions from the resource
+- Migrated to github actions
 
 ## 3.1.1 (2018-01-10)
 
