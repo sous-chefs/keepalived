@@ -51,7 +51,6 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `vrrp_sync_group.conf.erb`
 
-
 ## 3.1.1 (2018-01-10)
 
 - Update README for vrrp_instance property name change
