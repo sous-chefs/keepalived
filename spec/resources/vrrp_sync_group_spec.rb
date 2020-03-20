@@ -3,7 +3,7 @@ require 'spec_helper'
 # see documentation here: https://www.keepalived.org/manpage.html
 
 def vrrp_sync_group_file_name(name)
-  return "/etc/keepalived/conf.d/keepalived_vrrp_sync_group__#{name}__.conf"
+  "/etc/keepalived/conf.d/keepalived_vrrp_sync_group__#{name}__.conf"
 end
 
 platforms = %w(debian ubuntu centos)
@@ -67,22 +67,20 @@ platforms.each do |platform|
       end
 
       it('should render a config file with the notify_master correctly') do
-        is_expected.to render_file(file_name).with_content(/notify_master\s\/path\/to_master\.sh/)
+        is_expected.to render_file(file_name).with_content(%r{notify_master\s/path/to_master\.sh})
       end
 
       it('should render a config file with the notify_backup correctly') do
-        is_expected.to render_file(file_name).with_content(/notify_backup\s\/path\/to_backup\.sh/)
+        is_expected.to render_file(file_name).with_content(%r{notify_backup\s/path/to_backup\.sh})
       end
 
       it('should render a config file with the notify_fault correctly') do
-        is_expected.to render_file(file_name).with_content(/notify_fault\s\/path\/fault\.sh/)
+        is_expected.to render_file(file_name).with_content(%r{notify_fault\s/path/fault\.sh})
       end
 
       it('should render a config file with the notify correctly') do
-        is_expected.to render_file(file_name).with_content(/notify\s\/path\/notify\.sh/)
+        is_expected.to render_file(file_name).with_content(%r{notify\s/path/notify\.sh})
       end
     end
-
-
   end
 end
