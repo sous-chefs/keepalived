@@ -41,6 +41,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'static_routes.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `static_routes.conf.erb`
+- Migrated to github actions
 
 ## 3.1.1 (2018-01-10)
 
