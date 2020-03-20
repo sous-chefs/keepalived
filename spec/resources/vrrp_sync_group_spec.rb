@@ -2,26 +2,31 @@ require 'spec_helper'
 
 # see documentation here: https://www.keepalived.org/manpage.html
 
-global_defs_config_file = '/etc/keepalived/conf.d/global_defs.conf'
+def vrrp_sync_group_file_name(name)
+  return "/etc/keepalived/conf.d/keepalived_vrrp_sync_group__#{name}__.conf"
+end
 
 platforms = %w(debian ubuntu centos)
 platforms.each do |platform|
-  describe "keepalived_global_defs on #{platform}" do
-    step_into :keepalived_global_defs
+  describe "keepalived_vrrp_sync_group on #{platform}" do
+    step_into :keepalived_vrrp_sync_group
     platform platform
 
     context 'Create a base config correctly' do
+      group_name = 'foobar'
+      file_name = vrrp_sync_group_file_name(group_name)
       recipe do
-        keepalived_global_defs 'global_defs' do
+        keepalived_vrrp_sync_group group_name do
+          group %w(foo)
         end
       end
 
       it('should render an empty config file') do
-        is_expected.to render_file(global_defs_config_file).with_content(/global_defs\s+\{.*\}/m)
+        is_expected.to render_file(file_name).with_content(/#{group_name}\s+\{.*\}/m)
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(global_defs_config_file).with(
+        expect(chef_run).to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -29,117 +34,55 @@ platforms.each do |platform|
       end
     end
 
-    context 'Create a config file with notification settings' do
+    context 'Create groups and smtp settings correctly' do
+      group_name = 'foobar'
+      file_name = vrrp_sync_group_file_name(group_name)
       recipe do
-        keepalived_global_defs 'global_defs' do
-          notification_email_from 'root@mynode'
-          notification_email %w(team@example.com team2@example.com)
-          smtp_server 'mysmtpserver'
-          smtp_helo_name 'mynode'
-          smtp_connect_timeout 10
+        keepalived_vrrp_sync_group group_name do
+          group %w(inside_network outside_network)
+          smtp_alert true
         end
       end
 
-      describe 'should render config file with the notification sections' do
-        it {
-          is_expected.to render_file(global_defs_config_file)
-            .with_content(/notification_email_from root\@mynode/)
-            .with_content(/notification_email\s+\{\s+team\@example\.com\s+team2\@example\.com\s+\}/m)
-            .with_content(/smtp_server mysmtpserver/)
-            .with_content(/smtp_helo_name mynode/)
-            .with_content(/smtp_connect_timeout 10/)
-        }
+      it('should render a config file with the groups correctly') do
+        is_expected.to render_file(file_name).with_content(/group\s\{\s+inside_network\s+outside_network\s+\}/m)
+      end
+
+      it('should render a config file with the smtp_alert set to true') do
+        is_expected.to render_file(file_name).with_content(/smtp_alert\strue/)
       end
     end
 
-    context 'Create a config with vrrp settings' do
+    context 'Create notifies correctly' do
+      group_name = 'foobar'
+      file_name = vrrp_sync_group_file_name(group_name)
       recipe do
-        keepalived_global_defs 'global_defs' do
-          router_id 'mynode'
-          vrrp_mcast_group4 '224.0.0.18'
-          vrrp_mcast_group6 'ff02::12'
-          vrrp_garp_master_delay 10
-          vrrp_garp_master_repeat 1
-          vrrp_garp_master_refresh 60
-          vrrp_garp_master_refresh_repeat 2
-          vrrp_version 2
-          vrrp_iptables 'customName'
-          vrrp_check_unicast_src true
-          vrrp_strict true
-          vrrp_priority 3
-          checker_priority 4
-          vrrp_no_swap true
-          checker_no_swap true
+        keepalived_vrrp_sync_group group_name do
+          group %w(foo)
+          notify_master '/path/to_master.sh'
+          notify_backup '/path/to_backup.sh'
+          notify_fault  '/path/fault.sh'
+          notify        '/path/notify.sh'
         end
       end
 
-      describe 'should render config file with the vrrp sections' do
-        it {
-          is_expected.to render_file(global_defs_config_file)
-            .with_content(/router_id mynode/)
-            .with_content(/vrrp_mcast_group4 224\.0\.0\.18/)
-            .with_content(/vrrp_mcast_group6 ff02::12/)
-            .with_content(/vrrp_garp_master_delay 10/)
-            .with_content(/vrrp_garp_master_repeat 1/)
-            .with_content(/vrrp_garp_master_refresh 60/)
-            .with_content(/vrrp_garp_master_refresh_repeat 2/)
-            .with_content(/vrrp_version 2/)
-            .with_content(/vrrp_iptables customName/)
-            .with_content(/vrrp_check_unicast_src/)
-            .with_content(/vrrp_strict/)
-            .with_content(/vrrp_priority 3/)
-            .with_content(/checker_priority 4/)
-            .with_content(/vrrp_no_swap/)
-            .with_content(/checker_no_swap/)
-        }
+      it('should render a config file with the notify_master correctly') do
+        is_expected.to render_file(file_name).with_content(/notify_master\s\/path\/to_master\.sh/)
+      end
+
+      it('should render a config file with the notify_backup correctly') do
+        is_expected.to render_file(file_name).with_content(/notify_backup\s\/path\/to_backup\.sh/)
+      end
+
+      it('should render a config file with the notify_fault correctly') do
+        is_expected.to render_file(file_name).with_content(/notify_fault\s\/path\/fault\.sh/)
+      end
+
+      it('should render a config file with the notify correctly') do
+        is_expected.to render_file(file_name).with_content(/notify\s\/path\/notify\.sh/)
       end
     end
 
-    context 'Create a config with snmp settings' do
-      recipe do
-        keepalived_global_defs 'global_defs' do
-          snmp_socket 'unix:/var/agentx/master'
-          enable_snmp_checker true
-          enable_snmp_rfc true
-          enable_snmp_rfcv2 true
-          enable_snmp_rfcv3 true
-          enable_traps true
-          enable_script_security true
-        end
-      end
 
-      describe 'should render config file with the snmp sections' do
-        it {
-          is_expected.to render_file(global_defs_config_file)
-            .with_content(%r{snmp_socket unix\:/var/agentx/master})
-            .with_content(/enable_snmp_checker/)
-            .with_content(/enable_snmp_rfc/)
-            .with_content(/enable_snmp_rfcv2/)
-            .with_content(/enable_snmp_rfcv3/)
-            .with_content(/enable_traps/)
-            .with_content(/enable_script_security/)
-        }
-      end
-    end
-
-    context 'Create a config with custom settings' do
-      recipe do
-        global_defs_extra_options = {
-          listOfStuff: %w(foo bar),
-          setting: 1,
-        }
-        keepalived_global_defs 'global_defs' do
-          extra_options global_defs_extra_options
-        end
-      end
-
-      describe 'should render config file with the snmp sections' do
-        it {
-          is_expected.to render_file(global_defs_config_file)
-            .with_content(/listOfStuff\s+\{\s+foo\s+bar\s+\}/m)
-            .with_content(/setting 1/)
-        }
-      end
-    end
   end
 end
