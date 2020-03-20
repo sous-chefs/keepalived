@@ -68,31 +68,6 @@ Property | Type   | Default
 content  | String | #to_conf
 path     | String | dynamically computed
 
-### VRRP Sync Groups
-
-The `keepalived_vrrp_sync_group` resource can be used to configure VRRP Sync Groups (groups of resources that fail over together).
-
-Example:
-
-```ruby
-keepalived_vrrp_sync_group 'VG_1' do
-  group %w( inside_network outside_network )
-  notify '/usr/local/bin/keepalived-notify.sh'
-  smtp_alert true
-end
-```
-
-Supported properties:
-
-Property      | Type                 | Default
-------------- | -------------------- | -------
-group         | Array                | nil
-notify_master | String               | nil
-notify_backup | String               | nil
-notify_fault  | String               | nil
-notify        | String               | nil
-smtp_alert    | TrueClass,FalseClass | nil
-
 ### VRRP Track Scripts
 
 The `keepalived_vrrp_script` resource can be used to configure a track script via a `vrrp_script` configuration block.
