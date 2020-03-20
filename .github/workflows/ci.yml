@@ -42,8 +42,11 @@ jobs:
         os:
           - 'amazonlinux'
           - 'debian-9'
+          - 'debian-10'
           - 'ubuntu-1604'
+          - 'ubuntu-1804'
           - 'centos-7'
+          - 'centos-8'
         suite:
           - 'default'
       fail-fast: false
