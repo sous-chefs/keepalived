@@ -60,3 +60,5 @@ file File.join(Keepalived::CONFIG_PATH, 'empty.conf') do
   group 'root'
   mode '0640'
 end
+
+Chef::Log.warn('Recipes will be deprecated in the next release')
