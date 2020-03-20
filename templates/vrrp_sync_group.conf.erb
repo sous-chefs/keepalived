@@ -1,0 +1,24 @@
+vrrp_sync_group <%= @group_name %> {
+<% if @smtp_alert %>
+  smtp_alert <%= @smtp_alert.to_s %>
+<% end %>
+<% if @groups %>
+  group {
+  <% @groups.each do | group | -%>
+    <%= group %>
+  <% end %>
+  }
+<% end %>
+<% if @notify_master %>
+  notify_master <%= @notify_master.to_s %>
+<% end %>
+<% if @notify_backup %>
+  notify_backup <%= @notify_backup.to_s %>
+<% end %>
+<% if @notify_fault %>
+  notify_fault <%= @notify_fault.to_s %>
+<% end %>
+<% if @notify %>
+  notify <%= @notify.to_s %>
+<% end %>
+}
