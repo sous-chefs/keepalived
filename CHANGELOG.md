@@ -5,13 +5,17 @@ This file is used to list changes made in each version of the keepalived cookboo
 ## UNNRELEASED
 
 - Added testing for newer operating systems
+  - amazonlinux-2
   - centos 8
   - debian 10
   - ubuntu 18.04
+  - ubuntu 20.04
 - Removed testing for older operating systems
+  - amazonlinux
   - centos 6
   - debian 8
   - ubuntu 14.04
+  - ubuntu 16.04
 - Removed unnecessary allowed_actions from the resource
 - Migrated to github actions for CI testing
 - Migrated global_defs from HWRP to a Custom Resource

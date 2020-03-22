@@ -23,7 +23,6 @@ module Keepalived
   HEALTH_PATH ||= "#{ROOT_PATH}/checks.d".freeze
   RESOURCES ||= %w(
     config
-
     vrrp_script
     vrrp_instance
     virtual_server_group
@@ -35,7 +34,6 @@ module Keepalived
     smtp_check
     misc_check
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
-  # vrrp_sync_group
 
   module Notify
     OPTIONS ||= {
@@ -46,12 +44,6 @@ module Keepalived
       smtp_alert: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
-
-  # module VrrpSyncGroup
-  #   OPTIONS ||= Notify::OPTIONS.merge(
-  #     group: { kind_of: Array, required: true }
-  #   ).freeze
-  # end
 
   module VrrpScript
     OPTIONS ||= {
