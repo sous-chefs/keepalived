@@ -12,28 +12,6 @@ describe ChefKeepalived::Resource::Config do
   end
 end
 
-describe ChefKeepalived::Resource::VrrpScript do
-  let(:vrrp_script) do
-    ChefKeepalived::Resource::VrrpScript.new('chk_haproxy').tap do |r|
-      r.script '/usr/local/bin/chk-haproxy.sh'
-      r.interval 2
-      r.weight 50
-    end
-  end
-
-  let(:vrrp_script_string) do
-    "vrrp_script chk_haproxy {\n\tscript /usr/local/bin/chk-haproxy.sh\n\tinterval 2\n\tweight 50\n\t}"
-  end
-
-  it 'sets a proper vrrp_script configuration' do
-    expect(vrrp_script.content).to eq vrrp_script_string
-  end
-
-  it 'overrides the path to force the load order' do
-    expect(vrrp_script.path).to eq('/etc/keepalived/conf.d/00_keepalived_vrrp_script__chk_haproxy__.conf')
-  end
-end
-
 describe ChefKeepalived::Resource::VrrpInstance do
   let(:vrrp_instance) do
     ChefKeepalived::Resource::VrrpInstance.new('inside_network').tap do |r|

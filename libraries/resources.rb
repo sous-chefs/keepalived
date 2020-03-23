@@ -31,7 +31,7 @@ class ChefKeepalived
         options.each_pair { |n, c| property n, c.merge(desired_state: false) }
       end
 
-      property :exists, [TrueClass, FalseClass]
+      property :exists, [true, false]
       property :content, String, default: lazy { to_conf }
       property :path, String, desired_state: false,
                               default: lazy { "#{Keepalived::CONFIG_PATH}/#{config_name}.conf" }
@@ -44,30 +44,6 @@ class ChefKeepalived
 
       def to_conf
         raise NotImplementedError
-      end
-    end
-
-    class VrrpScript < Config
-      resource_name :keepalived_vrrp_script
-
-      option_properties Keepalived::VrrpScript::OPTIONS
-
-      private
-
-      # override name to force early load-order
-      # so it's defined before vrrp_instance(s)
-      # which may reference it via track_script
-      def config_name
-        "00_#{super}"
-      end
-
-      def to_conf
-        cfg = ["vrrp_script #{name} {"]
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::VrrpScript::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
       end
     end
 

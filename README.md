@@ -1,7 +1,7 @@
 # keepalived Cookbook
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/keepalived.svg)](https://supermarket.chef.io/cookbooks/keepalived)
-[![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/keepalived/master.svg)](https://circleci.com/gh/sous-chefs/keepalived)
+[![CI State](https://github.com/sous-chefs/keepalived/workflows/ci/badge.svg)](https://github.com/sous-chefs/keepalived/actions?query=workflow%3Aci)
 [![OpenCollective](https://opencollective.com/sous-chefs/backers/badge.svg)](#backers)
 [![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -67,31 +67,6 @@ Property | Type   | Default
 -------- | ------ | --------
 content  | String | #to_conf
 path     | String | dynamically computed
-
-### VRRP Track Scripts
-
-The `keepalived_vrrp_script` resource can be used to configure a track script via a `vrrp_script` configuration block.
-
-Example:
-
-```ruby
-keepalived_vrrp_script 'chk_haproxy' do
-  interval 2
-  weight 50
-  script '"/usr/bin/killall -0 haproxy"'
-end
-```
-
-Supported properties:
-
-Property | Type    | Default
--------- | ------- | -------
-script   | String  | nil
-interval | Integer | nil
-timeout  | Integer | nil
-weight   | Integer | nil
-fall     | Integer | nil
-rise     | Integer | nil
 
 ### VRRP Instances
 

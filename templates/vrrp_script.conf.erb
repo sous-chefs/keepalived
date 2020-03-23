@@ -1,0 +1,21 @@
+vrrp_sync_group <%= @script_name %> {
+  script <%= @script.to_s %>
+<% if @interval %>
+  interval <%= @interval.to_s %>
+<% end %>
+<% if @timeout %>
+  timeout <%= @timeout.to_s %>
+<% end %>
+<% if @weight %>
+  weight <%= @weight.to_s %>
+<% end %>
+<% if @rise %>
+  rise <%= @rise.to_s %>
+<% end %>
+<% if @fall %>
+  fall <%= @fall.to_s %>
+<% end %>
+<% if @user %>
+  user <%= @user.to_s %>
+<% end %>
+}
