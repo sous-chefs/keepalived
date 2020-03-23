@@ -12,27 +12,6 @@ describe ChefKeepalived::Resource::Config do
   end
 end
 
-describe ChefKeepalived::Resource::VrrpSyncGroup do
-  let(:vrrp_sync_group) do
-    ChefKeepalived::Resource::VrrpSyncGroup.new('VG_1').tap do |r|
-      r.group %w( inside_network outside_network )
-      r.notify_master '/usr/local/bin/keepalived-notify-master.sh'
-      r.notify_backup '/usr/local/bin/keepalived-notify-backup.sh'
-      r.notify_fault '/usr/local/bin/keepalived-notify-fault.sh'
-      r.notify '/usr/local/bin/keepalived-notify.sh'
-      r.smtp_alert true
-    end
-  end
-
-  let(:vrrp_sync_group_string) do
-    "vrrp_sync_group VG_1 {\n\tnotify_master /usr/local/bin/keepalived-notify-master.sh\n\tnotify_backup /usr/local/bin/keepalived-notify-backup.sh\n\tnotify_fault /usr/local/bin/keepalived-notify-fault.sh\n\tnotify /usr/local/bin/keepalived-notify.sh\n\tsmtp_alert\n\tgroup {\n\t\tinside_network\n\t\toutside_network\n\t\t}\n\t}"
-  end
-
-  it 'sets a proper vrrp_sync_group configuration' do
-    expect(vrrp_sync_group.content).to eq vrrp_sync_group_string
-  end
-end
-
 describe ChefKeepalived::Resource::VrrpScript do
   let(:vrrp_script) do
     ChefKeepalived::Resource::VrrpScript.new('chk_haproxy').tap do |r|

@@ -5,14 +5,19 @@ This file is used to list changes made in each version of the keepalived cookboo
 ## UNNRELEASED
 
 - Added testing for newer operating systems
+  - amazonlinux-2
   - centos 8
   - debian 10
   - ubuntu 18.04
+  - ubuntu 20.04
 - Removed testing for older operating systems
+  - amazonlinux
   - centos 6
   - debian 8
   - ubuntu 14.04
+  - ubuntu 16.04
 - Removed unnecessary allowed_actions from the resource
+- Migrated to github actions for CI testing
 - Migrated global_defs from HWRP to a Custom Resource
   - Removed property `config_name`
   - Removed property `content`, this is now build up from the supplied properties
@@ -41,7 +46,14 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'static_routes.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `static_routes.conf.erb`
-- Migrated to github actions
+- Migrated vrrp_sync_group from HWRP to a Custom Resource
+  - Removed property `config_name`, path now will be the full name
+  - Removed property `content`, this is now build up from the supplied properties
+  - Removed property `exists`
+  - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
+  - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'keepalived_vrrp_sync_group__#{name}__.conf')`
+  - Added property `cookbook`, defaulted to: `keepalived`
+  - Added property `source`, defaulted to `vrrp_sync_group.conf.erb`
 
 ## 3.1.1 (2018-01-10)
 

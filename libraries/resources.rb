@@ -47,23 +47,6 @@ class ChefKeepalived
       end
     end
 
-    class VrrpSyncGroup < Config
-      resource_name :keepalived_vrrp_sync_group
-
-      option_properties Keepalived::VrrpSyncGroup::OPTIONS
-
-      private
-
-      def to_conf
-        cfg = ["vrrp_sync_group #{name} {"]
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::VrrpSyncGroup::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
-
     class VrrpScript < Config
       resource_name :keepalived_vrrp_script
 

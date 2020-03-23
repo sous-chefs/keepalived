@@ -13,19 +13,19 @@ property :vrrp_garp_master_refresh,         Integer
 property :vrrp_garp_master_refresh_repeat,  Integer
 property :vrrp_version,                     Integer, equal_to: [2, 3]
 property :vrrp_iptables,                    String
-property :vrrp_check_unicast_src,           [TrueClass, FalseClass]
-property :vrrp_strict,                      [TrueClass, FalseClass]
+property :vrrp_check_unicast_src,           [true, false]
+property :vrrp_strict,                      [true, false]
 property :vrrp_priority,                    Integer, equal_to: -20.upto(19).to_a
 property :checker_priority,                 Integer, equal_to: -20.upto(19).to_a
-property :vrrp_no_swap,                     [TrueClass, FalseClass]
-property :checker_no_swap,                  [TrueClass, FalseClass]
+property :vrrp_no_swap,                     [true, false]
+property :checker_no_swap,                  [true, false]
 property :snmp_socket,                      String
-property :enable_snmp_checker,              [TrueClass, FalseClass]
-property :enable_snmp_rfc,                  [TrueClass, FalseClass]
-property :enable_snmp_rfcv2,                [TrueClass, FalseClass]
-property :enable_snmp_rfcv3,                [TrueClass, FalseClass]
-property :enable_traps,                     [TrueClass, FalseClass]
-property :enable_script_security,           [TrueClass, FalseClass]
+property :enable_snmp_checker,              [true, false]
+property :enable_snmp_rfc,                  [true, false]
+property :enable_snmp_rfcv2,                [true, false]
+property :enable_snmp_rfcv3,                [true, false]
+property :enable_traps,                     [true, false]
+property :enable_script_security,           [true, false]
 property :extra_options,                    Hash
 property :conf_directory,                   String, default: '/etc/keepalived/conf.d'
 property :config_file,                      String, default: lazy { ::File.join(conf_directory, 'global_defs.conf') }

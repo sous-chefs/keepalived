@@ -10,8 +10,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 
 ## Actions
 
-`:create`
-`:delete`
+- `:create`
+- `:delete`
 
 ## Properties
 
