@@ -110,28 +110,6 @@ describe ChefKeepalived::Resource::VirtualServer do
   end
 end
 
-describe ChefKeepalived::Resource::RealServer do
-  let(:real_server) do
-    ChefKeepalived::Resource::RealServer.new('fe01').tap do |r|
-      r.ipaddress '192.168.1.1'
-      r.port 80
-      r.weight 2
-      r.inhibit_on_failure true
-      r.notify_up '/usr/local/bin/keepalived-notify-up.sh'
-      r.notify_down '/usr/local/bin/keepalived-notify-down.sh'
-      r.healthcheck '/etc/keepalived/checks.d/fe-http.conf'
-    end
-  end
-
-  let(:real_server_string) do
-    "real_server 192.168.1.1 80 {\n\tweight 2\n\tinhibit_on_failure\n\tnotify_up /usr/local/bin/keepalived-notify-up.sh\n\tnotify_down /usr/local/bin/keepalived-notify-down.sh\n\tinclude /etc/keepalived/checks.d/fe-http.conf\n\t}"
-  end
-
-  it 'sets a proper real_server configuration' do
-    expect(real_server.content).to eq real_server_string
-  end
-end
-
 describe ChefKeepalived::Resource::TcpCheck do
   let(:tcp_check) do
     ChefKeepalived::Resource::TcpCheck.new('port-3306').tap do |r|

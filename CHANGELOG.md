@@ -42,6 +42,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Removed property `config_name`, path now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
+  - Removed property `path`
   - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'static_routes.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`
@@ -50,6 +51,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Removed property `config_name`, path now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
+  - Removed property `path`
   - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'keepalived_vrrp_sync_group__#{name}__.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`
@@ -58,10 +60,23 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Removed property `config_name`, path now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
+  - Removed property `path`
   - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, '00_keepalived_vrrp_script__#{name}__.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `vrrp_script.conf.erb`
+- Migrated real_server from HWRP to a Custom Resource
+  - Removed property `config_name`, path now will be the full name
+  - Removed property `content`, this is now build up from the supplied properties
+  - Removed property `exists`
+  - Removed property `path`
+  - Added property `conf_directory`, defaulted to: `/etc/keepalived/servers.d`
+  - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'keepalived_real_server__#{ipaddress}-#{port}__.conf')`
+  - Added property `cookbook`, defaulted to: `keepalived`
+  - Added property `source`, defaulted to `real_server.conf.erb`
+
+- Items of note
+  - Any calls to resources that look like this: `resources(keepalived_http_get: 'health_check_url').path` need to be migrated to use the `config_file` instead, `resources(keepalived_http_get: 'health_check_url').config_file`
 
 ## 3.1.1 (2018-01-10)
 

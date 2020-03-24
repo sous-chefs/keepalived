@@ -11,6 +11,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Removed property `config_name`, path now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
+- Removed property `path`
 - Removed property `enable_snmp_keepalived`, no longer in keepalived man page
 - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
 - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'global_defs.conf')`
@@ -22,6 +23,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Removed property `config_name`, path now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
+- Removed property `path`
 - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
 - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'static_ipaddress.conf')`
 - Added property `cookbook`, defaulted to: `keepalived`
@@ -32,7 +34,41 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Removed property `config_name`, path now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
+- Removed property `path`
 - Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
 - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'static_ipaddress.conf')`
 - Added property `cookbook`, defaulted to: `keepalived`
 - Added property `source`, defaulted to `static_ipaddress.conf.erb`
+
+### keepalived_vrrp_sync_group
+
+- Removed property `config_name`, path now will be the full name
+- Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
+- Removed property `path`
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, 'keepalived_vrrp_sync_group__#{name}__.conf')`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `vrrp_sync_group.conf.erb`
+
+### keepalived_vrrp_script
+
+- Removed property `config_name`, path now will be the full name
+- Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
+- Removed property `path`
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, '00_keepalived_vrrp_script__#{name}__.conf')`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `vrrp_script.conf.erb`
+
+### keepalived_real_server
+
+- Removed property `config_name`, path now will be the full name
+- Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
+- Removed property `path`
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/servers.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, 'keepalived_real_server__#{ipaddress}-#{port}__.conf')`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `real_server.conf.erb`

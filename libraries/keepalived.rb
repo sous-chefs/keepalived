@@ -26,7 +26,7 @@ module Keepalived
     vrrp_instance
     virtual_server_group
     virtual_server
-    real_server
+
     http_get
     ssl_get
     tcp_check
@@ -120,15 +120,6 @@ module Keepalived
       quorum_down: { kind_of: String },
       sorry_server: { kind_of: String },
       sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] },
-    }.freeze
-  end
-
-  module RealServer
-    OPTIONS ||= {
-      weight: { kind_of: Integer },
-      inhibit_on_failure: { kind_of: [TrueClass, FalseClass] },
-      notify_up: { kind_of: String },
-      notify_down: { kind_of: String },
     }.freeze
   end
 

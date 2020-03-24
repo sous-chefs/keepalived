@@ -130,7 +130,7 @@ end
 end
 
 https_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
-  resources(keepalived_real_server: "#{addr}-443").path
+  resources(keepalived_real_server: "#{addr}-443").config_file
 end
 
 keepalived_virtual_server '192.168.1.5 443' do
@@ -142,7 +142,7 @@ keepalived_virtual_server '192.168.1.5 443' do
 end
 
 http_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
-  resources(keepalived_real_server: "#{addr}-80").path
+  resources(keepalived_real_server: "#{addr}-80").config_file
 end
 
 keepalived_virtual_server '192.168.1.5 80' do

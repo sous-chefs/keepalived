@@ -208,41 +208,6 @@ sorry_server            | String                                   | nil
 sorry_server_inhibit    | TrueClass,FalseClass                     | nil
 real_servers            | required, Array of Strings               | nil
 
-### Real Servers
-
-The `keepalived_real_server` resource can be used to configure real_server blocks within a `virtual_server`. They are managed as separate configuration files, and injected into the `virtual_server` block via `include` directives configured via the `real_servers` property of the `keepalived_virtual_server` resource.
-
-A `keepalived_real_server` can be associated with a healthcheck via an `include` of a file containing a check sub-block using the `healthcheck` property. If using any of the health check resources provided by this cookbook, you can use the `path` method on the associated resource to automatically get the appropriate configuration path, as shown below.
-
-Example:
-
-```ruby
-keepalived_http_get 'health_check_url' do
-  nb_get_retry 3
-  url path: '/health_check', status_code: 200
-end
-
-keepalived_real_server 'fe01' do
-  ipaddress '192.168.1.1'
-  port 80
-  weight 5
-  inhibit_on_failure true
-  healthcheck resources(keepalived_http_get: 'health_check_url').path
-end
-```
-
-Supported properties:
-
-Property           | Type                        | Default
------------------- | --------------------------- | -------
-ipaddress          | String (required)           | nil
-port               | Integer (required, 0-65535) | nil
-healthcheck        | String                      | nil
-weight             | Integer                     | nil
-inhibit_on_failure | TrueClass,FalseClass        | nil
-notify_up          | String                      | nil
-notify_down        | String                      | nil
-
 ### Health Checks
 
 This cookbook provides a set of resources for configuring healthchecker sub-blocks within real_server sub-blocks of a virtual_server definition.

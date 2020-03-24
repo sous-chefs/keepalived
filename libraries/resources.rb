@@ -107,31 +107,6 @@ class ChefKeepalived
       end
     end
 
-    class RealServer < Config
-      resource_name :keepalived_real_server
-
-      option_properties Keepalived::RealServer::OPTIONS
-
-      property :healthcheck, kind_of: String, desired_state: false
-      property :ipaddress, kind_of: String, required: true, desired_state: false
-      property :port, kind_of: Integer, required: true, desired_state: false,
-                      equal_to: 1.upto(65_535)
-      property :path, String, desired_state: false,
-                              default: lazy { "#{Keepalived::SERVER_PATH}/#{config_name}.conf" }
-
-      private
-
-      def to_conf
-        cfg = ["real_server #{ipaddress} #{port} {"]
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::RealServer::OPTIONS
-        )
-        cfg << "include #{healthcheck}" if healthcheck
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
-
     class TcpCheck < Config
       resource_name :keepalived_tcp_check
 
