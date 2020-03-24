@@ -23,7 +23,6 @@ module Keepalived
   HEALTH_PATH ||= "#{ROOT_PATH}/checks.d".freeze
   RESOURCES ||= %w(
     config
-    vrrp_script
     vrrp_instance
     virtual_server_group
     virtual_server
@@ -42,18 +41,6 @@ module Keepalived
       notify_fault: { kind_of: String },
       notify: { kind_of: String },
       smtp_alert: { kind_of: [TrueClass, FalseClass] },
-    }.freeze
-  end
-
-  module VrrpScript
-    OPTIONS ||= {
-      script: { kind_of: String, required: true },
-      interval: { kind_of: Integer },
-      timeout: { kind_of: Integer },
-      weight: { kind_of: Integer, equal_to: -254.upto(254).to_a },
-      fall: { kind_of: Integer },
-      rise: { kind_of: Integer },
-      user: { kind_of: String },
     }.freeze
   end
 
