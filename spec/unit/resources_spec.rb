@@ -110,27 +110,6 @@ describe ChefKeepalived::Resource::VirtualServer do
   end
 end
 
-describe ChefKeepalived::Resource::TcpCheck do
-  let(:tcp_check) do
-    ChefKeepalived::Resource::TcpCheck.new('port-3306').tap do |r|
-      r.connect_ip '192.168.1.20'
-      r.connect_port 3306
-      r.bindto '192.168.1.5'
-      r.bind_port 3308
-      r.connect_timeout 5
-      r.fwmark 3
-    end
-  end
-
-  let(:tcp_check_string) do
-    "TCP_CHECK {\n\tconnect_ip 192.168.1.20\n\tconnect_port 3306\n\tbindto 192.168.1.5\n\tbind_port 3308\n\tconnect_timeout 5\n\tfwmark 3\n\t}"
-  end
-
-  it 'sets a proper tcp_check configuration' do
-    expect(tcp_check.content).to eq tcp_check_string
-  end
-end
-
 describe ChefKeepalived::Resource::HttpGet do
   let(:http_get) do
     ChefKeepalived::Resource::HttpGet.new('port-80').tap do |r|

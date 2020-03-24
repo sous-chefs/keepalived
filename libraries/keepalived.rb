@@ -26,10 +26,8 @@ module Keepalived
     vrrp_instance
     virtual_server_group
     virtual_server
-
     http_get
     ssl_get
-    tcp_check
     smtp_check
     misc_check
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
@@ -123,23 +121,23 @@ module Keepalived
     }.freeze
   end
 
-  module TcpCheck
-    OPTIONS ||= {
-      connect_ip: { kind_of: String },
-      connect_port: {
-        kind_of: Integer,
-        equal_to: 1.upto(65_535),
-      },
-      bindto: { kind_of: String },
-      bind_port: {
-        kind_of: Integer,
-        equal_to: 1.upto(65_535),
-      },
-      connect_timeout: { kind_of: Integer },
-      fwmark: { kind_of: Integer },
-      warmup: { kind_of: Integer },
-    }.freeze
-  end
+  # module TcpCheck
+  #   OPTIONS ||= {
+  #     connect_ip: { kind_of: String },
+  #     connect_port: {
+  #       kind_of: Integer,
+  #       equal_to: 1.upto(65_535),
+  #     },
+  #     bindto: { kind_of: String },
+  #     bind_port: {
+  #       kind_of: Integer,
+  #       equal_to: 1.upto(65_535),
+  #     },
+  #     connect_timeout: { kind_of: Integer },
+  #     fwmark: { kind_of: Integer },
+  #     warmup: { kind_of: Integer },
+  #   }.freeze
+  # end
 
   module HttpGet
     OPTIONS ||= TcpCheck::OPTIONS.merge(

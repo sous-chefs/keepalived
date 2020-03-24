@@ -74,6 +74,16 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `config_file`, defaulted to: `::File.join(conf_directory, 'keepalived_real_server__#{ipaddress}-#{port}__.conf')`
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `real_server.conf.erb`
+- Migrated tcp_check from HWRP to a Custom Resource
+  - Removed property `config_name`, path now will be the full name
+  - Removed property `content`, this is now build up from the supplied properties
+  - Removed property `exists`
+  - Removed property `path`
+  - Added property `conf_directory`, defaulted to: `/etc/keepalived/checks.d`
+  - Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_tcp_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf"`
+  - Added property `cookbook`, defaulted to: `keepalived`
+  - Added property `source`, defaulted to `tcp_check.conf.erb`
+  - Changed property `bindto` this is now `bind_to`
 
 - Items of note
   - Any calls to resources that look like this: `resources(keepalived_http_get: 'health_check_url').path` need to be migrated to use the `config_file` instead, `resources(keepalived_http_get: 'health_check_url').config_file`

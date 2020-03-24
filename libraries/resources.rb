@@ -107,25 +107,25 @@ class ChefKeepalived
       end
     end
 
-    class TcpCheck < Config
-      resource_name :keepalived_tcp_check
+    # class TcpCheck < Config
+    #   resource_name :keepalived_tcp_check
 
-      option_properties Keepalived::TcpCheck::OPTIONS
+    #   option_properties Keepalived::TcpCheck::OPTIONS
 
-      property :path, String, desired_state: false,
-                              default: lazy { "#{Keepalived::HEALTH_PATH}/#{config_name}.conf" }
+    #   property :path, String, desired_state: false,
+    #                           default: lazy { "#{Keepalived::HEALTH_PATH}/#{config_name}.conf" }
 
-      private
+    #   private
 
-      def to_conf
-        cfg = ['TCP_CHECK {']
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::TcpCheck::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ['TCP_CHECK {']
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::TcpCheck::OPTIONS
+    #     )
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
 
     class HttpGet < TcpCheck
       resource_name :keepalived_http_get
