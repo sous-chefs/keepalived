@@ -59,36 +59,3 @@ describe ChefKeepalived::Resource::VrrpInstance do
     expect(vrrp_instance_auth_as_strings.content).to eq vrrp_instance_string
   end
 end
-
-describe ChefKeepalived::Resource::VirtualServer do
-  let(:virtual_server) do
-    ChefKeepalived::Resource::VirtualServer.new('web').tap do |r|
-      r.delay_loop 5
-      r.lb_algo 'rr'
-      r.ops true
-      r.lb_kind 'NAT'
-      r.persistence_timeout 1_800
-      r.persistence_granularity '255.255.255.0'
-      r.protocol 'TCP'
-      r.ha_suspend true
-      r.virtualhost 'www.example.com'
-      r.alpha true
-      r.omega true
-      r.quorum 2
-      r.hysteresis 1
-      r.quorum_up '/usr/local/bin/keepalived-quorum-up.sh'
-      r.quorum_down '/usr/local/bin/keepalived-quorum-down.sh'
-      r.sorry_server '127.0.0.1 8080'
-      r.sorry_server_inhibit true
-      r.real_servers %w( fe01 fe02 fe03 ).map { |n| "/etc/keepalived/servers.d/#{n}.conf" }
-    end
-  end
-
-  let(:virtual_server_string) do
-    "virtual_server web {\n\tdelay_loop 5\n\tlb_algo rr\n\tops\n\tlb_kind NAT\n\tpersistence_timeout 1800\n\tpersistence_granularity 255.255.255.0\n\tprotocol TCP\n\tha_suspend\n\tvirtualhost www.example.com\n\talpha\n\tomega\n\tquorum 2\n\thysteresis 1\n\tquorum_up /usr/local/bin/keepalived-quorum-up.sh\n\tquorum_down /usr/local/bin/keepalived-quorum-down.sh\n\tsorry_server 127.0.0.1 8080\n\tsorry_server_inhibit\n\tinclude /etc/keepalived/servers.d/fe01.conf\n\tinclude /etc/keepalived/servers.d/fe02.conf\n\tinclude /etc/keepalived/servers.d/fe03.conf\n\t}"
-  end
-
-  it 'sets a proper virtual_server configuration' do
-    expect(virtual_server.content).to eq virtual_server_string
-  end
-end

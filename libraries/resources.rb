@@ -65,27 +65,27 @@ class ChefKeepalived
       end
     end
 
-    class VirtualServer < Config
-      resource_name :keepalived_virtual_server
+    # class VirtualServer < Config
+    #   resource_name :keepalived_virtual_server
 
-      option_properties Keepalived::VirtualServer::OPTIONS
+    #   option_properties Keepalived::VirtualServer::OPTIONS
 
-      property :real_servers, kind_of: Array, required: true,
-                              desired_state: false
+    #   property :real_servers, kind_of: Array, required: true,
+    #                           desired_state: false
 
-      private
+    #   private
 
-      def to_conf
-        cfg = ["virtual_server #{name} {"]
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::VirtualServer::OPTIONS
-        )
-        cfg << real_servers.map do |server|
-          "include #{server}"
-        end
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ["virtual_server #{name} {"]
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::VirtualServer::OPTIONS
+    #     )
+    #     cfg << real_servers.map do |server|
+    #       "include #{server}"
+    #     end
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
   end
 end
