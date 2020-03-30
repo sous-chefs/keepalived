@@ -1,14 +1,12 @@
 # Upgrading
 
-******************* we need to write correct unit tests and some inspec tests to validate the output config file is correct
-
 ## 2.0.0
 
 the `cookbook` and `source` properites on resources allow you to override the template file the resource will use with your own
 
 ### keepalived_global_defs
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -20,7 +18,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ### keepalived_static_ipaddress
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -31,7 +29,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ### keepalived_static_routes
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -42,7 +40,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ### keepalived_vrrp_sync_group
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -53,7 +51,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ### keepalived_vrrp_script
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -64,7 +62,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ### keepalived_real_server
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -75,7 +73,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ## keepalived_tcp_check
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -87,7 +85,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ## keepalived_http_get
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -101,7 +99,7 @@ the `cookbook` and `source` properites on resources allow you to override the te
 
 ## keepalived_ssl_get
 
-- Removed property `config_name`, path now will be the full name
+- Removed property `config_name`, property `config_file` now will be the full name
 - Removed property `content`, this is now build up from the supplied properties
 - Removed property `exists`
 - Removed property `path`
@@ -113,3 +111,15 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Changed property `bindto` this is now `bind_to`
 - Changed property `url` to no longer be required, it has a default already
 
+## keepalived_smtp_check
+
+- Removed property `config_name`, property `config_file` now will be the full name
+- Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
+- Removed property `path`
+- Removed property `host`
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/checks.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_smtp_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf"`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `smtp_check.conf.erb`
+- Changed property `bindto` this is now `bind_to`

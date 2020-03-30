@@ -1,8 +1,8 @@
 property :connect_ip,       String
 property :connect_port,     Integer, equal_to: 1.upto(65_535)
+property :connect_timeout,  Integer
 property :bind_to,          String
 property :bind_port,        Integer, equal_to: 1.upto(65_535)
-property :connect_timeout,  Integer
 property :fwmark,           Integer
 property :warmup,           Integer
 property :conf_directory,   String, default: '/etc/keepalived/checks.d'

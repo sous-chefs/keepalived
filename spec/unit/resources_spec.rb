@@ -110,31 +110,31 @@ describe ChefKeepalived::Resource::VirtualServer do
   end
 end
 
-describe ChefKeepalived::Resource::SmtpCheck do
-  let(:smtp_check) do
-    ChefKeepalived::Resource::SmtpCheck.new('port-465').tap do |r|
-      r.delay_before_retry 10
-      r.helo_name 'smtp.example.com'
-      r.warmup 3
-      r.host(
-        connect_ip: '192.168.1.20',
-        connect_port: 3306,
-        bindto: '192.168.1.5',
-        bind_port: 3308,
-        connect_timeout: 5,
-        fwmark: 3
-      )
-    end
-  end
+# describe ChefKeepalived::Resource::SmtpCheck do
+#   let(:smtp_check) do
+#     ChefKeepalived::Resource::SmtpCheck.new('port-465').tap do |r|
+#       r.delay_before_retry 10
+#       r.helo_name 'smtp.example.com'
+#       r.warmup 3
+#       r.host(
+#         connect_ip: '192.168.1.20',
+#         connect_port: 3306,
+#         bindto: '192.168.1.5',
+#         bind_port: 3308,
+#         connect_timeout: 5,
+#         fwmark: 3
+#       )
+#     end
+#   end
 
-  let(:smtp_check_string) do
-    "SMTP_CHECK {\n\twarmup 3\n\thost {\n\t\tconnect_ip 192.168.1.20\n\t\tconnect_port 3306\n\t\tbindto 192.168.1.5\n\t\tbind_port 3308\n\t\tconnect_timeout 5\n\t\tfwmark 3\n\t\t}\n\tdelay_before_retry 10\n\thelo_name smtp.example.com\n\t}"
-  end
+#   let(:smtp_check_string) do
+#     "SMTP_CHECK {\n\twarmup 3\n\thost {\n\t\tconnect_ip 192.168.1.20\n\t\tconnect_port 3306\n\t\tbindto 192.168.1.5\n\t\tbind_port 3308\n\t\tconnect_timeout 5\n\t\tfwmark 3\n\t\t}\n\tdelay_before_retry 10\n\thelo_name smtp.example.com\n\t}"
+#   end
 
-  it 'sets a proper smtp_check configuration' do
-    expect(smtp_check.content).to eq smtp_check_string
-  end
-end
+#   it 'sets a proper smtp_check configuration' do
+#     expect(smtp_check.content).to eq smtp_check_string
+#   end
+# end
 
 describe ChefKeepalived::Resource::MiscCheck do
   let(:misc_check) do

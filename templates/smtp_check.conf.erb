@@ -1,16 +1,6 @@
-SSL_GET {
-<% if @url %>
-  url {
-    <% if @url[:path] %>
-    path <%= @url[:path] %>
-    <% end %>
-    <% if @url[:status_code] %>
-    status_code <%= @url[:status_code] %>
-    <% end %>
-    <% if @url[:digest] %>
-      digest <%= @url[:digest] %>
-    <% end %>
-  }
+SMTP_CHECK {
+<% if @helo_name %>
+  helo_name <%= @helo_name.to_s %>
 <% end %>
 <% if @delay_before_retry %>
   delay_before_retry <%= @delay_before_retry.to_s %>

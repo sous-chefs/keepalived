@@ -144,39 +144,39 @@ class ChefKeepalived
     #   end
     # end
 
-    class SslGet < TcpCheck
-      resource_name :keepalived_ssl_get
+    # class SslGet < TcpCheck
+    #   resource_name :keepalived_ssl_get
 
-      option_properties Keepalived::SslGet::OPTIONS
+    #   option_properties Keepalived::SslGet::OPTIONS
 
-      private
+    #   private
 
-      def to_conf
-        cfg = ['SSL_GET {']
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::SslGet::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ['SSL_GET {']
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::SslGet::OPTIONS
+    #     )
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
 
-    class SmtpCheck < TcpCheck
-      resource_name :keepalived_smtp_check
+    # class SmtpCheck < TcpCheck
+    #   resource_name :keepalived_smtp_check
 
-      option_properties Keepalived::SmtpCheck::OPTIONS
+    #   option_properties Keepalived::SmtpCheck::OPTIONS
 
-      private
+    #   private
 
-      def to_conf
-        cfg = ['SMTP_CHECK {']
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::SmtpCheck::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ['SMTP_CHECK {']
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::SmtpCheck::OPTIONS
+    #     )
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
 
     class MiscCheck < Config
       resource_name :keepalived_misc_check

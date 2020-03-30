@@ -26,8 +26,6 @@ module Keepalived
     vrrp_instance
     virtual_server_group
     virtual_server
-    ssl_get
-    smtp_check
     misc_check
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
 
@@ -158,25 +156,25 @@ module Keepalived
   #   ).freeze
   # end
 
-  module SslGet
-    OPTIONS ||= HttpGet::OPTIONS
-  end
+  # module SslGet
+  #   OPTIONS ||= HttpGet::OPTIONS
+  # end
 
-  module SmtpCheck
-    OPTIONS ||= TcpCheck::OPTIONS.merge(
-      host: {
-        kind_of: Hash,
-        callbacks: {
-          'has only valid keys' => lambda do |spec|
-            spec.keys.all? { |s| TcpCheck::OPTIONS.key?(s) }
-          end,
-        },
-      },
-      delay_before_retry: { kind_of: Integer },
-      helo_name: { kind_of: String },
-      connect_timeout: { kind_of: Integer }
-    ).freeze
-  end
+  # module SmtpCheck
+  #   OPTIONS ||= TcpCheck::OPTIONS.merge(
+  #     host: {
+  #       kind_of: Hash,
+  #       callbacks: {
+  #         'has only valid keys' => lambda do |spec|
+  #           spec.keys.all? { |s| TcpCheck::OPTIONS.key?(s) }
+  #         end,
+  #       },
+  #     },
+  #     delay_before_retry: { kind_of: Integer },
+  #     helo_name: { kind_of: String },
+  #     connect_timeout: { kind_of: Integer }
+  #   ).freeze
+  # end
 
   module MiscCheck
     OPTIONS ||= {

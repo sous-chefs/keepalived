@@ -39,7 +39,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `static_ipaddress.conf.erb`
 - Migrated static_routes from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -48,7 +48,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `static_routes.conf.erb`
 - Migrated vrrp_sync_group from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -57,7 +57,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `vrrp_sync_group.conf.erb`
 - Migrated vrrp_script from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -66,7 +66,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `vrrp_script.conf.erb`
 - Migrated real_server from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -75,7 +75,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `cookbook`, defaulted to: `keepalived`
   - Added property `source`, defaulted to `real_server.conf.erb`
 - Migrated tcp_check from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -85,7 +85,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `source`, defaulted to `tcp_check.conf.erb`
   - Changed property `bindto` this is now `bind_to`
 - Migrated http_get from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -97,7 +97,7 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Changed property `bindto` this is now `bind_to`
   - Changed property `url` to no longer be required, it has a default already
 - Migrated ssl_get from HWRP to a Custom Resource
-  - Removed property `config_name`, path now will be the full name
+  - Removed property `config_name`, property `config_file` now will be the full name
   - Removed property `content`, this is now build up from the supplied properties
   - Removed property `exists`
   - Removed property `path`
@@ -108,6 +108,17 @@ This file is used to list changes made in each version of the keepalived cookboo
   - Added property `source`, defaulted to `ssl_get.conf.erb`
   - Changed property `bindto` this is now `bind_to`
   - Changed property `url` to no longer be required, it has a default already
+- Migrated smtp_check from HWRP to a Custom Resource
+  - Removed property `config_name`, property `config_file` now will be the full name
+  - Removed property `content`, this is now build up from the supplied properties
+  - Removed property `exists`
+  - Removed property `path`
+  - Removed property `host`
+  - Added property `conf_directory`, defaulted to: `/etc/keepalived/checks.d`
+  - Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_smtp_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf"`
+  - Added property `cookbook`, defaulted to: `keepalived`
+  - Added property `source`, defaulted to `smtp_check.conf.erb`
+  - Changed property `bindto` this is now `bind_to`
 
 - Items of note
   - Any calls to resources that look like this: `resources(keepalived_http_get: 'health_check_url').path` need to be migrated to use the `config_file` instead, `resources(keepalived_http_get: 'health_check_url').config_file`
