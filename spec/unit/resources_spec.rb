@@ -60,23 +60,6 @@ describe ChefKeepalived::Resource::VrrpInstance do
   end
 end
 
-describe ChefKeepalived::Resource::VirtualServerGroup do
-  let(:virtual_server_group) do
-    ChefKeepalived::Resource::VirtualServerGroup.new('http').tap do |r|
-      r.vips ['192.168.200.1-10 80', '192.168.201.1-10 8080']
-      r.fwmarks 1.upto(3).to_a
-    end
-  end
-
-  let(:virtual_server_group_string) do
-    "virtual_server_group http {\n\t192.168.200.1-10 80\n\t192.168.201.1-10 8080\n\tfwmark 1\n\tfwmark 2\n\tfwmark 3\n\t}"
-  end
-
-  it 'sets a proper virtual_server_group configuration' do
-    expect(virtual_server_group.content).to eq virtual_server_group_string
-  end
-end
-
 describe ChefKeepalived::Resource::VirtualServer do
   let(:virtual_server) do
     ChefKeepalived::Resource::VirtualServer.new('web').tap do |r|
