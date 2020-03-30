@@ -106,25 +106,5 @@ class ChefKeepalived
         cfg.join("\n\t")
       end
     end
-
-    class MiscCheck < Config
-      resource_name :keepalived_misc_check
-
-      option_properties Keepalived::MiscCheck::OPTIONS
-
-      property :path, String, desired_state: false,
-                              default: lazy { "#{Keepalived::HEALTH_PATH}/#{config_name}.conf" }
-
-      private
-
-      def to_conf
-        cfg = ['MISC_CHECK {']
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::MiscCheck::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
   end
 end

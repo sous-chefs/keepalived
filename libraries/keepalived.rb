@@ -26,7 +26,6 @@ module Keepalived
     vrrp_instance
     virtual_server_group
     virtual_server
-    misc_check
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
 
   module Notify
@@ -115,15 +114,6 @@ module Keepalived
       quorum_down: { kind_of: String },
       sorry_server: { kind_of: String },
       sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] },
-    }.freeze
-  end
-
-  module MiscCheck
-    OPTIONS ||= {
-      misc_path: { kind_of: String },
-      misc_timeout: { kind_of: Integer },
-      warmup: { kind_of: Integer },
-      misc_dynamic: { kind_of: [TrueClass, FalseClass] },
     }.freeze
   end
 end
