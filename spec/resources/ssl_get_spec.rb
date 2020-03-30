@@ -25,7 +25,7 @@ platforms.each do |platform|
       end
 
       it('should render a config file with default url') do
-        is_expected.to render_file(file_name).with_content(%r{url\s+\{\s+path\s/\s+status_code\s200\}}m)
+        is_expected.to render_file(file_name).with_content(%r{url\s+\{\s+path\s/\s+status_code\s200\s+\}}m)
       end
 
       it 'creates the config file with the owner, group and mode' do
@@ -53,7 +53,7 @@ platforms.each do |platform|
       end
 
       it('should render a config file with the correct url settings') do
-        is_expected.to render_file(file_name).with_content(%r{url\s+\{\s+path\s/flask\s+status_code\s201\s+digest\s123\}}m)
+        is_expected.to render_file(file_name).with_content(%r{url\s+\{\s+path\s/flask\s+status_code\s201\s+digest\s123\s+\}}m)
       end
 
       it 'creates the config file with the owner, group and mode' do
