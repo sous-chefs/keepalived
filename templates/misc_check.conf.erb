@@ -1,0 +1,14 @@
+MISC_CHECK {
+<% if @misc_path %>
+  misc_path <%= @misc_path.to_s %>
+<% end %>
+<% if @misc_timeout %>
+  misc_timeout <%= @misc_timeout.to_s %>
+<% end %>
+<% if @misc_dynamic %>
+  misc_dynamic
+<% end %>
+<% if @warmup %>
+  warmup <%= @warmup.to_s %>
+<% end %>
+}
