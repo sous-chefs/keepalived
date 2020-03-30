@@ -65,25 +65,6 @@ class ChefKeepalived
       end
     end
 
-    class VirtualServerGroup < Config
-      resource_name :keepalived_virtual_server_group
-
-      property :vips, kind_of: Array, desired_state: false
-      property :fwmarks, kind_of: Array, desired_state: false, callbacks: {
-        'are all integers' => ->(spec) { spec.all? { |i| i.is_a?(Integer) } },
-      }
-
-      private
-
-      def to_conf
-        cfg = ["virtual_server_group #{name} {"]
-        cfg << vips.join("\n\t") if vips
-        cfg << fwmarks.map { |fwm| "fwmark #{fwm}" }.join("\n\t") if fwmarks
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
-
     class VirtualServer < Config
       resource_name :keepalived_virtual_server
 

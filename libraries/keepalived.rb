@@ -24,7 +24,6 @@ module Keepalived
   RESOURCES ||= %w(
     config
     vrrp_instance
-    virtual_server_group
     virtual_server
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
 
