@@ -155,6 +155,6 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Removed property `lb_algo`, this property is not documented in the manpage
 - Removed property `lb_kind`, this property is not documented in the manpage
 - Added property `conf_directory`, defaulted to: `/etc/keepalived/checks.d`
-- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_virtual_server_group__#{name}__.conf"`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_virtual_server__#{name.to_s.gsub(/\s+/, '-')}__.conf"`
 - Added property `cookbook`, defaulted to: `keepalived`
-- Added property `source`, defaulted to `virtual_server_group.conf.erb`
+- Added property `source`, defaulted to `virtual_server.conf.erb`
