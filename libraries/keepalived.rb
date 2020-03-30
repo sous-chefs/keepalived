@@ -118,64 +118,6 @@ module Keepalived
     }.freeze
   end
 
-  # module TcpCheck
-  #   OPTIONS ||= {
-  #     connect_ip: { kind_of: String },
-  #     connect_port: {
-  #       kind_of: Integer,
-  #       equal_to: 1.upto(65_535),
-  #     },
-  #     bindto: { kind_of: String },
-  #     bind_port: {
-  #       kind_of: Integer,
-  #       equal_to: 1.upto(65_535),
-  #     },
-  #     connect_timeout: { kind_of: Integer },
-  #     fwmark: { kind_of: Integer },
-  #     warmup: { kind_of: Integer },
-  #   }.freeze
-  # end
-
-  # module HttpGet
-  #   OPTIONS ||= TcpCheck::OPTIONS.merge(
-  #     url: {
-  #       kind_of: Hash,
-  #       required: true,
-  #       default: { path: '/', status_code: 200 },
-  #       callbacks: {
-  #         'has only valid keys' => lambda do |spec|
-  #           spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
-  #         end,
-  #         'has required keys' => lambda do |spec|
-  #           spec.key?(:path) && spec.key?(:status_code)
-  #         end,
-  #       },
-  #     },
-  #     nb_get_retry: { kind_of: Integer },
-  #     delay_before_retry: { kind_of: Integer }
-  #   ).freeze
-  # end
-
-  # module SslGet
-  #   OPTIONS ||= HttpGet::OPTIONS
-  # end
-
-  # module SmtpCheck
-  #   OPTIONS ||= TcpCheck::OPTIONS.merge(
-  #     host: {
-  #       kind_of: Hash,
-  #       callbacks: {
-  #         'has only valid keys' => lambda do |spec|
-  #           spec.keys.all? { |s| TcpCheck::OPTIONS.key?(s) }
-  #         end,
-  #       },
-  #     },
-  #     delay_before_retry: { kind_of: Integer },
-  #     helo_name: { kind_of: String },
-  #     connect_timeout: { kind_of: Integer }
-  #   ).freeze
-  # end
-
   module MiscCheck
     OPTIONS ||= {
       misc_path: { kind_of: String },

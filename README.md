@@ -214,29 +214,6 @@ This cookbook provides a set of resources for configuring healthchecker sub-bloc
 
 If you're using the `keepalived_real_server` resource, healthcheckers can be loaded using the `healthcheck` property of the `keepalived_real_server` resource along with the `path` method of the healthcheck resource, as shown in the documentation for the `keepalived_real_server` resource.
 
-#### SMTP_CHECK
-
-The `keepalived_smtp_check` resource can be used to configure a `SMTP_CHECK` healthchecker.
-
-Example:
-
-```ruby
-keepalived_smtp_check 'postfix' do
-  helo_name node.name
-  host connect_timeout: 30
-end
-```
-
-Supported properties:
-
-Property           | Type                                                                                     | Default
------------------- | ---------------------------------------------------------------------------------------- | -------
-connect_timeout    | Integer                                                                                  | nil
-delay_before_retry | nil
-helo_name          | String                                                                                   | nil
-warmup             | Integer                                                                                  | nil
-host               | Hash, keys of :connect_ip, :connect_port, :bindto, :bind_port, :connect_timeout, :fwmark | nil
-
 #### MISC_CHECK
 
 The `keepalived_misc_check` resource can be used to configure a `MISC_CHECK` healthchecker.
