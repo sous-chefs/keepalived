@@ -117,7 +117,7 @@ end
     port 80
     weight 5
     inhibit_on_failure true
-    healthcheck resources(keepalived_http_get: 'port-80').path
+    healthcheck resources(keepalived_http_get: 'port-80').config_file
   end
 
   keepalived_real_server "#{addr}-443" do
@@ -125,7 +125,7 @@ end
     port 443
     weight 5
     inhibit_on_failure true
-    healthcheck resources(keepalived_ssl_get: 'port-443').path
+    healthcheck resources(keepalived_ssl_get: 'port-443').config_file
   end
 end
 

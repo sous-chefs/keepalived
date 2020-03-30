@@ -214,36 +214,6 @@ This cookbook provides a set of resources for configuring healthchecker sub-bloc
 
 If you're using the `keepalived_real_server` resource, healthcheckers can be loaded using the `healthcheck` property of the `keepalived_real_server` resource along with the `path` method of the healthcheck resource, as shown in the documentation for the `keepalived_real_server` resource.
 
-#### SSL_GET
-
-The `keepalived_ssl_get` resource can be used to configure an `SSL_GET` healthchecker.
-
-Example:
-
-```ruby
-keepalived_ssl_get 'https_check' do
-  warmup 5
-  nb_get_retry 3
-  delay_before_retry 5
-  url path: '/health_check', status_code: 200
-end
-```
-
-Supported properties:
-
-Property           | Type                                                                 | Default
------------------- | -------------------------------------------------------------------- | -------
-connect_ip         | String                                                               | nil
-connect_port       | Integer (0-65535)                                                    | nil
-bindto             | String                                                               | nil
-bind_port          | Integer (0-65535)                                                    | nil
-connect_timeout    | Integer                                                              | nil
-fwmark             | Integer                                                              | nil
-nb_get_retry       | Integer                                                              | nil
-delay_before_retry | Integer                                                              | nil
-warmup             | Integer                                                              | nil
-url                | Hash, required, w/ keys of :path, :status_code, and optional :digest | nil
-
 #### SMTP_CHECK
 
 The `keepalived_smtp_check` resource can be used to configure a `SMTP_CHECK` healthchecker.

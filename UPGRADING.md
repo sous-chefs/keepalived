@@ -93,8 +93,23 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Removed property `path`
 - Removed property `nb_get_retry`, this is no longer in the manpage so it not supported
 - Added property `conf_directory`, defaulted to: `/etc/keepalived/checks.d`
-- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_tcp_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf"`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_http_get__port-#{name.to_s.gsub(/\s+/, '-')}__.conf"`
 - Added property `cookbook`, defaulted to: `keepalived`
-- Added property `source`, defaulted to `tcp_check.conf.erb`
+- Added property `source`, defaulted to `http_get.conf.erb`
 - Changed property `bindto` this is now `bind_to`
 - Changed property `url` to no longer be required, it has a default already
+
+## keepalived_ssl_get
+
+- Removed property `config_name`, path now will be the full name
+- Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
+- Removed property `path`
+- Removed property `nb_get_retry`, this is no longer in the manpage so it not supported
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/checks.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_ssl_get__port-#{name.to_s.gsub(/\s+/, '-')}__.conf"`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `ssl_get.conf.erb`
+- Changed property `bindto` this is now `bind_to`
+- Changed property `url` to no longer be required, it has a default already
+
