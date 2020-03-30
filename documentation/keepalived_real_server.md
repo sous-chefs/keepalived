@@ -2,7 +2,7 @@
 
 ---
 
-# keepalived_vrrp_sync_group
+# keepalived_real_server
 
 The `keepalived_real_server` resource can be used to configure real_server blocks within a `virtual_server`. They are managed as separate configuration files, and injected into the `virtual_server` block via `include` directives configured via the `real_servers` property of the `keepalived_virtual_server` resource.
 

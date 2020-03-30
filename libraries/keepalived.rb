@@ -26,7 +26,6 @@ module Keepalived
     vrrp_instance
     virtual_server_group
     virtual_server
-    http_get
     ssl_get
     smtp_check
     misc_check
@@ -139,25 +138,25 @@ module Keepalived
   #   }.freeze
   # end
 
-  module HttpGet
-    OPTIONS ||= TcpCheck::OPTIONS.merge(
-      url: {
-        kind_of: Hash,
-        required: true,
-        default: { path: '/', status_code: 200 },
-        callbacks: {
-          'has only valid keys' => lambda do |spec|
-            spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
-          end,
-          'has required keys' => lambda do |spec|
-            spec.key?(:path) && spec.key?(:status_code)
-          end,
-        },
-      },
-      nb_get_retry: { kind_of: Integer },
-      delay_before_retry: { kind_of: Integer }
-    ).freeze
-  end
+  # module HttpGet
+  #   OPTIONS ||= TcpCheck::OPTIONS.merge(
+  #     url: {
+  #       kind_of: Hash,
+  #       required: true,
+  #       default: { path: '/', status_code: 200 },
+  #       callbacks: {
+  #         'has only valid keys' => lambda do |spec|
+  #           spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
+  #         end,
+  #         'has required keys' => lambda do |spec|
+  #           spec.key?(:path) && spec.key?(:status_code)
+  #         end,
+  #       },
+  #     },
+  #     nb_get_retry: { kind_of: Integer },
+  #     delay_before_retry: { kind_of: Integer }
+  #   ).freeze
+  # end
 
   module SslGet
     OPTIONS ||= HttpGet::OPTIONS

@@ -127,22 +127,22 @@ class ChefKeepalived
     #   end
     # end
 
-    class HttpGet < TcpCheck
-      resource_name :keepalived_http_get
+    # class HttpGet < TcpCheck
+    #   resource_name :keepalived_http_get
 
-      option_properties Keepalived::HttpGet::OPTIONS
+    #   option_properties Keepalived::HttpGet::OPTIONS
 
-      private
+    #   private
 
-      def to_conf
-        cfg = ['HTTP_GET {']
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::HttpGet::OPTIONS
-        )
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ['HTTP_GET {']
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::HttpGet::OPTIONS
+    #     )
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
 
     class SslGet < TcpCheck
       resource_name :keepalived_ssl_get

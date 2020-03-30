@@ -110,35 +110,6 @@ describe ChefKeepalived::Resource::VirtualServer do
   end
 end
 
-describe ChefKeepalived::Resource::HttpGet do
-  let(:http_get) do
-    ChefKeepalived::Resource::HttpGet.new('port-80').tap do |r|
-      r.connect_ip '192.168.1.20'
-      r.connect_port 3306
-      r.bindto '192.168.1.5'
-      r.bind_port 3308
-      r.connect_timeout 5
-      r.fwmark 3
-      r.nb_get_retry 3
-      r.delay_before_retry 5
-      r.warmup 3
-      r.url(
-        path: '/health_check',
-        digest: '9b3a0c85a887a256d6939da88aabd8cd',
-        status_code: 200
-      )
-    end
-  end
-
-  let(:http_get_string) do
-    "HTTP_GET {\n\tconnect_ip 192.168.1.20\n\tconnect_port 3306\n\tbindto 192.168.1.5\n\tbind_port 3308\n\tconnect_timeout 5\n\tfwmark 3\n\twarmup 3\n\turl {\n\t\tpath /health_check\n\t\tdigest 9b3a0c85a887a256d6939da88aabd8cd\n\t\tstatus_code 200\n\t\t}\n\tnb_get_retry 3\n\tdelay_before_retry 5\n\t}"
-  end
-
-  it 'sets a proper http_get configuration' do
-    expect(http_get.content).to eq http_get_string
-  end
-end
-
 describe ChefKeepalived::Resource::SslGet do
   let(:ssl_get) do
     ChefKeepalived::Resource::SslGet.new('port-443').tap do |r|
