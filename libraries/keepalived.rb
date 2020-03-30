@@ -26,11 +26,6 @@ module Keepalived
     vrrp_instance
     virtual_server_group
     virtual_server
-    real_server
-    http_get
-    ssl_get
-    tcp_check
-    smtp_check
     misc_check
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
 
@@ -121,73 +116,6 @@ module Keepalived
       sorry_server: { kind_of: String },
       sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] },
     }.freeze
-  end
-
-  module RealServer
-    OPTIONS ||= {
-      weight: { kind_of: Integer },
-      inhibit_on_failure: { kind_of: [TrueClass, FalseClass] },
-      notify_up: { kind_of: String },
-      notify_down: { kind_of: String },
-    }.freeze
-  end
-
-  module TcpCheck
-    OPTIONS ||= {
-      connect_ip: { kind_of: String },
-      connect_port: {
-        kind_of: Integer,
-        equal_to: 1.upto(65_535),
-      },
-      bindto: { kind_of: String },
-      bind_port: {
-        kind_of: Integer,
-        equal_to: 1.upto(65_535),
-      },
-      connect_timeout: { kind_of: Integer },
-      fwmark: { kind_of: Integer },
-      warmup: { kind_of: Integer },
-    }.freeze
-  end
-
-  module HttpGet
-    OPTIONS ||= TcpCheck::OPTIONS.merge(
-      url: {
-        kind_of: Hash,
-        required: true,
-        default: { path: '/', status_code: 200 },
-        callbacks: {
-          'has only valid keys' => lambda do |spec|
-            spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
-          end,
-          'has required keys' => lambda do |spec|
-            spec.key?(:path) && spec.key?(:status_code)
-          end,
-        },
-      },
-      nb_get_retry: { kind_of: Integer },
-      delay_before_retry: { kind_of: Integer }
-    ).freeze
-  end
-
-  module SslGet
-    OPTIONS ||= HttpGet::OPTIONS
-  end
-
-  module SmtpCheck
-    OPTIONS ||= TcpCheck::OPTIONS.merge(
-      host: {
-        kind_of: Hash,
-        callbacks: {
-          'has only valid keys' => lambda do |spec|
-            spec.keys.all? { |s| TcpCheck::OPTIONS.key?(s) }
-          end,
-        },
-      },
-      delay_before_retry: { kind_of: Integer },
-      helo_name: { kind_of: String },
-      connect_timeout: { kind_of: Integer }
-    ).freeze
   end
 
   module MiscCheck

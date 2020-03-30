@@ -110,132 +110,31 @@ describe ChefKeepalived::Resource::VirtualServer do
   end
 end
 
-describe ChefKeepalived::Resource::RealServer do
-  let(:real_server) do
-    ChefKeepalived::Resource::RealServer.new('fe01').tap do |r|
-      r.ipaddress '192.168.1.1'
-      r.port 80
-      r.weight 2
-      r.inhibit_on_failure true
-      r.notify_up '/usr/local/bin/keepalived-notify-up.sh'
-      r.notify_down '/usr/local/bin/keepalived-notify-down.sh'
-      r.healthcheck '/etc/keepalived/checks.d/fe-http.conf'
-    end
-  end
+# describe ChefKeepalived::Resource::SmtpCheck do
+#   let(:smtp_check) do
+#     ChefKeepalived::Resource::SmtpCheck.new('port-465').tap do |r|
+#       r.delay_before_retry 10
+#       r.helo_name 'smtp.example.com'
+#       r.warmup 3
+#       r.host(
+#         connect_ip: '192.168.1.20',
+#         connect_port: 3306,
+#         bindto: '192.168.1.5',
+#         bind_port: 3308,
+#         connect_timeout: 5,
+#         fwmark: 3
+#       )
+#     end
+#   end
 
-  let(:real_server_string) do
-    "real_server 192.168.1.1 80 {\n\tweight 2\n\tinhibit_on_failure\n\tnotify_up /usr/local/bin/keepalived-notify-up.sh\n\tnotify_down /usr/local/bin/keepalived-notify-down.sh\n\tinclude /etc/keepalived/checks.d/fe-http.conf\n\t}"
-  end
+#   let(:smtp_check_string) do
+#     "SMTP_CHECK {\n\twarmup 3\n\thost {\n\t\tconnect_ip 192.168.1.20\n\t\tconnect_port 3306\n\t\tbindto 192.168.1.5\n\t\tbind_port 3308\n\t\tconnect_timeout 5\n\t\tfwmark 3\n\t\t}\n\tdelay_before_retry 10\n\thelo_name smtp.example.com\n\t}"
+#   end
 
-  it 'sets a proper real_server configuration' do
-    expect(real_server.content).to eq real_server_string
-  end
-end
-
-describe ChefKeepalived::Resource::TcpCheck do
-  let(:tcp_check) do
-    ChefKeepalived::Resource::TcpCheck.new('port-3306').tap do |r|
-      r.connect_ip '192.168.1.20'
-      r.connect_port 3306
-      r.bindto '192.168.1.5'
-      r.bind_port 3308
-      r.connect_timeout 5
-      r.fwmark 3
-    end
-  end
-
-  let(:tcp_check_string) do
-    "TCP_CHECK {\n\tconnect_ip 192.168.1.20\n\tconnect_port 3306\n\tbindto 192.168.1.5\n\tbind_port 3308\n\tconnect_timeout 5\n\tfwmark 3\n\t}"
-  end
-
-  it 'sets a proper tcp_check configuration' do
-    expect(tcp_check.content).to eq tcp_check_string
-  end
-end
-
-describe ChefKeepalived::Resource::HttpGet do
-  let(:http_get) do
-    ChefKeepalived::Resource::HttpGet.new('port-80').tap do |r|
-      r.connect_ip '192.168.1.20'
-      r.connect_port 3306
-      r.bindto '192.168.1.5'
-      r.bind_port 3308
-      r.connect_timeout 5
-      r.fwmark 3
-      r.nb_get_retry 3
-      r.delay_before_retry 5
-      r.warmup 3
-      r.url(
-        path: '/health_check',
-        digest: '9b3a0c85a887a256d6939da88aabd8cd',
-        status_code: 200
-      )
-    end
-  end
-
-  let(:http_get_string) do
-    "HTTP_GET {\n\tconnect_ip 192.168.1.20\n\tconnect_port 3306\n\tbindto 192.168.1.5\n\tbind_port 3308\n\tconnect_timeout 5\n\tfwmark 3\n\twarmup 3\n\turl {\n\t\tpath /health_check\n\t\tdigest 9b3a0c85a887a256d6939da88aabd8cd\n\t\tstatus_code 200\n\t\t}\n\tnb_get_retry 3\n\tdelay_before_retry 5\n\t}"
-  end
-
-  it 'sets a proper http_get configuration' do
-    expect(http_get.content).to eq http_get_string
-  end
-end
-
-describe ChefKeepalived::Resource::SslGet do
-  let(:ssl_get) do
-    ChefKeepalived::Resource::SslGet.new('port-443').tap do |r|
-      r.connect_ip '192.168.1.20'
-      r.connect_port 3306
-      r.bindto '192.168.1.5'
-      r.bind_port 3308
-      r.connect_timeout 5
-      r.fwmark 3
-      r.nb_get_retry 3
-      r.delay_before_retry 5
-      r.warmup 3
-      r.url(
-        path: '/health_check',
-        digest: '9b3a0c85a887a256d6939da88aabd8cd',
-        status_code: 200
-      )
-    end
-  end
-
-  let(:ssl_get_string) do
-    "SSL_GET {\n\tconnect_ip 192.168.1.20\n\tconnect_port 3306\n\tbindto 192.168.1.5\n\tbind_port 3308\n\tconnect_timeout 5\n\tfwmark 3\n\twarmup 3\n\turl {\n\t\tpath /health_check\n\t\tdigest 9b3a0c85a887a256d6939da88aabd8cd\n\t\tstatus_code 200\n\t\t}\n\tnb_get_retry 3\n\tdelay_before_retry 5\n\t}"
-  end
-
-  it 'sets a proper ssl_get configuration' do
-    expect(ssl_get.content).to eq ssl_get_string
-  end
-end
-
-describe ChefKeepalived::Resource::SmtpCheck do
-  let(:smtp_check) do
-    ChefKeepalived::Resource::SmtpCheck.new('port-465').tap do |r|
-      r.delay_before_retry 10
-      r.helo_name 'smtp.example.com'
-      r.warmup 3
-      r.host(
-        connect_ip: '192.168.1.20',
-        connect_port: 3306,
-        bindto: '192.168.1.5',
-        bind_port: 3308,
-        connect_timeout: 5,
-        fwmark: 3
-      )
-    end
-  end
-
-  let(:smtp_check_string) do
-    "SMTP_CHECK {\n\twarmup 3\n\thost {\n\t\tconnect_ip 192.168.1.20\n\t\tconnect_port 3306\n\t\tbindto 192.168.1.5\n\t\tbind_port 3308\n\t\tconnect_timeout 5\n\t\tfwmark 3\n\t\t}\n\tdelay_before_retry 10\n\thelo_name smtp.example.com\n\t}"
-  end
-
-  it 'sets a proper smtp_check configuration' do
-    expect(smtp_check.content).to eq smtp_check_string
-  end
-end
+#   it 'sets a proper smtp_check configuration' do
+#     expect(smtp_check.content).to eq smtp_check_string
+#   end
+# end
 
 describe ChefKeepalived::Resource::MiscCheck do
   let(:misc_check) do

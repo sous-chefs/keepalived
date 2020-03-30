@@ -26,7 +26,7 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `conf_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
 | `config_file` | `String` | `::File.join(conf_directory, 'keepalived_vrrp_sync_group__#{name}__.conf')` | full path to the config file | |
 | `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
-| `source` | `String` | `static_ipaddress.conf.erb` | Name of the template to render | |
+| `source` | `String` | `vrrp_sync_group.conf.erb` | Name of the template to render | |
 
 ## Examples
 
