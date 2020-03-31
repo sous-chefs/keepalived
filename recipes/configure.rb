@@ -18,11 +18,14 @@
 # limitations under the License.
 #
 
-# Set up directories for resource-generated configs
+root_path = '/etc/keepalived'
+config_path = "#{root_path}/conf.d"
+server_path = "#{root_path}/servers.d"
+health_path = "#{root_path}/checks.d"
 [
-  Keepalived::CONFIG_PATH,
-  Keepalived::SERVER_PATH,
-  Keepalived::HEALTH_PATH,
+  config_path,
+  server_path,
+  health_path,
 ].each do |include_path|
   directory include_path do
     owner 'root'
@@ -46,15 +49,15 @@ end
 
 # Include resource-generated configs
 file 'keepalived.conf' do
-  path "#{Keepalived::ROOT_PATH}/keepalived.conf"
-  content "include #{Keepalived::CONFIG_PATH}/*.conf\n"
+  path "#{root_path}/keepalived.conf"
+  content "include #{config_path}/*.conf\n"
   owner 'root'
   group 'root'
   mode '0640'
 end
 
 # Create a dummy config file in the resource-generated configs directory
-file File.join(Keepalived::CONFIG_PATH, 'empty.conf') do
+file File.join(config_path, 'empty.conf') do
   content '# Some versions of Keepalived won\'t start when include dir is empty'
   owner 'root'
   group 'root'

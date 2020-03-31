@@ -158,3 +158,17 @@ the `cookbook` and `source` properites on resources allow you to override the te
 - Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_virtual_server__#{name.to_s.gsub(/\s+/, '-')}__.conf"`
 - Added property `cookbook`, defaulted to: `keepalived`
 - Added property `source`, defaulted to `virtual_server.conf.erb`
+
+## keepalived_vrrp_instance
+
+- Removed property `config_name`, property `config_file` now will be the full name
+- Removed property `content`, this is now build up from the supplied properties
+- Removed property `exists`
+- Removed property `path`
+- Removed property `lvs_sync_daemon_interface`, it is not in the manpage
+- Removed property `debug`, manpage states not implemented yet
+- Added property `conf_directory`, defaulted to: `/etc/keepalived/conf.d`
+- Added property `config_file`, defaulted to: `::File.join(conf_directory, "keepalived_vrrp_instance__#{name}__.conf"`
+- Added property `cookbook`, defaulted to: `keepalived`
+- Added property `source`, defaulted to `vrrp_instance.conf.erb`
+- Changed property `strict_mode` to a boolean, this was previously a String

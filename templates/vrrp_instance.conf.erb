@@ -1,0 +1,139 @@
+vrrp_instance <%= @instance_name %> {
+<% if @smtp_alert %>
+  virtual_router_id <%= @virtual_router_id.to_s %>
+<% end %>
+<% if @master %>
+  state MASTER
+<% else %>
+  state BACKUP
+<% end %>
+<% if @interface %>
+  interface <%= @interface.to_s %>
+<% end %>
+<% if @use_vmac %>
+  use_vmac <%= @use_vmac.to_s %>
+<% end %>
+<% if @vmac_xmit_base %>
+  vmac_xmit_base
+<% end %>
+<% if @dont_track_primary %>
+  dont_track_primary
+<% end %>
+<% if @track_interface %>
+  track_interface {
+  <% @track_interface.each do | track_int | -%>
+    <%= track_int %>
+  <% end %>
+  }
+<% end %>
+<% if @mcast_src_ip %>
+  mcast_src_ip <%= @mcast_src_ip.to_s %>
+<% end %>
+<% if @unicast_src_ip %>
+  unicast_src_ip <%= @unicast_src_ip.to_s %>
+<% end %>
+<% if @unicast_peer %>
+  unicast_peer {
+  <% @unicast_peer.each do | unicast_p | -%>
+    <%= unicast_p %>
+  <% end %>
+  }
+<% end %>
+<% if @garp_master_delay %>
+  garp_master_delay <%= @garp_master_delay.to_s %>
+<% end %>
+<% if @garp_master_repeat %>
+  garp_master_repeat <%= @garp_master_repeat.to_s %>
+<% end %>
+<% if @garp_master_refresh %>
+  garp_master_refresh <%= @garp_master_refresh.to_s %>
+<% end %>
+<% if @garp_master_refresh_repeat %>
+  garp_master_refresh_repeat <%= @garp_master_refresh_repeat.to_s %>
+<% end %>
+<% if @priority %>
+  priority <%= @priority.to_s %>
+<% end %>
+<% if @advert_int %>
+  advert_int <%= @advert_int.to_s %>
+<% end %>
+<% if @authentication %>
+  authentication {
+    auth_type <%= @authentication[:auth_type].to_s %>
+    auth_pass <%= @authentication[:auth_pass].to_s %>
+  }
+<% end %>
+<% if @virtual_ipaddress %>
+  virtual_ipaddress {
+  <% @virtual_ipaddress.each do | vip | -%>
+    <%= vip %>
+  <% end %>
+  }
+<% end %>
+<% if @virtual_ipaddress_excluded %>
+  virtual_ipaddress_excluded {
+  <% @virtual_ipaddress_excluded.each do | vip_ex | -%>
+    <%= vip_ex %>
+  <% end %>
+  }
+<% end %>
+<% if @virtual_routes %>
+  virtual_routes {
+  <% @virtual_routes.each do | virtual_route | -%>
+    <%= virtual_route %>
+  <% end %>
+  }
+<% end %>
+<% if @virtual_rules %>
+  virtual_rules {
+  <% @virtual_rules.each do | virtual_rule | -%>
+    <%= virtual_rule %>
+  <% end %>
+  }
+<% end %>
+<% if @track_script %>
+  track_script {
+  <% @track_script.each do | script | -%>
+    <%= script %>
+  <% end %>
+  }
+<% end %>
+<% if @nopreempt %>
+  nopreempt
+<% end %>
+<% if @preempt_delay %>
+  preempt_delay <%= @preempt_delay.to_s %>
+<% end %>
+<% if @strict_mode %>
+  strict_mode true
+<% end %>
+
+<% if @version %>
+  version <%= @version.to_s %>
+<% end %>
+<% if @native_ipv6 %>
+  native_ipv6
+<% end %>
+<% if @notify_stop %>
+  notify_stop <%= @notify_stop.to_s %>
+<% end %>
+
+<% if @smtp_alert %>
+  smtp_alert true
+<% end %>
+<% if @notify_master %>
+  notify_master <%= @notify_master.to_s %>
+<% end %>
+<% if @notify_master %>
+  notify_master <%= @notify_master.to_s %>
+<% end %>
+<% if @notify_backup %>
+  notify_backup <%= @notify_backup.to_s %>
+<% end %>
+<% if @notify_fault %>
+  notify_fault <%= @notify_fault.to_s %>
+<% end %>
+<% if @notify %>
+  notify <%= @notify.to_s %>
+<% end %>
+}
