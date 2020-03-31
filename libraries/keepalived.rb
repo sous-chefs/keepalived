@@ -24,8 +24,6 @@ module Keepalived
   RESOURCES ||= %w(
     config
     vrrp_instance
-    virtual_server_group
-    virtual_server
   ).map { |r| "keepalived_#{r}".to_sym }.freeze
 
   module Notify
@@ -91,29 +89,29 @@ module Keepalived
     ).freeze
   end
 
-  module VirtualServer
-    OPTIONS ||= {
-      ip_family: { kind_of: String, equal_to: %w( inet inet6 ) },
-      delay_loop: { kind_of: Integer },
-      lvs_sched: { kind_of: String, equal_to: %w( rr wrr lc wlc lblc sh dh ) },
-      lb_algo: { kind_of: String, equal_to: %w( rr wrr lc wlc lblc sh dh ) },
-      ops: { kind_of: [TrueClass, FalseClass] },
-      lvs_method: { kind_of: String, equal_to: %w( NAT DR TUN ) },
-      lb_kind: { kind_of: String, equal_to: %w( NAT DR TUN ) },
-      persistence_engine: { kind_of: String },
-      persistence_timeout: { kind_of: Integer },
-      persistence_granularity: { kind_of: String },
-      protocol: { kind_of: String, equal_to: %w( TCP UDP SCTP ) },
-      ha_suspend: { kind_of: [TrueClass, FalseClass] },
-      virtualhost: { kind_of: String },
-      alpha: { kind_of: [TrueClass, FalseClass] },
-      omega: { kind_of: [TrueClass, FalseClass] },
-      quorum: { kind_of: Integer },
-      hysteresis: { kind_of: Integer },
-      quorum_up: { kind_of: String },
-      quorum_down: { kind_of: String },
-      sorry_server: { kind_of: String },
-      sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] },
-    }.freeze
-  end
+  # module VirtualServer
+  #   OPTIONS ||= {
+  #     ip_family: { kind_of: String, equal_to: %w( inet inet6 ) },
+  #     delay_loop: { kind_of: Integer },
+  #     lvs_sched: { kind_of: String, equal_to: %w( rr wrr lc wlc lblc sh dh ) },
+  #     lb_algo: { kind_of: String, equal_to: %w( rr wrr lc wlc lblc sh dh ) },
+  #     ops: { kind_of: [TrueClass, FalseClass] },
+  #     lvs_method: { kind_of: String, equal_to: %w( NAT DR TUN ) },
+  #     lb_kind: { kind_of: String, equal_to: %w( NAT DR TUN ) },
+  #     persistence_engine: { kind_of: String },
+  #     persistence_timeout: { kind_of: Integer },
+  #     persistence_granularity: { kind_of: String },
+  #     protocol: { kind_of: String, equal_to: %w( TCP UDP SCTP ) },
+  #     ha_suspend: { kind_of: [TrueClass, FalseClass] },
+  #     virtualhost: { kind_of: String },
+  #     alpha: { kind_of: [TrueClass, FalseClass] },
+  #     omega: { kind_of: [TrueClass, FalseClass] },
+  #     quorum: { kind_of: Integer },
+  #     hysteresis: { kind_of: Integer },
+  #     quorum_up: { kind_of: String },
+  #     quorum_down: { kind_of: String },
+  #     sorry_server: { kind_of: String },
+  #     sorry_server_inhibit: { kind_of: [TrueClass, FalseClass] },
+  #   }.freeze
+  # end
 end

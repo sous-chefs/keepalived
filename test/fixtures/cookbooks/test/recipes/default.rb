@@ -134,8 +134,6 @@ https_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
 end
 
 keepalived_virtual_server '192.168.1.5 443' do
-  lb_algo 'rr'
-  lb_kind 'NAT'
   virtualhost 'www.example.com'
   quorum 2
   real_servers https_servers
@@ -146,8 +144,6 @@ http_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
 end
 
 keepalived_virtual_server '192.168.1.5 80' do
-  lb_algo 'rr'
-  lb_kind 'NAT'
   virtualhost 'www.example.com'
   quorum 2
   real_servers http_servers

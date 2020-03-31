@@ -1,0 +1,8 @@
+virtual_server_group <%= @virtual_server_group_name %> {
+<% @vips.each do | vip | -%>
+  <%= vip %>
+<% end %>
+<% @fwmarks.each do | fwmark | -%>
+  fwmark <%= fwmark %>
+<% end %>
+}

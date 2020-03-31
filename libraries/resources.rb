@@ -65,46 +65,27 @@ class ChefKeepalived
       end
     end
 
-    class VirtualServerGroup < Config
-      resource_name :keepalived_virtual_server_group
+    # class VirtualServer < Config
+    #   resource_name :keepalived_virtual_server
 
-      property :vips, kind_of: Array, desired_state: false
-      property :fwmarks, kind_of: Array, desired_state: false, callbacks: {
-        'are all integers' => ->(spec) { spec.all? { |i| i.is_a?(Integer) } },
-      }
+    #   option_properties Keepalived::VirtualServer::OPTIONS
 
-      private
+    #   property :real_servers, kind_of: Array, required: true,
+    #                           desired_state: false
 
-      def to_conf
-        cfg = ["virtual_server_group #{name} {"]
-        cfg << vips.join("\n\t") if vips
-        cfg << fwmarks.map { |fwm| "fwmark #{fwm}" }.join("\n\t") if fwmarks
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   private
 
-    class VirtualServer < Config
-      resource_name :keepalived_virtual_server
-
-      option_properties Keepalived::VirtualServer::OPTIONS
-
-      property :real_servers, kind_of: Array, required: true,
-                              desired_state: false
-
-      private
-
-      def to_conf
-        cfg = ["virtual_server #{name} {"]
-        cfg << Keepalived::Helpers.conf_string(
-          self, Keepalived::VirtualServer::OPTIONS
-        )
-        cfg << real_servers.map do |server|
-          "include #{server}"
-        end
-        cfg << '}'
-        cfg.join("\n\t")
-      end
-    end
+    #   def to_conf
+    #     cfg = ["virtual_server #{name} {"]
+    #     cfg << Keepalived::Helpers.conf_string(
+    #       self, Keepalived::VirtualServer::OPTIONS
+    #     )
+    #     cfg << real_servers.map do |server|
+    #       "include #{server}"
+    #     end
+    #     cfg << '}'
+    #     cfg.join("\n\t")
+    #   end
+    # end
   end
 end
