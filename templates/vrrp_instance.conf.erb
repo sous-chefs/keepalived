@@ -1,5 +1,5 @@
 vrrp_instance <%= @instance_name %> {
-<% if @smtp_alert %>
+<% if @virtual_router_id %>
   virtual_router_id <%= @virtual_router_id.to_s %>
 <% end %>
 <% if @master %>

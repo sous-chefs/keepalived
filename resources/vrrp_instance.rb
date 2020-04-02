@@ -83,8 +83,7 @@ action :create do
       strict_mode: new_resource.strict_mode,
       version: new_resource.version,
       native_ipv6: new_resource.native_ipv6,
-      notify_stop: new_resource.notify_stop,
-      debug: new_resource.debug
+      notify_stop: new_resource.notify_stop
     )
     owner 'root'
     group 'root'
