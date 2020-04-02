@@ -45,87 +45,22 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 - `default['keepalived']['daemon_args_env_var']`: name of env var used by init script to pass in the daemon cli arguments
 - `default['keepalived']['defaults_path']`: path of file to write daemon cli arg env var to (e.g. "/etc/default/keepalived")
 
-## Resource Usage
+## Resources
 
-This cookbook provides a set of resources for managing keepalived via LWRPs. These resources rely on support for the `include` directive, supported since keepalived version `1.1.15`, released in Sept, 2007. Please confirm your vendor package supports this before attempting to use these resources.
-
-### Generic Config
-
-The `keepalived_config` resource is the base resource on which other resources are built. It's not generally intended for direct consumption, but can be used in a pinch to provide a custom configuration if needed via the content property.
-
-Example:
-
-```ruby
-keepalived_config 'linkbeat_use_polling' do
-  content "linkbeat_use_polling"
-end
-```
-
-Supported properties:
-
-Property | Type   | Default
--------- | ------ | --------
-content  | String | #to_conf
-path     | String | dynamically computed
-
-### VRRP Instances
-
-The `keepalived_vrrp_instance` resource can be used to configure a VRRP instance with keepalived via a `vrrp_instance` configuration block.
-
-Example:
-
-```ruby
-keepalived_vrrp_instance 'inside_network' do
-  master true
-  interface node['network']['default_interface']
-  virtual_router_id 51
-  priority 101
-  authentication auth_type: 'PASS', auth_pass: 'buttz'
-  virtual_ipaddress %w( 192.168.1.1 )
-  notify '/usr/local/bin/keepalived-notify.sh'
-  smtp_alert true
-end
-```
-
-Supported properties:
-
-Property                   | Type                                            | Default
--------------------------- | ----------------------------------------------- | -------
-notify_master              | String                                          | nil
-notify_backup              | String                                          | nil
-notify_fault               | String                                          | nil
-notify                     | String                                          | nil
-notify_stop                | String                                          | nil
-smtp_alert                 | TrueClass,FalseClass                            | nil
-master                     | TrueClass,FalseClass                            | false
-interface                  | String                                          | nil
-use_vmac                   | String                                          | nil
-vmac_xmit_base             | TrueClass,FalseClass                            | nil
-dont_track_primary         | TrueClass,FalseClass                            | nil
-track_interface            | Array                                           | nil
-mcast_src_ip               | String                                          | nil
-unicast_src_ip             | String                                          | nil
-unicast_peer               | Array                                           | nil
-lvs_sync_daemon_interface  | String                                          | nil
-garp_master_delay          | Integer                                         | nil
-garp_master_repeat         | Integer                                         | nil
-garp_master_refresh        | Integer                                         | nil
-garp_master_refresh_repeat | Integer                                         | nil
-virtual_router_id          | Integer (0-255)                                 | nil
-priority                   | Integer (0-255)                                 | 100
-advert_int                 | Integer                                         | nil
-authentication             | Hash, required, keys of: :auth_type, :auth_pass | nil
-virtual_ipaddress          | Array                                           | nil
-virtual_ipaddress_excluded | Array                                           | nil
-virtual_routes             | Array                                           | nil
-virtual_rules              | Array                                           | nil
-track_script               | Array                                           | nil
-nopreempt                  | TrueClass,FalseClass                            | nil
-preempt_delay              | Integer (0-1000)                                | nil
-strict_mode                | String                                          | nil
-version                    | Integer                                         | nil
-native_ipv6                | TrueClass, FalseClass                           | nil
-debug                      | TrueClass, FalseClass                           | nil
+- [keepalived_global_defs](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_global_defs.md)
+- [keepalived_http_get](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_http_get.md)
+- [keepalived_misc_check](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_misc_check.md)
+- [keepalived_real_server](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_real_server.md)
+- [keepalived_smtp_check](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_smtp_check.md)
+- [keepalived_ssl_get](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_ssl_get.md)
+- [keepalived_static_ipaddress](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_static_ipaddress.md)
+- [keepalived_static_routes](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_static_routes.md)
+- [keepalived_tcp_check](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_tcp_check.md)
+- [keepalived_virtual_server_group](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_virtual_server_group.md)
+- [keepalived_virtual_server](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_virtual_server.md)
+- [keepalived_vrrp_instance](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_vrrp_instance.md)
+- [keepalived_vrrp_script](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_vrrp_script.md)
+- [keepalived_vrrp_sync_group](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_vrrp_sync_group.md)
 
 ## Contributors
 
