@@ -1,4 +1,4 @@
-vrrp_sync_group <%= @script_name %> {
+vrrp_script <%= @script_name %> {
   script <%= @script.to_s %>
 <% if @interval %>
   interval <%= @interval.to_s %>
