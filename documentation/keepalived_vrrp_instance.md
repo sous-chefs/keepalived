@@ -63,7 +63,7 @@ keepalived_vrrp_instance 'inside_network' do
   interface node['network']['default_interface']
   virtual_router_id 51
   priority 101
-  authentication auth_type: 'PASS', auth_pass: 'buttz'
+  authentication auth_type: 'PASS', auth_pass: 'secret1'
   virtual_ipaddress %w( 192.168.1.1 )
   notify '/usr/local/bin/keepalived-notify.sh'
   smtp_alert true
