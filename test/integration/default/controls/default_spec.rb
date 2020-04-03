@@ -18,7 +18,6 @@ control 'service' do
   end
 end
 
-
 control 'is configured' do
   # Configs
   describe file('/etc/keepalived/keepalived.conf') do
