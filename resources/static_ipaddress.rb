@@ -1,8 +1,8 @@
-property :addresses,      Array, required: true
+property :addresses,        Array, required: true
 property :config_directory, String, default: '/etc/keepalived/conf.d'
-property :config_file,    String, default: lazy { ::File.join(config_directory, 'static_ipaddress.conf') }
-property :cookbook,       String, default: 'keepalived'
-property :source,         String, default: 'static_ipaddress.conf.erb'
+property :config_file,      String, default: lazy { ::File.join(config_directory, 'static_ipaddress.conf') }
+property :cookbook,         String, default: 'keepalived'
+property :source,           String, default: 'static_ipaddress.conf.erb'
 
 action :create do
   template new_resource.config_file do

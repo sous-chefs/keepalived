@@ -27,7 +27,7 @@ property :enable_snmp_rfcv3,                [true, false]
 property :enable_traps,                     [true, false]
 property :enable_script_security,           [true, false]
 property :extra_options,                    Hash
-property :config_directory,                   String, default: '/etc/keepalived/conf.d'
+property :config_directory,                 String, default: '/etc/keepalived/conf.d'
 property :config_file,                      String, default: lazy { ::File.join(config_directory, 'global_defs.conf') }
 property :cookbook,                         String, default: 'keepalived'
 property :source,                           String, default: 'global_defs.conf.erb'

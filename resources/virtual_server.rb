@@ -19,7 +19,7 @@ property :quorum_up,                String
 property :quorum_down,              String
 property :sorry_server,             String
 property :sorry_server_inhibit,     [true, false]
-property :config_directory,           String, default: '/etc/keepalived/conf.d'
+property :config_directory,         String, default: '/etc/keepalived/conf.d'
 property :config_file,              String, default: lazy { ::File.join(config_directory, "keepalived_virtual_server__#{name.to_s.gsub(/\s+/, '-')}__.conf") }
 property :cookbook,                 String, default: 'keepalived'
 property :source,                   String, default: 'virtual_server.conf.erb'

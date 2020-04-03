@@ -1,15 +1,15 @@
-property :script,         String, required: true
-property :interval,       Integer
-property :timeout,        Integer
-property :weight,         Integer, equal_to: -254.upto(254).to_a
-property :fall,           Integer
-property :rise,           Integer
-property :user,           String
+property :script,           String, required: true
+property :interval,         Integer
+property :timeout,          Integer
+property :weight,           Integer, equal_to: -254.upto(254).to_a
+property :fall,             Integer
+property :rise,             Integer
+property :user,             String
 property :config_directory, String, default: '/etc/keepalived/conf.d'
 # set name to 00_ to force early load-order so it's defined before vrrp_instance(s) which may reference it via track_script
-property :config_file,    String, default: lazy { ::File.join(config_directory, "00_keepalived_vrrp_script__#{name}__.conf") }
-property :cookbook,       String, default: 'keepalived'
-property :source,         String, default: 'vrrp_script.conf.erb'
+property :config_file,      String, default: lazy { ::File.join(config_directory, "00_keepalived_vrrp_script__#{name}__.conf") }
+property :cookbook,         String, default: 'keepalived'
+property :source,           String, default: 'vrrp_script.conf.erb'
 
 action :create do
   template new_resource.config_file do

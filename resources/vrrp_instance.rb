@@ -40,7 +40,7 @@ property :notify_backup,              String
 property :notify_fault,               String
 property :notify,                     String
 property :smtp_alert,                 [true, false]
-property :config_directory,             String, default: '/etc/keepalived/conf.d'
+property :config_directory,           String, default: '/etc/keepalived/conf.d'
 property :config_file,                String, default: lazy { ::File.join(config_directory, "keepalived_vrrp_instance__#{name}__.conf") }
 property :cookbook,                   String, default: 'keepalived'
 property :source,                     String, default: 'vrrp_instance.conf.erb'

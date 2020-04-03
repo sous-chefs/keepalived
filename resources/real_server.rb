@@ -5,7 +5,7 @@ property :weight,             Integer
 property :inhibit_on_failure, [true, false]
 property :notify_up,          String
 property :notify_down,        String
-property :config_directory,     String, default: '/etc/keepalived/servers.d'
+property :config_directory,   String, default: '/etc/keepalived/servers.d'
 property :config_file,        String, default: lazy { ::File.join(config_directory, "keepalived_real_server__#{ipaddress}-#{port}__.conf") }
 property :cookbook,           String, default: 'keepalived'
 property :source,             String, default: 'real_server.conf.erb'
