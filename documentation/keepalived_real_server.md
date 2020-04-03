@@ -40,6 +40,7 @@ keepalived_real_server 'Secure Web Server' do
   notify_up '/usr/local/bin/keepalived-notify-up.sh'
   notify_down '/usr/local/bin/keepalived-notify-down.sh'
   inhibit_on_failure true
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```
 
@@ -47,6 +48,7 @@ end
 keepalived_http_get 'health_check_url' do
   nb_get_retry 3
   url path: '/health_check', status_code: 200
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_real_server 'fe01' do
@@ -55,5 +57,6 @@ keepalived_real_server 'fe01' do
   weight 5
   inhibit_on_failure true
   healthcheck resources(keepalived_http_get: 'health_check_url').config_file
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

@@ -37,5 +37,6 @@ keepalived_vrrp_sync_group 'myGroup' do
   notify_backup '/path/to_backup.sh'
   notify_fault  '/path/fault.sh'
   notify        '/path/notify.sh'
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

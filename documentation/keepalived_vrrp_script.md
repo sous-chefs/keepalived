@@ -38,6 +38,7 @@ keepalived_vrrp_script 'chk_haproxy' do
   fall 20
   rise 30
   user 'scriptUser'
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```
 
@@ -46,5 +47,6 @@ keepalived_vrrp_script 'mongo-active' do
   script '/usr/local/bin/chk-mongod.sh'
   interval 2
   weight 50
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

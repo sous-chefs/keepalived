@@ -31,5 +31,6 @@ More information available at <https://www.keepalived.org/manpage.html>
 ```ruby
 keepalived_virtual_server_group 'http' do
   vips ['192.168.1.13 80', '192.168.1.14 80']
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

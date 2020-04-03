@@ -6,7 +6,7 @@ property :bind_port,        Integer, equal_to: 1.upto(65_535)
 property :fwmark,           Integer
 property :warmup,           Integer
 property :config_directory, String, default: '/etc/keepalived/checks.d'
-property :config_file,      String, default: lazy { ::File.join(config_directory, "keepalived_tcp_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf") }
+property :config_file,      String, default: lazy { ::File.join(config_directory, "keepalived_tcp_check__#{name.to_s.gsub(/\s+/, '-')}__.conf") }
 property :cookbook,         String, default: 'keepalived'
 property :source,           String, default: 'tcp_check.conf.erb'
 

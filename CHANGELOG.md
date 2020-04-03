@@ -2,7 +2,16 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
-## UNNRELEASED
+## 5.0.0
+
+- Removed all attributes
+- Removed all recipes
+- Added resource called `keepalived_install`
+- Changed service behaviour, this must now be declared directly as a resource.
+- All other resources need to notify the service to restart when changes `notifies :restart, 'service[keepalived]', :delayed`
+- Resolved issue with check names prefixing all checks names with a port- in them, this was incorrect and has now been removed.
+
+## 4.0.0
 
 - Added testing for newer operating systems
   - amazonlinux-2

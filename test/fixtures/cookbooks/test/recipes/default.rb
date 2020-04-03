@@ -3,8 +3,14 @@
 #
 apt_update 'update' if platform_family?('debian')
 
-include_recipe 'keepalived::default'
+# include_recipe 'keepalived::default'
+keepalived_install 'keepalived'
 
+service 'keepalived' do
+  action [:enable, :start]
+end
+
+# this enables us to bind ips which are not really present
 execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
 
 global_defs_extra_options = { 'foo' => 'bar', 'other' => [1, 2, 3] }
@@ -20,23 +26,27 @@ keepalived_global_defs 'global_defs' do
   enable_traps true
   enable_script_security true
   extra_options global_defs_extra_options
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_static_ipaddress 'static_ipaddress' do
   addresses [
     '192.168.1.1/24 dev eth0 scope global',
   ]
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_static_routes 'static_routes' do
   routes [
     '192.168.2.0/24 via 192.168.1.100 dev eth0',
   ]
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_vrrp_sync_group 'VG_1' do
   group %w( inside_network outside_network )
   smtp_alert true
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_vrrp_script 'chk_haproxy' do
@@ -44,6 +54,7 @@ keepalived_vrrp_script 'chk_haproxy' do
   weight 50
   script '"/usr/bin/killall -0 haproxy"'
   user 'root'
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_vrrp_instance 'inside_network' do
@@ -60,6 +71,7 @@ keepalived_vrrp_instance 'inside_network' do
   )
   virtual_ipaddress %w( 192.168.4.92 )
   sensitive true
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_vrrp_instance 'outside_network' do
@@ -73,30 +85,36 @@ keepalived_vrrp_instance 'outside_network' do
     auth_pass: 'buttz'
   )
   virtual_ipaddress %w( 192.168.3.1 )
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_virtual_server_group 'http' do
   vips ['192.168.1.13 80', '192.168.1.14 80']
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_tcp_check 'port-6379' do
   connect_port 6379
   connect_timeout 5
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_http_get 'port-80' do
   connect_timeout 15
   url path: '/health_check', status_code: 301
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_ssl_get 'port-443' do
   connect_timeout 20
   url path: '/health_check', status_code: 200
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_smtp_check 'port-25' do
   connect_timeout 30
   helo_name 'smtp.example.com'
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 file '/usr/local/bin/keepalived-ping-check.sh' do
@@ -105,10 +123,12 @@ file '/usr/local/bin/keepalived-ping-check.sh' do
     ping -c 2 8.8.8.8
   EOS
   mode '755'
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 keepalived_misc_check 'ping-check' do
   misc_path '/usr/local/bin/keepalived-ping-check.sh'
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 %w( 192.168.1.13 192.168.1.14 ).each do |addr|
@@ -118,6 +138,7 @@ end
     weight 5
     inhibit_on_failure true
     healthcheck resources(keepalived_http_get: 'port-80').config_file
+    notifies :restart, 'service[keepalived]', :delayed
   end
 
   keepalived_real_server "#{addr}-443" do
@@ -126,6 +147,7 @@ end
     weight 5
     inhibit_on_failure true
     healthcheck resources(keepalived_ssl_get: 'port-443').config_file
+    notifies :restart, 'service[keepalived]', :delayed
   end
 end
 
@@ -137,6 +159,7 @@ keepalived_virtual_server '192.168.1.5 443' do
   virtualhost 'www.example.com'
   quorum 2
   real_servers https_servers
+  notifies :restart, 'service[keepalived]', :delayed
 end
 
 http_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
@@ -147,4 +170,5 @@ keepalived_virtual_server '192.168.1.5 80' do
   virtualhost 'www.example.com'
   quorum 2
   real_servers http_servers
+  notifies :restart, 'service[keepalived]', :delayed
 end

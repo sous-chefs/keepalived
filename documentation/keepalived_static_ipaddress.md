@@ -31,5 +31,6 @@ keepalived_static_ipaddress 'static_ipaddress' do
     '192.168.1.98/24 dev eth0 scope global',
     '192.168.1.99/24 dev eth0 scope global',
   ]
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```
