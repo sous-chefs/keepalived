@@ -35,31 +35,14 @@ platforms:
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
 
-  - name: centos-8
-    driver:
-      image: dokken/centos-8
-      pid_one_command: /usr/lib/systemd/systemd
-
   - name: centos-7
     driver:
       image: dokken/centos-7
       pid_one_command: /usr/lib/systemd/systemd
 
-  - name: fedora-latest
-    driver:
-      image: dokken/fedora-latest
-      pid_one_command: /usr/lib/systemd/systemd
-
   - name: ubuntu-18.04
     driver:
       image: dokken/ubuntu-18.04
-      pid_one_command: /bin/systemd
-      intermediate_instructions:
-        - RUN /usr/bin/apt-get update
-
-  - name: ubuntu-20.04
-    driver:
-      image: dokken/ubuntu-20.04
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update

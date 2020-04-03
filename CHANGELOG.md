@@ -15,10 +15,8 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 - Added testing for newer operating systems
   - amazonlinux-2
-  - centos 8
   - debian 10
   - ubuntu 18.04
-  - ubuntu 20.04
 - Removed testing for older operating systems
   - amazonlinux
   - centos 6
