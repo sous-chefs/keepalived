@@ -50,8 +50,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `notify_fault` | `String` | `nil` | Script to run for notifications when transitioning to state of fault | |
 | `notify` | `String` | `nil` | Script to run for notifications when any transition of state happens | |
 | `smtp_alert` | `true, false` | `nil` | Send email notification during state transition  | |
-| `conf_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(conf_directory, "keepalived_vrrp_instance__#{name}__.conf")` | full path to the config file | |
+| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
+| `config_file` | `String` | `::File.join(config_directory, "keepalived_vrrp_instance__#{name}__.conf")` | full path to the config file | |
 | `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
 | `source` | `String` | `vrrp_instance.conf.erb` | Name of the template to render | |
 

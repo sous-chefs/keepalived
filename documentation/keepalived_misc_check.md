@@ -21,8 +21,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `misc_timeout`        | `Integer`     | `nil`    | Optional Script execution timeout | |
 | `misc_dynamic`        | `true`, `false`| `false`    | See Manpage. | |
 | `warmup`              | `Integer`     | `nil`| Optional random delay to start the initial check for maximum N seconds | |
-| `conf_directory`      | `String`      | `/etc/keepalived/checks.d` | directory for the config file to reside in | |
-| `config_file`         | `String`      | `::File.join(conf_directory, "keepalived_misc_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf")` | full path to the config file | |
+| `config_directory`      | `String`      | `/etc/keepalived/checks.d` | directory for the config file to reside in | |
+| `config_file`         | `String`      | `::File.join(config_directory, "keepalived_misc_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf")` | full path to the config file | |
 | `cookbook`            | `String`      | `keepalived` | Which cookbook to look in for the template | |
 | `source`              | `String`      | `misc_check.conf.erb` | Name of the template to render | |
 

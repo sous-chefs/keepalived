@@ -1,6 +1,6 @@
 property :routes,         Array, required: true
-property :conf_directory, String, default: '/etc/keepalived/conf.d'
-property :config_file,    String, default: lazy { ::File.join(conf_directory, 'static_routes.conf') }
+property :config_directory, String, default: '/etc/keepalived/conf.d'
+property :config_file,    String, default: lazy { ::File.join(config_directory, 'static_routes.conf') }
 property :cookbook,       String, default: 'keepalived'
 property :source,         String, default: 'static_routes.conf.erb'
 

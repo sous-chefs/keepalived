@@ -2,8 +2,8 @@ property :misc_path,      String
 property :misc_timeout,   Integer
 property :warmup,         Integer
 property :misc_dynamic,   [true, false]
-property :conf_directory, String, default: '/etc/keepalived/checks.d'
-property :config_file,    String, default: lazy { ::File.join(conf_directory, "keepalived_misc_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf") }
+property :config_directory, String, default: '/etc/keepalived/checks.d'
+property :config_file,    String, default: lazy { ::File.join(config_directory, "keepalived_misc_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf") }
 property :cookbook,       String, default: 'keepalived'
 property :source,         String, default: 'misc_check.conf.erb'
 

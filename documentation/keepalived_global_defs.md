@@ -45,8 +45,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `enable_traps`                    | `True, False` | `nil` | enable SNMP traps | |
 | `enable_script_security`          | `True, False` | `nil` | Don't run scripts configured to be run as root if any part of the path is writable by a non-root user | |
 | `extra_options` | `Hash` | `nil` | A hash of additional options for the config file that are not yet exposed as properties | |
-| `conf_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(conf_directory, 'global_defs.conf')` | full path to the config file | |
+| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
+| `config_file` | `String` | `::File.join(config_directory, 'global_defs.conf')` | full path to the config file | |
 | `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
 | `source` | `String` | `global_defs.conf.erb` | Name of the template to render | |
 
