@@ -11,15 +11,7 @@ The `keepalived_service` resource can be used to manage the `keepalived` service
 - `:create`
 
 ## Properties
-property :package_name, String, default: 'keepalived'
-property :root_path,    String, default: '/etc/keepalived'
-property :config_path,  String, default: "#{root_path}/conf.d"
-property :server_path,  String, default: "#{root_path}/servers.d"
-property :health_path,  String, default: "#{root_path}/checks.d"
-property :defaults_path, String, default: value_for_platform_family(
-                                            debian: '/etc/default/keepalived',
-                                            default: '/etc/sysconfig/keepalived'
-                                          )
+
 | Name        | Type        |  Default | Description | Allowed Values |
 ------------- | ----------- | -------- | ----------- | -------------- |
 | `package_name` | `String`       | `keepalived` | The name of the service | |
