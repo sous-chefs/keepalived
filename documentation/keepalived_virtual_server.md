@@ -38,8 +38,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `quorum_down` | `String` | `nil` | Script to execute when quorum is lost | |
 | `sorry_server` | `String` | `nil` | If a sorry server is configured, all real servers will be brought down when the quorum is not achieved| |
 | `sorry_server_inhibit` | `true`, `false` | `nil` | applies inhibit_on_failure behaviour to the sorry_server | |
-| `conf_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(conf_directory, '00_keepalived_virtual_server__#{name}__.conf')` | full path to the config file | |
+| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
+| `config_file` | `String` | `::File.join(config_directory, '00_keepalived_virtual_server__#{name}__.conf')` | full path to the config file | |
 | `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
 | `source` | `String` | `virtual_server.conf.erb` | Name of the template to render | |
 

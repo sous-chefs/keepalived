@@ -24,8 +24,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `fall` | `Integer`       | `nil` | Required number of successes for OK transition  | |
 | `rise` | `Integer`       | | Required number of successes for KO transition  | |
 | `user` | `String`       | | User/group names to run script under, group default to group of user  | |
-| `conf_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(conf_directory, '00_keepalived_vrrp_script__#{name}__.conf')` | full path to the config file | |
+| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
+| `config_file` | `String` | `::File.join(config_directory, '00_keepalived_vrrp_script__#{name}__.conf')` | full path to the config file | |
 | `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
 | `source` | `String` | `vrrp_script.conf.erb` | Name of the template to render | |
 

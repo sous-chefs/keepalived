@@ -14,8 +14,8 @@ property :bind_to,            String
 property :bind_port,          Integer, equal_to: 1.upto(65_535)
 property :fwmark,             Integer
 property :warmup,             Integer
-property :conf_directory,     String, default: '/etc/keepalived/checks.d'
-property :config_file,        String, default: lazy { ::File.join(conf_directory, "keepalived_ssl_get__port-#{name.to_s.gsub(/\s+/, '-')}__.conf") }
+property :config_directory,     String, default: '/etc/keepalived/checks.d'
+property :config_file,        String, default: lazy { ::File.join(config_directory, "keepalived_ssl_get__port-#{name.to_s.gsub(/\s+/, '-')}__.conf") }
 property :cookbook,           String, default: 'keepalived'
 property :source,             String, default: 'ssl_get.conf.erb'
 

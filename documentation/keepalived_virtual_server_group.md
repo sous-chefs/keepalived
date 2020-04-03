@@ -21,8 +21,8 @@ More information available at <https://www.keepalived.org/manpage.html>
 ------------- | ----------- | -------- | ----------- | -------------- |
 | `vips`      | `Array`     | `[]` | Array of Strings declaring machine IPs + Ports | |
 | `fwmarks`   | `Array`     | `[]` | Array of Integers declaring Firewall Marks | |
-| `conf_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(conf_directory, keepalived_virtual_server_group__#{name}__.conf)` | full path to the config file | |
+| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
+| `config_file` | `String` | `::File.join(config_directory, keepalived_virtual_server_group__#{name}__.conf)` | full path to the config file | |
 | `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
 | `source` | `String` | `virtual_server_group.conf.erb` | Name of the template to render | |
 
