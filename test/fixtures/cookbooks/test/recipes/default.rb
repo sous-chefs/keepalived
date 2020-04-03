@@ -7,6 +7,8 @@ include_recipe 'keepalived::default'
 
 execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
 
+global_defs_extra_options = { 'foo' => 'bar', 'other' => [1, 2, 3] }
+
 keepalived_global_defs 'global_defs' do
   notification_email %w( root@localhost me@example.com )
   notification_email_from 'keepalived@localhost'
@@ -17,6 +19,7 @@ keepalived_global_defs 'global_defs' do
   vrrp_mcast_group6 'ff02::12'
   enable_traps true
   enable_script_security true
+  extra_options global_defs_extra_options
 end
 
 keepalived_static_ipaddress 'static_ipaddress' do
@@ -114,7 +117,7 @@ end
     port 80
     weight 5
     inhibit_on_failure true
-    healthcheck resources(keepalived_http_get: 'port-80').path
+    healthcheck resources(keepalived_http_get: 'port-80').config_file
   end
 
   keepalived_real_server "#{addr}-443" do
@@ -122,29 +125,25 @@ end
     port 443
     weight 5
     inhibit_on_failure true
-    healthcheck resources(keepalived_ssl_get: 'port-443').path
+    healthcheck resources(keepalived_ssl_get: 'port-443').config_file
   end
 end
 
 https_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
-  resources(keepalived_real_server: "#{addr}-443").path
+  resources(keepalived_real_server: "#{addr}-443").config_file
 end
 
 keepalived_virtual_server '192.168.1.5 443' do
-  lb_algo 'rr'
-  lb_kind 'NAT'
   virtualhost 'www.example.com'
   quorum 2
   real_servers https_servers
 end
 
 http_servers = %w( 192.168.1.13 192.168.1.14 ).map do |addr|
-  resources(keepalived_real_server: "#{addr}-80").path
+  resources(keepalived_real_server: "#{addr}-80").config_file
 end
 
 keepalived_virtual_server '192.168.1.5 80' do
-  lb_algo 'rr'
-  lb_kind 'NAT'
   virtualhost 'www.example.com'
   quorum 2
   real_servers http_servers

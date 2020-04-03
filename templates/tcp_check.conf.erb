@@ -1,0 +1,23 @@
+TCP_CHECK {
+<% if @connect_ip %>
+  connect_ip <%= @connect_ip.to_s %>
+<% end %>
+<% if @connect_port %>
+  connect_port <%= @connect_port.to_s %>
+<% end %>
+<% if @bind_to %>
+  bindto <%= @bind_to.to_s %>
+<% end %>
+<% if @bind_port %>
+  bind_port <%= @bind_port.to_s %>
+<% end %>
+<% if @connect_timeout %>
+  connect_timeout <%= @connect_timeout.to_s %>
+<% end %>
+<% if @fwmark %>
+  fwmark <%= @fwmark.to_s %>
+<% end %>
+<% if @warmup %>
+  warmup <%= @warmup.to_s %>
+<% end %>
+}

@@ -1,0 +1,64 @@
+virtual_server <%= @ip_address %> {
+<% if @ip_family %>
+  ip_family <%= @ip_family.to_s %>
+<% end %>
+<% if @delay_loop %>
+  delay_loop <%= @delay_loop.to_s %>
+<% end %>
+<% if @lvs_sched %>
+  lvs_sched <%= @lvs_sched.to_s %>
+<% end %>
+<% if @ops %>
+  ops
+<% end %>
+<% if @lvs_method %>
+  lvs_method <%= @lvs_method.to_s %>
+<% end %>
+<% if @persistence_engine %>
+  persistence_engine <%= @persistence_engine.to_s %>
+<% end %>
+<% if @persistence_timeout %>
+  persistence_timeout <%= @persistence_timeout.to_s %>
+<% end %>
+<% if @persistence_granularity %>
+  persistence_granularity <%= @persistence_granularity.to_s %>
+<% end %>
+<% if @protocol %>
+  protocol <%= @protocol.to_s %>
+<% end %>
+<% if @ha_suspend %>
+  ha_suspend
+<% end %>
+<% if @virtualhost %>
+  virtualhost <%= @virtualhost.to_s %>
+<% end %>
+<% if @alpha %>
+  alpha
+<% end %>
+<% if @omega %>
+  omega
+<% end %>
+<% if @quorum %>
+  quorum <%= @quorum.to_s %>
+<% end %>
+<% if @quorum_up %>
+  quorum_up <%= @quorum_up.to_s %>
+<% end %>
+<% if @quorum_down %>
+  quorum_down <%= @quorum_down.to_s %>
+<% end %>
+<% if @hysteresis %>
+  hysteresis <%= @hysteresis.to_s %>
+<% end %>
+<% if @sorry_server %>
+  sorry_server <%= @sorry_server.to_s %>
+<% end %>
+<% if @sorry_server_inhibit %>
+  sorry_server_inhibit
+<% end %>
+<% if @real_servers %>
+  <% @real_servers.each do | real_server | -%>
+  include <%= real_server %>
+  <% end %>
+<% end %>
+}

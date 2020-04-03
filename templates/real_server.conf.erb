@@ -1,0 +1,17 @@
+real_server <%= @ipaddress %> <%= @port %> {
+<% if @weight %>
+  weight <%= @weight.to_s %>
+<% end %>
+<% if @notify_up %>
+  notify_up <%= @notify_up.to_s %>
+<% end %>
+<% if @notify_down %>
+  notify_down <%= @notify_down.to_s %>
+<% end %>
+<% if @inhibit_on_failure %>
+  inhibit_on_failure <%= @inhibit_on_failure.to_s %>
+<% end %>
+<% if @healthcheck %>
+  include <%= @healthcheck.to_s %>
+<% end %>
+}
