@@ -29,22 +29,6 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 - `man:keepalived.conf(5)`
 - [Keepalived Documentation](https://github.com/acassen/keepalived/tree/master/doc)
 
-## Usage
-
-### Recipes
-
-- `keepalived::default`: loads the install, configure, and service recipes
-- `keepalived::install`: installs the `keepalived` package
-- `keepalived::configure`: configures `/etc/keepalived/keepalived.conf` for inclusion of `keepalived_*` resources
-- `keepalived::service`: enables/starts the `keepalived` service, sets a restart subscription to `/etc/keepalived/keepalived.conf`.
-
-### Attributes
-
-- `default['keepalived']['package']`: specify package name to install (e.g. 'keepalived/trusty-backports').
-- `default['keepalived']['daemon_args']`: array of args to override default daemon cli args with
-- `default['keepalived']['daemon_args_env_var']`: name of env var used by init script to pass in the daemon cli arguments
-- `default['keepalived']['defaults_path']`: path of file to write daemon cli arg env var to (e.g. "/etc/default/keepalived")
-
 ## Resources
 
 - [keepalived_global_defs](https://github.com/sous-chefs/keepalived/tree/master/documentation/keepalived_global_defs.md)

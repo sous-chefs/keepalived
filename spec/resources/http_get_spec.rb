@@ -3,7 +3,7 @@ require 'spec_helper'
 # see documentation here: https://www.keepalived.org/manpage.html
 
 def http_get_file_name(name)
-  "/etc/keepalived/checks.d/keepalived_http_get__port-#{name}__.conf"
+  "/etc/keepalived/checks.d/keepalived_http_get__#{name}__.conf"
 end
 
 platforms = %w(debian ubuntu centos)

@@ -27,7 +27,7 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `fwmark`              | `Integer`     | `nil`| Optional fwmark to mark all outgoing checker packets with | |
 | `warmup`              | `Integer`     | `nil`| Optional random delay to start the initial check for maximum N seconds | |
 | `config_directory`      | `String`      | `/etc/keepalived/checks.d` | directory for the config file to reside in | |
-| `config_file`         | `String`      | `::File.join(config_directory, "keepalived_smtp_check__port-#{name.to_s.gsub(/\s+/, '-')}__.conf")` | full path to the config file | |
+| `config_file`         | `String`      | `::File.join(config_directory, "keepalived_smtp_check__#{name.to_s.gsub(/\s+/, '-')}__.conf")` | full path to the config file | |
 | `cookbook`            | `String`      | `keepalived` | Which cookbook to look in for the template | |
 | `source`              | `String`      | `smtp_check.conf.erb` | Name of the template to render | |
 
@@ -39,5 +39,6 @@ keepalived_smtp_check 'smtp01' do
   delay_before_retry 5
   connect_port 25
   connect_timeout 10
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

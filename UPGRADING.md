@@ -1,5 +1,15 @@
 # Upgrading
 
+## 5.0.0
+
+The recipies have been removed and a resource called `keepalived_install` has been created.
+
+The service must now be declared directly as a resource.
+
+All other resources need to notify the service to restart when changes `notifies :restart, 'service[keepalived]', :delayed`
+
+Resolved issue with check names prefixing all checks names with a port- in them, this was incorrect and has now been removed.
+
 ## 4.0.0
 
 the `cookbook` and `source` properites on resources allow you to override the template file the resource will use with your own

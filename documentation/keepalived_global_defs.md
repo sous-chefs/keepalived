@@ -58,5 +58,6 @@ keepalived_global_defs 'global_defs' do
   notification_email_from "keepalived@#{node['name']}"
   router_id node['name']
   enable_traps true
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

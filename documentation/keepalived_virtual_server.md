@@ -53,6 +53,7 @@ frontends.each do |fe|
     ipaddress fe['ipaddress']
     port 80
     weight 5
+    notifies :restart, 'service[keepalived]', :delayed
   end
 end
 
@@ -65,5 +66,6 @@ keepalived_virtual_server '192.168.1.5 80' do
   virtualhost 'www.sous-chefs.org'
   sorry_server '127.0.0.1 8080'
   real_servers server_paths.to_a
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

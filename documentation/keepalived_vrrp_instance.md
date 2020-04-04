@@ -67,5 +67,6 @@ keepalived_vrrp_instance 'inside_network' do
   virtual_ipaddress %w( 192.168.1.1 )
   notify '/usr/local/bin/keepalived-notify.sh'
   smtp_alert true
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

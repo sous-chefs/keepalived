@@ -3,7 +3,7 @@ require 'spec_helper'
 # see documentation here: https://www.keepalived.org/manpage.html
 
 def smtp_check_file_name(name)
-  "/etc/keepalived/checks.d/keepalived_smtp_check__port-#{name}__.conf"
+  "/etc/keepalived/checks.d/keepalived_smtp_check__#{name}__.conf"
 end
 
 platforms = %w(debian ubuntu centos)

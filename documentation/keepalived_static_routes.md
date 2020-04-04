@@ -31,5 +31,6 @@ keepalived_static_routes 'static_routes' do
     '192.168.2.0/24 via 192.168.1.100 dev eth0',
     '192.168.3.0/24 via 192.168.1.100 dev eth0',
   ]
+  notifies :restart, 'service[keepalived]', :delayed
 end
 ```

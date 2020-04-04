@@ -1,0 +1,6 @@
+---
+name: keepalived-integration-tests
+title: Integration tests for keepalived cookbook
+summary: This InSpec profile contains integration tests for keepalived cookbook
+supports:
+  - os-family: linux
