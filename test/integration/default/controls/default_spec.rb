@@ -60,11 +60,17 @@ control 'is configured' do
   describe file('/etc/keepalived/conf.d/keepalived_vrrp_instance__inside_network__.conf') do
     its(:content) { should match(/virtual_router_id 1/) }
     its(:content) { should match(/state MASTER/) }
+    its(:content) { should_not match(/authentication/) }
   end
 
   describe file('/etc/keepalived/conf.d/keepalived_vrrp_instance__outside_network__.conf') do
     its(:content) { should match(/virtual_router_id 2/) }
     its(:content) { should match(/state MASTER/) }
+    its(:content) { should match(/authentication/) }
+  end
+
+  describe file('/etc/keepalived/conf.d/keepalived_vrrp_instance__obsolete_network__.conf') do
+    it { should_not exist }
   end
 
   describe file('/etc/keepalived/conf.d/keepalived_vrrp_sync_group__VG_1__.conf') do
