@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## Unreleased
+
+- Make the property `authentication` of `keepalived_vrrp_instance` optional
+
 ## 5.0.0
 
 - Removed all attributes

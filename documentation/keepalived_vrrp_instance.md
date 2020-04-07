@@ -33,7 +33,7 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `garp_master_refresh_repeat` | `Integer` | `nil` | number of gratuitous ARP messages to send at a time while MASTER | |
 | `priority` | `Integer` | `100` | for electing MASTER, highest priority wins | `0` up to `255` |
 | `advert_int` | `Integer` | `nil` | VRRP Advert interval in seconds | |
-| `authentication` | `Hash` | `nil` | (required) See Manpage | `:auth_type`,`:auth_pass` Note: Symbols |
+| `authentication` | `Hash` | `nil` | See Manpage | `:auth_type`,`:auth_pass` Note: Symbols |
 | `virtual_ipaddress` | `Array` | `nil` | addresses add or del on change to MASTER, to BACKUP | |
 | `virtual_ipaddress_excluded` | `Array` | `nil` | See ManPage | |
 | `virtual_routes` | `Array` | `nil` | routes add or del when changing to MASTER, to BACKUP | |
