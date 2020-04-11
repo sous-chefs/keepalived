@@ -6,6 +6,10 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 - Make the property `authentication` of `keepalived_vrrp_instance` optional
 
+## 5.0.1
+
+- Changed `value_for_platform_family` to be wrapped in lazy to fix issue with Chef 14
+
 ## 5.0.0
 
 - Removed all attributes
