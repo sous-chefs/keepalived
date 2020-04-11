@@ -58,6 +58,9 @@ keepalived_vrrp_script 'chk_haproxy' do
 end
 
 keepalived_vrrp_instance 'inside_network' do
+  # this intentionally has no authentication set to test that
+  # instances without authentication settings are accepted and
+  # generate correct configuration
   master true
   dont_track_primary true
   virtual_router_id 1
@@ -65,10 +68,6 @@ keepalived_vrrp_instance 'inside_network' do
   interface node['network']['default_interface']
   unicast_peer %w( 10.120.13.1 )
   track_script %w( chk_haproxy )
-  authentication(
-    auth_type: 'PASS',
-    auth_pass: 'buttz'
-  )
   virtual_ipaddress %w( 192.168.4.92 )
   sensitive true
   notifies :restart, 'service[keepalived]', :delayed
@@ -171,4 +170,9 @@ keepalived_virtual_server '192.168.1.5 80' do
   quorum 2
   real_servers http_servers
   notifies :restart, 'service[keepalived]', :delayed
+end
+
+# clean up an instance
+keepalived_vrrp_instance 'obsolete_network' do
+  action :delete
 end
