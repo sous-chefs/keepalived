@@ -3,10 +3,12 @@ property :root_path,    String, default: '/etc/keepalived'
 property :config_path,  String, default: lazy { "#{root_path}/conf.d" }
 property :server_path,  String, default: lazy { "#{root_path}/servers.d" }
 property :health_path,  String, default: lazy { "#{root_path}/checks.d" }
-property :defaults_path, String, default: value_for_platform_family(
-                                            debian: '/etc/default/keepalived',
-                                            default: '/etc/sysconfig/keepalived'
-                                          )
+property :defaults_path, String, default: lazy {
+  value_for_platform_family(
+        debian: '/etc/default/keepalived',
+        default: '/etc/sysconfig/keepalived'
+      )
+}
 action :install do
   package new_resource.package_name
 
