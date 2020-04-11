@@ -11,12 +11,12 @@ verifier:
 
 platforms:
   - name: amazonlinux-2
-    driver_config:
-      box: ywatase/amzn2
   - name: centos-7
+  - name: centos-8
   - name: debian-10
   - name: debian-9
   - name: ubuntu-18.04
+  - name: ubuntu-20.04
 
 suites:
   - name: default
