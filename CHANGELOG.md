@@ -1,8 +1,8 @@
-# keepalived Cookbook CHANGELOG
+# CHANGELOG
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
-## Unreleased
+## 5.1.0
 
 - Make the property `authentication` of `keepalived_vrrp_instance` optional
 
