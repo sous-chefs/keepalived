@@ -174,5 +174,6 @@ end
 
 # clean up an instance
 keepalived_vrrp_instance 'obsolete_network' do
+  virtual_router_id 1
   action :delete
 end
