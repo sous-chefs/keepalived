@@ -56,6 +56,10 @@ jobs:
         uses: actions/checkout@master
       - name: Install Chef
         uses: actionshub/chef-install@master
+      - name: Load ip_vs kernel module
+        run: |
+          set -x
+          sudo modprobe -v ip_vs
       - name: Dokken
         uses: actionshub/kitchen-dokken@master
         env:
