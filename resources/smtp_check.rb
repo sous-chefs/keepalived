@@ -1,3 +1,5 @@
+provides :keepalived_smtp_check
+
 property :helo_name,          String
 property :delay_before_retry, Integer
 property :connect_ip,         String

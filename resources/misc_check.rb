@@ -1,3 +1,5 @@
+provides :keepalived_misc_check
+
 property :misc_path,        String
 property :misc_timeout,     Integer
 property :warmup,           Integer

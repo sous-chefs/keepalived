@@ -1,3 +1,5 @@
+provides :keepalived_script
+
 property :script,           String, required: true
 property :interval,         Integer
 property :timeout,          Integer

@@ -1,3 +1,4 @@
+provides :keepalived_global_defs
 
 property :notification_email,               Array
 property :notification_email_from,          String

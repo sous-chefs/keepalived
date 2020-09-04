@@ -1,3 +1,5 @@
+provides :keepalived_http_get
+
 property :url,                Hash, default: { path: '/', status_code: 200 }, callbacks: {
                                                                               'has only valid keys' => lambda do |spec|
                                                                                 spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }

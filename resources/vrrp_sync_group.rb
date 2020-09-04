@@ -1,3 +1,5 @@
+provides :keepalived_sync_group
+
 property :notify_master,    String
 property :notify_backup,    String
 property :notify_fault,     String

@@ -1,5 +1,6 @@
-property :instance_name,              String, name_property: true
+provides :keepalived_vrrp_instance
 
+property :instance_name,              String, name_property: true
 property :virtual_router_id,          Integer, required: true, equal_to: 0.upto(255).to_a
 property :master,                     [true, false], default: false
 property :interface,                  String
@@ -7,7 +8,7 @@ property :use_vmac,                   String
 property :vmac_xmit_base,             [true, false]
 property :dont_track_primary,         [true, false]
 property :track_interface,            Array
-property :mcast_src_ip,               String
+property :mcast_src_ip,                String
 property :unicast_src_ip,             String
 property :unicast_peer,               Array
 property :garp_master_delay,          Integer

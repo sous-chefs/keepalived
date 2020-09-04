@@ -1,3 +1,5 @@
+provides :keepalived_server_group
+
 property :vips,             Array, default: []
 property :fwmarks,          Array, default: [], callbacks: {
                                                 'are all integers' => ->(spec) { spec.all? { |i| i.is_a?(Integer) } },
