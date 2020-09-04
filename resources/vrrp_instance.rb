@@ -8,7 +8,7 @@ property :use_vmac,                   String
 property :vmac_xmit_base,             [true, false]
 property :dont_track_primary,         [true, false]
 property :track_interface,            Array
-property :mcast_src_ip,                String
+property :mcast_src_ip,               String
 property :unicast_src_ip,             String
 property :unicast_peer,               Array
 property :garp_master_delay,          Integer

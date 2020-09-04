@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## UNMERGED
+
+- Add 'provides' to resources
+
 ## 5.1.0
 
 - Make the property `authentication` of `keepalived_vrrp_instance` optional
