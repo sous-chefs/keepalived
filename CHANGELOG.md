@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
-## UNMERGED
+## Unreleased
 
 - Add 'provides' to resources
 
