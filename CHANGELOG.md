@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
-## 5.2.0
+## Unreleased
 
 - Added support for LVS/IPVS scheduler to `keepalived_virtual_server` `lvs_sched` property:
   - `mh` "maglev hashing scheduling"
