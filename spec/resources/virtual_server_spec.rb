@@ -58,7 +58,7 @@ platforms.each do |platform|
       end
     end
 
-    context 'When given inputs for lvs_sched, ops and lvs_method' do
+    context 'When given inputs for lvs_sched = rr, ops and lvs_method = NAT' do
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -82,6 +82,52 @@ platforms.each do |platform|
       end
       it('should render a config file with the ops correctly') do
         is_expected.to render_file(file_name).with_content(/ops/)
+      end
+    end
+
+    context 'When given inputs for lvs_sched = wlc, lvs_method = DR' do
+      ip_address = '192.168.1.1 80'
+      file_name = virtual_server_file_name(ip_address)
+      real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
+      recipe do
+        keepalived_virtual_server ip_address do
+          real_servers real_servers
+          lvs_sched 'wlc'
+          lvs_method 'DR'
+        end
+      end
+
+      it('should render a config file') do
+        is_expected.to render_file(file_name).with_content(/virtual_server #{ip_address}\s+\{.*\}/m)
+      end
+      it('should render a config file with the lvs_sched correctly') do
+        is_expected.to render_file(file_name).with_content(/lvs_sched\swlc/)
+      end
+      it('should render a config file with the lvs_method correctly') do
+        is_expected.to render_file(file_name).with_content(/lvs_method\sDR/)
+      end
+    end
+
+    context 'When given inputs for lvs_sched = ovf, ops and lvs_method = DR' do
+      ip_address = '192.168.1.1 80'
+      file_name = virtual_server_file_name(ip_address)
+      real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
+      recipe do
+        keepalived_virtual_server ip_address do
+          real_servers real_servers
+          lvs_sched 'ovf'
+          lvs_method 'DR'
+        end
+      end
+
+      it('should render a config file') do
+        is_expected.to render_file(file_name).with_content(/virtual_server #{ip_address}\s+\{.*\}/m)
+      end
+      it('should render a config file with the lvs_sched correctly') do
+        is_expected.to render_file(file_name).with_content(/lvs_sched\sovf/)
+      end
+      it('should render a config file with the lvs_method correctly') do
+        is_expected.to render_file(file_name).with_content(/lvs_method\sDR/)
       end
     end
     context 'When given inputs for persistence_engine, persistence_timeout and persistence_granularity' do
