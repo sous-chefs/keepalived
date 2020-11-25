@@ -21,7 +21,7 @@ More information available at <https://www.keepalived.org/manpage.html>
 | `real_servers` | `Array` | `nil` | Real Servers this is a virtual server for, will use include to load their files | |
 | `ip_family` | `String` | `nil` | IP family for a fwmark service | `inet`, `inet6` |
 | `delay_loop` | `Integer` | `nil` | delay timer for checker polling | |
-| `lvs_sched` | `String` | `nil` | LVS scheduler | `rr`, `wrr`, `lc`, `wlc`, `lblc`, `sh`, `dh` |
+| `lvs_sched` | `String` | `nil` | LVS scheduler | `rr`, `wrr`, `lc`, `wlc`, `lblc`, `sh`, `mh`, `dh`, `fo`, `ovf`, `lblcr`, `sed`, `nq` |
 | `ops` | `true`, `false` | `nil` | Enable One-Packet-Scheduling for UDP | |
 | `lvs_method` | `String` | `nil` | Default LVS forwarding method | `NAT`, `DR` |
 | `persistence_engine` | `String` | `nil` | LVS persistence engine name | `sip` |

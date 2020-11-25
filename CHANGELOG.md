@@ -2,6 +2,16 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## Unreleased
+
+- Added support for LVS/IPVS scheduler to `keepalived_virtual_server` `lvs_sched` property:
+  - `mh` "maglev hashing scheduling"
+  - `fo` "weighted failover scheduling"
+  - `ovf` "weighted overflow scheduling"
+  - `lblcr` "locality-based least-connection with replication scheduling"
+  - `sed` "shortest expected delay scheduling"
+  - `nq` "never queue scheduling"
+
 ## 5.1.0
 
 - Make the property `authentication` of `keepalived_vrrp_instance` optional

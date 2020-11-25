@@ -2,7 +2,7 @@ property :ip_address,               String, name_property: true
 property :real_servers,             Array, required: true
 property :ip_family,                String, equal_to: %w( inet inet6 )
 property :delay_loop,               Integer
-property :lvs_sched,                String, equal_to: %w( rr wrr lc wlc lblc sh dh )
+property :lvs_sched,                String, equal_to: %w( rr wrr lc wlc lblc sh mh dh fo ovf lblcr sed nq )
 property :ops,                      [true, false]
 property :lvs_method,               String, equal_to: %w( NAT DR TUN )
 property :persistence_engine,       String
