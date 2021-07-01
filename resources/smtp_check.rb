@@ -1,3 +1,5 @@
+unified_mode true
+
 property :helo_name,          String
 property :delay_before_retry, Integer
 property :connect_ip,         String

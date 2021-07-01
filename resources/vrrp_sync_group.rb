@@ -1,3 +1,5 @@
+unified_mode true
+
 property :notify_master,    String
 property :notify_backup,    String
 property :notify_fault,     String

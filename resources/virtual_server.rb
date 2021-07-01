@@ -1,3 +1,5 @@
+unified_mode true
+
 property :ip_address,               String, name_property: true
 property :real_servers,             Array, required: true
 property :ip_family,                String, equal_to: %w( inet inet6 )

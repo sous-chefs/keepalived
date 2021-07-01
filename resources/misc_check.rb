@@ -1,3 +1,5 @@
+unified_mode true
+
 property :misc_path,        String
 property :misc_timeout,     Integer
 property :warmup,           Integer

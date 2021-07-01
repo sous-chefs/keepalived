@@ -1,3 +1,5 @@
+unified_mode true
+
 property :script,           String, required: true
 property :interval,         Integer
 property :timeout,          Integer

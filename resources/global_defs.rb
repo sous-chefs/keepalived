@@ -1,3 +1,4 @@
+unified_mode true
 
 property :notification_email,               Array
 property :notification_email_from,          String
