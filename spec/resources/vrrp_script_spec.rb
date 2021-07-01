@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       script_name = 'foobar'
       file_name = vrrp_script_file_name(script_name)
       recipe do
@@ -26,7 +27,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -35,6 +36,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for interval, weight and script' do
+      cached(:subject) { chef_run }
       script_name = 'chk_haproxy'
       file_name = vrrp_script_file_name(script_name)
       recipe do
@@ -57,6 +59,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for timeout, fall, rise and user' do
+      cached(:subject) { chef_run }
       script_name = 'chk_haproxy'
       file_name = vrrp_script_file_name(script_name)
       recipe do

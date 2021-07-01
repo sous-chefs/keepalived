@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       name = 'example-80'
       file_name = smtp_check_file_name(name)
       recipe do
@@ -25,7 +26,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -34,6 +35,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for helo_name and delay_before_rety' do
+      cached(:subject) { chef_run }
       name = 'smtp-25'
       file_name = smtp_check_file_name(name)
       recipe do
@@ -55,6 +57,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for connect_ip, connect_port and connect_timeout' do
+      cached(:subject) { chef_run }
       name = 'mysql-3306'
       file_name = smtp_check_file_name(name)
       recipe do
@@ -80,6 +83,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for bind_to, bind_port, warmup and fwmark' do
+      cached(:subject) { chef_run }
       name = 'webserver-443'
       file_name = smtp_check_file_name(name)
       recipe do
