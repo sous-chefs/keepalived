@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       name = 'servers'
       file_name = virtual_server_group_file_name(name)
       recipe do
@@ -25,7 +26,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -34,6 +35,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for vips, and fwmarks' do
+      cached(:subject) { chef_run }
       name = 'webservers'
       vips = ['192.168.1.1 80', '192.168.1.2 80']
       fwmarks = [ 1, 2 ]

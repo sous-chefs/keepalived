@@ -1,3 +1,5 @@
+unified_mode true
+
 property :package_name, String, default: 'keepalived'
 property :root_path,    String, default: '/etc/keepalived'
 property :config_path,  String, default: lazy { "#{root_path}/conf.d" }

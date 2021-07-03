@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -27,7 +28,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -36,6 +37,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for real_servers, ip_family and delay_loop' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -59,6 +61,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for lvs_sched = rr, ops and lvs_method = NAT' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -86,6 +89,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for lvs_sched = wlc, lvs_method = DR' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -109,6 +113,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for lvs_sched = ovf, ops and lvs_method = DR' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -131,6 +136,7 @@ platforms.each do |platform|
       end
     end
     context 'When given inputs for persistence_engine, persistence_timeout and persistence_granularity' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -158,6 +164,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for protocol, ha_suspend, virtualhost, alpha and omega' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -192,6 +199,7 @@ platforms.each do |platform|
       end
     end
     context 'When given inputs for quorum, hysteresis, quorum_up and quorum_down' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']
@@ -222,6 +230,7 @@ platforms.each do |platform|
       end
     end
     context 'When given inputs for sorry_server and sorry_server_inhibit' do
+      cached(:subject) { chef_run }
       ip_address = '192.168.1.1 80'
       file_name = virtual_server_file_name(ip_address)
       real_servers = ['/etc/keepalived/servers.d/keepalived_real_server__192.168.1.14-443__.conf']

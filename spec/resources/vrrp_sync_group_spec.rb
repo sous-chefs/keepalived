@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       group_name = 'foobar'
       file_name = vrrp_sync_group_file_name(group_name)
       recipe do
@@ -26,7 +27,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -35,6 +36,7 @@ platforms.each do |platform|
     end
 
     context 'Create groups and smtp settings correctly' do
+      cached(:subject) { chef_run }
       group_name = 'foobar'
       file_name = vrrp_sync_group_file_name(group_name)
       recipe do
@@ -54,6 +56,7 @@ platforms.each do |platform|
     end
 
     context 'Create notifies correctly' do
+      cached(:subject) { chef_run }
       group_name = 'foobar'
       file_name = vrrp_sync_group_file_name(group_name)
       recipe do

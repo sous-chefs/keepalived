@@ -4,6 +4,10 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## Unreleased
 
+- Enable unified_mode for all resources
+  - This bumps the required Chef version to at least 15.3
+- Speed up spec tests by caching Chef run
+
 ## 5.2.1 - *2021-06-01*
 
 ## 5.2.0 - *2020-11-25*

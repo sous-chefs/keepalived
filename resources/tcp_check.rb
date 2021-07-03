@@ -1,3 +1,5 @@
+unified_mode true
+
 property :connect_ip,       String
 property :connect_port,     Integer, equal_to: 1.upto(65_535)
 property :connect_timeout,  Integer

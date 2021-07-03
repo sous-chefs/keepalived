@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       name = 'example-80'
       file_name = http_get_file_name(name)
       recipe do
@@ -29,7 +30,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -38,6 +39,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for URL and delay_before_retry' do
+      cached(:subject) { chef_run }
       name = 'flask-3000'
       file_name = http_get_file_name(name)
       url_settings = { path: '/flask', digest: '123', status_code: 201 }
@@ -57,7 +59,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -66,6 +68,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for connect_ip, connect_port and connect_timeout' do
+      cached(:subject) { chef_run }
       name = 'mysql-3306'
       file_name = http_get_file_name(name)
       recipe do
@@ -91,6 +94,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for bind_to, bind_port, warmup and fwmark' do
+      cached(:subject) { chef_run }
       name = 'webserver-443'
       file_name = http_get_file_name(name)
       recipe do

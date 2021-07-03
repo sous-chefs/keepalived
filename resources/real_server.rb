@@ -1,3 +1,5 @@
+unified_mode true
+
 property :ipaddress,          String, required: true
 property :port,               Integer, required: true, equal_to: 1.upto(65_535)
 property :healthcheck,        String

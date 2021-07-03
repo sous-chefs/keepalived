@@ -13,6 +13,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'password123!' }
       file_name = vrrp_instance_file_name(instance_name)
@@ -28,7 +29,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(file_name).with(
+        is_expected.to create_template(file_name).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -37,6 +38,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for virtual_router_id, master, interface, use_vmac and vmac_xmit_base' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'password123!' }
       file_name = vrrp_instance_file_name(instance_name)
@@ -65,6 +67,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for dont_track_primary, track_interface, mcast_src_ip, unicast_src_ip and unicast_peer' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'password123!' }
       file_name = vrrp_instance_file_name(instance_name)
@@ -98,6 +101,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for garp_master_delay, garp_master_repeat, garp_master_refresh_repeat, garp_master_refresh_repeat and priority' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'password123!' }
       file_name = vrrp_instance_file_name(instance_name)
@@ -131,6 +135,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for advert_int, authentication, virtual_ipaddress, virtual_ipaddress_excluded, virtual_routes and virtual_rules' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'secret' }
       file_name = vrrp_instance_file_name(instance_name)
@@ -175,6 +180,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for track_script, nopreempt, preempt_delay, strict_mode, version and native_ipv6' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'password123!' }
       file_name = vrrp_instance_file_name(instance_name)
@@ -212,6 +218,7 @@ platforms.each do |platform|
     end
 
     context 'When given inputs for notify_stop, notify_master, notify_backup, notify_fault, notify and smtp_alert' do
+      cached(:subject) { chef_run }
       instance_name = 'insideNetwork'
       auth = { auth_type: 'PASS', auth_pass: 'password123!' }
       file_name = vrrp_instance_file_name(instance_name)

@@ -1,3 +1,5 @@
+unified_mode true
+
 property :instance_name,              String, name_property: true
 
 property :virtual_router_id,          Integer, required: true, equal_to: 0.upto(255).to_a

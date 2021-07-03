@@ -11,6 +11,7 @@ platforms.each do |platform|
     platform platform
 
     context 'Create a base config correctly' do
+      cached(:subject) { chef_run }
       recipe do
         keepalived_global_defs 'global_defs' do
         end
@@ -21,7 +22,7 @@ platforms.each do |platform|
       end
 
       it 'creates the config file with the owner, group and mode' do
-        expect(chef_run).to create_template(global_defs_config_file).with(
+        is_expected.to create_template(global_defs_config_file).with(
             owner: 'root',
             group: 'root',
             mode: '0640'
@@ -30,6 +31,7 @@ platforms.each do |platform|
     end
 
     context 'Create a config file with notification settings' do
+      cached(:subject) { chef_run }
       recipe do
         keepalived_global_defs 'global_defs' do
           notification_email_from 'root@mynode'
@@ -53,6 +55,7 @@ platforms.each do |platform|
     end
 
     context 'Create a config with vrrp settings' do
+      cached(:subject) { chef_run }
       recipe do
         keepalived_global_defs 'global_defs' do
           router_id 'mynode'
@@ -96,6 +99,7 @@ platforms.each do |platform|
     end
 
     context 'Create a config with snmp settings' do
+      cached(:subject) { chef_run }
       recipe do
         keepalived_global_defs 'global_defs' do
           snmp_socket 'unix:/var/agentx/master'
@@ -123,6 +127,7 @@ platforms.each do |platform|
     end
 
     context 'Create a config with custom settings' do
+      cached(:subject) { chef_run }
       recipe do
         global_defs_extra_options = {
           listOfStuff: %w(foo bar),

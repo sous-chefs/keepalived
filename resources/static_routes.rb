@@ -1,3 +1,5 @@
+unified_mode true
+
 property :routes,           Array, required: true
 property :config_directory, String, default: '/etc/keepalived/conf.d'
 property :config_file,      String, default: lazy { ::File.join(config_directory, 'static_routes.conf') }
