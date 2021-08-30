@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 6.0.0 - *2021-07-03*
 
 - Enable unified_mode for all resources
@@ -11,6 +13,8 @@ This file is used to list changes made in each version of the keepalived cookboo
 - Speed up spec tests by caching Chef run
 
 ## 5.2.1 - *2021-06-01*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 5.2.0 - *2020-11-25*
 
