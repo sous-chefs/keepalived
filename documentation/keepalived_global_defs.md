@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_global_defs
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_global_defs` resource can be used to manage configuration within the `global_defs` section of keepalived.conf.
 

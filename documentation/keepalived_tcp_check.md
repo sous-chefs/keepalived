@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_tcp_check
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_tcp_check` resource can be used to configure a `TCP_CHECK` health checker.
 

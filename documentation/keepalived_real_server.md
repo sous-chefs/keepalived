@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_real_server
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_real_server` resource can be used to configure real_server blocks within a `virtual_server`. They are managed as separate configuration files, and injected into the `virtual_server` block via `include` directives configured via the `real_servers` property of the `keepalived_virtual_server` resource.
 

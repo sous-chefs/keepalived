@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_http_get
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_http_get` resource can be used to configure a `HTTP_GET` health checker.
 

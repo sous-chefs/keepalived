@@ -251,9 +251,6 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 - fix chefspec matchers
 - bump order of virtual_router_id in vrrp_instance config
-
-### Enhancements
-
 - extended platform testing
 
 ## v2.0.0 (2016-04-25)
@@ -262,9 +259,6 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 - attribute-driven configuration is no longer supported
 - remove net.ipv4.ip_nonlocal_bind sysctl management
-
-### Enhancements
-
 - separate recipe concerns from single recipe to install, configure, service
 - overhaul cookbook to use resources instead of attributes
 - add daemon cli args management
