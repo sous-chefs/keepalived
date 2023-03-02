@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_ssl_get
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_ssl_get` resource can be used to configure a `SSL_GET` health checker.
 

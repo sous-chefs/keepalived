@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_static_routes
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_static_routes` resource can be used to manage configuration within the `static_routes` section of keepalived.conf.
 

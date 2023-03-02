@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_vrrp_script
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_vrrp_script` resource can be used to configure a track script via a `vrrp_script` configuration block.
 

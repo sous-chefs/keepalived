@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_misc_check
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_misc_check` resource can be used to configure a `MISC_CHECK` health checker.
 

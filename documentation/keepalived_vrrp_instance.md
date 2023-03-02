@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_vrrp_instance
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_vrrp_instance` resource can be used to manage configuration within the `vrrp_instance` section of keepalived.conf.
 

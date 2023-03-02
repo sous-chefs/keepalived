@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_static_ipaddress
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_static_ipaddress` resource can be used to manage configuration within the `static_ipaddress` section of keepalived.conf.
 

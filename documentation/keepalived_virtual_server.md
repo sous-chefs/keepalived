@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_virtual_server
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_virtual_server` resource can be used to configure a track script via a `virtual_server` configuration block.
 

@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_virtual_server_group
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_virtual_server_group` resource can be used to manage configuration within the `virtual_server_group` section of keepalived.conf.
 

@@ -1,8 +1,7 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
 
 # keepalived_smtp_check
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_smtp_check` resource can be used to configure a `SMTP_CHECK` health checker.
 

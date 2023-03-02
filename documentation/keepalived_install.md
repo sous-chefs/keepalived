@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_service
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_service` resource can be used to manage the `keepalived` service
 

@@ -1,8 +1,6 @@
-[back to resource list](https://github.com/sous-chefs/keepalived#resources)
-
----
-
 # keepalived_vrrp_sync_group
+
+[back to resource list](https://github.com/sous-chefs/keepalived#resources)
 
 The `keepalived_vrrp_sync_group` resource can be used to configure VRRP Sync Groups (groups of resources that fail over together).
 
