@@ -6,7 +6,7 @@ description      'Installs and configures keepalived'
 source_url       'https://github.com/sous-chefs/keepalived'
 issues_url       'https://github.com/sous-chefs/keepalived/issues'
 chef_version     '>= 15.3'
-version          '6.0.7'
+version          '6.0.8'
 
 supports 'ubuntu'
 supports 'debian'
