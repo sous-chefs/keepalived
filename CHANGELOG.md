@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## Unreleased
 
+Standardise files with files in sous-chefs/repo-management
+
 ## 6.0.8 - *2023-05-17*
 
 ## 6.0.7 - *2023-05-03*
