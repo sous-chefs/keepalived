@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
-## Unreleased
+## 6.0.13 - *2024-01-31*
 
 ## 6.0.12 - *2023-09-28*
 
