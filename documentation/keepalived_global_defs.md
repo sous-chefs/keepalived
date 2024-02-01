@@ -14,7 +14,7 @@ More information available at <https://www.keepalived.org/manpage.html>
 ## Properties
 
 | Name                            | Type        |  Default | Description | Allowed Values |
---------------------------------- | ----------- | -------- | ----------- | -------------- |
+|--------------------------------- | ----------- | -------- | ----------- | -------------- |
 | `notification_email`              | `Array`       | `nil` | Set of email To: notify | |
 | `notification_email_from`         | `String`      | `nil` | email from address that will be in the header | |
 | `smtp_server`                     | `String`      | `nil` | Remote SMTP server used to send notification email | |

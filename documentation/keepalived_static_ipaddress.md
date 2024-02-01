@@ -14,13 +14,13 @@ More information available at <https://www.keepalived.org/manpage.html>
 
 ## Properties
 
-| Name        | Type        |  Default | Description | Allowed Values |
-------------- | ----------- | -------- | ----------- | -------------- |
-| `addresses` | `Array`       | `nil` | (Required) A list of IP Address declarations | |
-| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(config_directory, 'static_ipaddress.conf')` | full path to the config file | |
-| `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
-| `source` | `String` | `static_ipaddress.conf.erb` | Name of the template to render | |
+| Name               | Type     | Default                                                  | Description                                  | Allowed Values |
+|--------------------|----------|----------------------------------------------------------|----------------------------------------------|----------------|
+| `addresses`        | `Array`  | `nil`                                                    | (Required) A list of IP Address declarations |                |
+| `config_directory` | `String` | `/etc/keepalived/conf.d`                                 | directory for the config file to reside in   |                |
+| `config_file`      | `String` | `::File.join(config_directory, 'static_ipaddress.conf')` | full path to the config file                 |                |
+| `cookbook`         | `String` | `keepalived`                                             | Which cookbook to look in for the template   |                |
+| `source`           | `String` | `static_ipaddress.conf.erb`                              | Name of the template to render               |                |
 
 ## Examples
 

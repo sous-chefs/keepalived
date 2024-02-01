@@ -16,19 +16,19 @@ More information available at <https://www.keepalived.org/manpage.html>
 
 ## Properties
 
-| Name                  | Type          |  Default | Description | Allowed Values |
------------------------ | ------------- | -------- | ----------- | -------------- |
-| `ipaddress`           | `String`      | `nil` | IP Address of the Server | |
-| `port`                | `Integer`     | `nil` | Port of the Server | |
-| `healthcheck`         | `String`      | `nil` | Includes a healthcheck file | |
-| `weight`              | `Integer`     | `nil` | Script to run for notifications when any transition of state happens | |
-| `inhibit_on_failure`  | `true, false` | `nil` | | |
-| `notify_up`           | `String`      | `nil`| Script to execute when healthchecker considers the service as up | |
-| `notify_down`         | `String`      | `nil`| Script to execute when healthchecker considers the service as down | |
-| `config_directory`      | `String` | `/etc/keepalived/servers.d` | directory for the config file to reside in | |
-| `config_file`         | `String` | `::File.join(config_directory, 'keepalived_real_server__#{ipaddress}-#{port}__.conf')` | full path to the config file | |
-| `cookbook`            | `String` | `keepalived` | Which cookbook to look in for the template | |
-| `source`              | `String` | `real_server.conf.erb` | Name of the template to render | |
+| Name                 | Type          | Default                                                                                | Description                                                          | Allowed Values |
+|----------------------|---------------|----------------------------------------------------------------------------------------|----------------------------------------------------------------------|----------------|
+| `ipaddress`          | `String`      | `nil`                                                                                  | IP Address of the Server                                             |                |
+| `port`               | `Integer`     | `nil`                                                                                  | Port of the Server                                                   |                |
+| `healthcheck`        | `String`      | `nil`                                                                                  | Includes a healthcheck file                                          |                |
+| `weight`             | `Integer`     | `nil`                                                                                  | Script to run for notifications when any transition of state happens |                |
+| `inhibit_on_failure` | `true, false` | `nil`                                                                                  |                                                                      |                |
+| `notify_up`          | `String`      | `nil`                                                                                  | Script to execute when healthchecker considers the service as up     |                |
+| `notify_down`        | `String`      | `nil`                                                                                  | Script to execute when healthchecker considers the service as down   |                |
+| `config_directory`   | `String`      | `/etc/keepalived/servers.d`                                                            | directory for the config file to reside in                           |                |
+| `config_file`        | `String`      | `::File.join(config_directory, 'keepalived_real_server__#{ipaddress}-#{port}__.conf')` | full path to the config file                                         |                |
+| `cookbook`           | `String`      | `keepalived`                                                                           | Which cookbook to look in for the template                           |                |
+| `source`             | `String`      | `real_server.conf.erb`                                                                 | Name of the template to render                                       |                |
 
 ## Examples
 
