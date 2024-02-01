@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## Unreleased
 
+- Fix markdown
+
 ## 6.0.15 - *2024-02-01*
 
 ## 6.0.14 - *2024-02-01*
@@ -315,7 +317,7 @@ Standardise files with files in sous-chefs/repo-management
 
 ### New Feature
 
-- **[COOK-3017](https://tickets.chef.io/browse/COOK-3017)** - Add support for `vrrp_sync_groups`
+- Add support for `vrrp_sync_groups`
 
 ## v1.0.4
 

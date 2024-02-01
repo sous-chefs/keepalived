@@ -13,19 +13,19 @@ More information available at <https://www.keepalived.org/manpage.html>
 
 ## Properties
 
-| Name        | Type        |  Default | Description | Allowed Values |
-------------- | ----------- | -------- | ----------- | -------------- |
-| `script` | `String`       | `nil` | (Required) Path of the script to execute | |
-| `interval` | `Integer`       | `nil` | Seconds between script invocations, | |
-| `timeout` | `Integer`       | `nil` | Seconds after which script is considered to have failed | |
-| `weight` | `Integer`       | `nil` | Adjust priority by this weight | -253..253 |
-| `fall` | `Integer`       | `nil` | Required number of successes for OK transition  | |
-| `rise` | `Integer`       | | Required number of successes for KO transition  | |
-| `user` | `String`       | | User/group names to run script under, group default to group of user  | |
-| `config_directory` | `String` | `/etc/keepalived/conf.d` | directory for the config file to reside in | |
-| `config_file` | `String` | `::File.join(config_directory, '00_keepalived_vrrp_script__#{name}__.conf')` | full path to the config file | |
-| `cookbook` | `String` | `keepalived` | Which cookbook to look in for the template | |
-| `source` | `String` | `vrrp_script.conf.erb` | Name of the template to render | |
+| Name               | Type      | Default                                                                      | Description                                                          | Allowed Values |
+|--------------------|-----------|------------------------------------------------------------------------------|----------------------------------------------------------------------|----------------|
+| `script`           | `String`  | `nil`                                                                        | (Required) Path of the script to execute                             |                |
+| `interval`         | `Integer` | `nil`                                                                        | Seconds between script invocations,                                  |                |
+| `timeout`          | `Integer` | `nil`                                                                        | Seconds after which script is considered to have failed              |                |
+| `weight`           | `Integer` | `nil`                                                                        | Adjust priority by this weight                                       | -253..253      |
+| `fall`             | `Integer` | `nil`                                                                        | Required number of successes for OK transition                       |                |
+| `rise`             | `Integer` |                                                                              | Required number of successes for KO transition                       |                |
+| `user`             | `String`  |                                                                              | User/group names to run script under, group default to group of user |                |
+| `config_directory` | `String`  | `/etc/keepalived/conf.d`                                                     | directory for the config file to reside in                           |                |
+| `config_file`      | `String`  | `::File.join(config_directory, '00_keepalived_vrrp_script__#{name}__.conf')` | full path to the config file                                         |                |
+| `cookbook`         | `String`  | `keepalived`                                                                 | Which cookbook to look in for the template                           |                |
+| `source`           | `String`  | `vrrp_script.conf.erb`                                                       | Name of the template to render                                       |                |
 
 ## Examples
 
