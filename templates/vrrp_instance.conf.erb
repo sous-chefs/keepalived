@@ -124,9 +124,6 @@ vrrp_instance <%= @instance_name %> {
 <% if @notify_master %>
   notify_master <%= @notify_master.to_s %>
 <% end %>
-<% if @notify_master %>
-  notify_master <%= @notify_master.to_s %>
-<% end %>
 <% if @notify_backup %>
   notify_backup <%= @notify_backup.to_s %>
 <% end %>
