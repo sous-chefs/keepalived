@@ -236,24 +236,36 @@ platforms.each do |platform|
       end
 
       it('should render a config file with the notify_stop correctly') do
-        is_expected.to render_file(file_name).with_content(%r{notify_stop\s/path/to_stop\.sh})
+        is_expected.to render_file(file_name).with_content{|s|
+          expect(s.scan(%r{notify_stop\s/path/to_stop\.sh}).size).to eq(1)
+        }
+
       end
 
       it('should render a config file with the notify_master correctly') do
-        is_expected.to render_file(file_name).with_content(%r{notify_master\s/path/to_master\.sh})
+        is_expected.to render_file(file_name).with_content{|s|
+          expect(s.scan(%r{notify_master\s/path/to_master\.sh}).size).to eq(1)
+        }
       end
 
       it('should render a config file with the notify_backup correctly') do
-        is_expected.to render_file(file_name).with_content(%r{notify_backup\s/path/to_backup\.sh})
+        is_expected.to render_file(file_name).with_content{|s|
+          expect(s.scan(%r{notify_backup\s/path/to_backup\.sh}).size).to eq(1)
+        }
       end
 
       it('should render a config file with the notify_fault correctly') do
-        is_expected.to render_file(file_name).with_content(%r{notify_fault\s/path/fault\.sh})
+        is_expected.to render_file(file_name).with_content{|s|
+          expect(s.scan(%r{notify_fault\s/path/fault\.sh}).size).to eq(1)
+        }
       end
 
       it('should render a config file with the notify correctly') do
-        is_expected.to render_file(file_name).with_content(%r{notify\s/path/notify\.sh})
+        is_expected.to render_file(file_name).with_content{|s|
+          expect(s.scan(%r{notify\s/path/notify\.sh}).size).to eq(1)
+        }
       end
+
       it('should render a config file with the smtp_alert set to true') do
         is_expected.to render_file(file_name).with_content(/smtp_alert\strue/)
       end
