@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## Unreleased
+
 ## 6.0.19 - *2024-07-15*
 
 - Fixed a bug that duplicated the `notify_master` script in a `vrrp_instance`
