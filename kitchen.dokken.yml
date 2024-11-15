@@ -107,7 +107,7 @@ platforms:
       image: dokken/ubuntu-22.04
       pid_one_command: /bin/systemd
 
-  - name: ubuntu-23.04
+  - name: ubuntu-24.04
     driver:
-      image: dokken/ubuntu-23.04
+      image: dokken/ubuntu-24.04
       pid_one_command: /bin/systemd

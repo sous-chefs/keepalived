@@ -4,6 +4,10 @@ This file is used to list changes made in each version of the keepalived cookboo
 
 ## Unreleased
 
+- Updated supported platforms
+- Sync `kitchen.yml` with standardized settings
+- Move `keepalived` service resource to the end to fix issues with RHEL-9
+
 ## 6.0.19 - *2024-07-15*
 
 - Fixed a bug that duplicated the `notify_master` script in a `vrrp_instance`

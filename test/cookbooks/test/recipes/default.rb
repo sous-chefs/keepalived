@@ -6,13 +6,6 @@ apt_update 'update' if platform_family?('debian')
 # include_recipe 'keepalived::default'
 keepalived_install 'keepalived'
 
-service 'keepalived' do
-  action [:enable, :start]
-end
-
-# this enables us to bind ips which are not really present
-execute 'sysctl -w net.ipv4.ip_nonlocal_bind=1'
-
 global_defs_extra_options = { 'foo' => 'bar', 'other' => [1, 2, 3] }
 
 keepalived_global_defs 'global_defs' do
@@ -176,4 +169,8 @@ end
 keepalived_vrrp_instance 'obsolete_network' do
   virtual_router_id 1
   action :delete
+end
+
+service 'keepalived' do
+  action [:enable, :start]
 end
