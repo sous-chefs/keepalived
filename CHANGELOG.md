@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
-## Unreleased
+## 6.0.20 - *2024-11-15*
 
 - Updated supported platforms
 - Sync `kitchen.yml` with standardized settings
