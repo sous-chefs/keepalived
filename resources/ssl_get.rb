@@ -1,13 +1,13 @@
 unified_mode true
 
-property :url,                Hash, default: { path: '/', status_code: 200 }, callbacks: {
-                                              'has only valid keys' => lambda do |spec|
-                                                spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
-                                              end,
-                                              'has required keys' => lambda do |spec|
-                                                spec.key?(:path) && spec.key?(:status_code)
-                                              end,
-                                            }
+property :url, Hash, default: { path: '/', status_code: 200 }, callbacks: {
+  'has only valid keys' => lambda do |spec|
+    spec.keys.all? { |s| [:path, :digest, :status_code].include?(s) }
+  end,
+  'has required keys' => lambda do |spec|
+    spec.key?(:path) && spec.key?(:status_code)
+  end,
+}
 property :delay_before_retry, Integer
 property :connect_ip,         String
 property :connect_port,       Integer, equal_to: 1.upto(65_535)
