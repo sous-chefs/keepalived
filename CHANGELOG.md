@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## [6.0.22](https://github.com/sous-chefs/keepalived/compare/6.0.21...v6.0.22) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#162](https://github.com/sous-chefs/keepalived/issues/162)) ([7bd51d9](https://github.com/sous-chefs/keepalived/commit/7bd51d9796709ef46e42aa22815d0ee9357c081e))
+
 ## 6.0.20 - *2024-11-15*
 
 * Updated supported platforms
