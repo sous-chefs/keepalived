@@ -19,13 +19,13 @@ property :garp_master_refresh_repeat, Integer
 property :priority,                   Integer, equal_to: 0.upto(255).to_a, default: 100
 property :advert_int,                 Integer
 property :authentication,             Hash, callbacks: {
-                                                        'has required configuration' => lambda do |spec|
-                                                          [:auth_type, :auth_pass].all? { |c| spec.keys.map(&:to_sym).include?(c) }
-                                                        end,
-                                                        'has supported auth_type' => lambda do |spec|
-                                                          (%w(PASS AH) & [spec[:auth_type], spec['auth_type']]).any?
-                                                        end,
-                                                      }
+  'has required configuration' => lambda do |spec|
+    [:auth_type, :auth_pass].all? { |c| spec.keys.map(&:to_sym).include?(c) }
+  end,
+  'has supported auth_type' => lambda do |spec|
+    (%w(PASS AH) & [spec[:auth_type], spec['auth_type']]).any?
+  end,
+}
 property :virtual_ipaddress,          Array
 property :virtual_ipaddress_excluded, Array
 property :virtual_routes,             Array
