@@ -2,6 +2,18 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## [6.1.0](https://github.com/sous-chefs/keepalived/compare/v6.0.22...v6.1.0) (2026-03-19)
+
+
+### Features
+
+* modernize cookbook with Cinc Workstation, provides declarations, and platform updates ([#165](https://github.com/sous-chefs/keepalived/issues/165)) ([f31a3a7](https://github.com/sous-chefs/keepalived/commit/f31a3a70a7ae259590edfd4cd1696ff48ddccb84))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#162](https://github.com/sous-chefs/keepalived/issues/162)) ([7bd51d9](https://github.com/sous-chefs/keepalived/commit/7bd51d9796709ef46e42aa22815d0ee9357c081e))
+
 ## [6.0.22](https://github.com/sous-chefs/keepalived/compare/6.0.21...v6.0.22) (2025-10-15)
 
 
