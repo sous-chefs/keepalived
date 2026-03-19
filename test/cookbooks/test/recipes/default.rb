@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # This is intended to test the resources, not produce a sane configuration :D
 #

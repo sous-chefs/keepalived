@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 unified_mode true
 
 property :url, Hash, default: { path: '/', status_code: 200 }, callbacks: {
