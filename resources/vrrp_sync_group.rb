@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_vrrp_sync_group
 unified_mode true
 
 property :notify_master,    String

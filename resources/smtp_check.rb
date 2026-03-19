@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_smtp_check
 unified_mode true
 
 property :helo_name,          String

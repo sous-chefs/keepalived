@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_install
 unified_mode true
 
 property :package_name, String, default: 'keepalived'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'package' do
   impact 1
   desc 'Keepalived package is installed'

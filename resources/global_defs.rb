@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_global_defs
 unified_mode true
 
 property :notification_email,               Array

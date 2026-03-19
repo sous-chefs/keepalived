@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_real_server
 unified_mode true
 
 property :ipaddress,          String, required: true

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_static_ipaddress
 unified_mode true
 
 property :addresses,        Array, required: true

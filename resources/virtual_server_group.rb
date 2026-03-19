@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_virtual_server_group
 unified_mode true
 
 property :vips,             Array, default: []

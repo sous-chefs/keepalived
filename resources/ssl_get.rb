@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+provides :keepalived_ssl_get
 unified_mode true
 
 property :url, Hash, default: { path: '/', status_code: 200 }, callbacks: {

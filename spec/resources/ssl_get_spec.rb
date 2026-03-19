@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 # see documentation here: https://www.keepalived.org/manpage.html

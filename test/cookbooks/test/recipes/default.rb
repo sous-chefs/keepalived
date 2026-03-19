@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 #
 # This is intended to test the resources, not produce a sane configuration :D
 #
-apt_update 'update' if platform_family?('debian')
+apt_update
 
 # include_recipe 'keepalived::default'
 keepalived_install 'keepalived'
