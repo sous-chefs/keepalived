@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+provides :keepalived_static_routes
 unified_mode true
 
 property :routes,           Array, required: true

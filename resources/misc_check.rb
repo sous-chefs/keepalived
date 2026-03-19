@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+provides :keepalived_misc_check
 unified_mode true
 
 property :misc_path,        String

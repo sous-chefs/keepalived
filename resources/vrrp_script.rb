@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+provides :keepalived_vrrp_script
 unified_mode true
 
 property :script,           String, required: true

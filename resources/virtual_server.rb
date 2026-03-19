@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+provides :keepalived_virtual_server
 unified_mode true
 
 property :ip_address,               String, name_property: true

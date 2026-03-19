@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+provides :keepalived_tcp_check
 unified_mode true
 
 property :connect_ip,       String

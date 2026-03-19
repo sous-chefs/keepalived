@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+provides :keepalived_vrrp_instance
 unified_mode true
 
 property :instance_name,              String, name_property: true
