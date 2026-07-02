@@ -5,7 +5,7 @@ unified_mode true
 
 property :vips,             Array, default: []
 property :fwmarks,          Array, default: [], callbacks: {
-  'are all integers' => ->(spec) { spec.all? { |i| i.is_a?(Integer) } },
+  'are all integers' => ->(spec) { spec.all?(Integer) },
 }
 property :config_directory, String, default: '/etc/keepalived/conf.d'
 # set name to 00_ to force early load-order so it's defined before vrrp_instance(s) which may reference it via track_script
