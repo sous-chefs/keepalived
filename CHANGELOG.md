@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the keepalived cookbook.
 
+## [6.1.1](https://github.com/sous-chefs/keepalived/compare/v6.1.0...v6.1.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* migrate to Policyfile ([#176](https://github.com/sous-chefs/keepalived/issues/176)) ([9b0af9f](https://github.com/sous-chefs/keepalived/commit/9b0af9f4c68cdc1b6b85d6f3c04beffedfe9b314))
+
 ## [6.1.0](https://github.com/sous-chefs/keepalived/compare/v6.0.22...v6.1.0) (2026-03-19)
 
 
