@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'chefspec'
-require 'chefspec/berkshelf'
+require 'chefspec/policyfile'
 
 # Require all our libraries
 Dir.glob('libraries/*.rb').shuffle.each { |f| require File.expand_path(f) }
